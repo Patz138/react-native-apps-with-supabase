@@ -9,9 +9,9 @@ const meta: Meta<typeof StatsRow> = {
   component: StatsRow,
   parameters: {
     layout: 'centered',
-    backgrounds: { default: 'kinetic-dark', values: [{ name: 'kinetic-dark', value: '#141408' }] },
+    backgrounds: { default: 'kinetic-light', values: [{ name: 'kinetic-light', value: '#eef6f0' }] },
   },
-  decorators: [(Story) => <View style={{ backgroundColor: '#141408', padding: 24, width: 360 }}><Story /></View>],
+  decorators: [(Story) => <View style={{ backgroundColor: '#eef6f0', padding: 24, width: 360 }}><Story /></View>],
   argTypes: {
     streak:     { control: { type: 'number', min: 0, max: 365 }, description: 'Streak-Tage' },
     sessions:   { control: { type: 'number', min: 0, max: 200 }, description: 'Sessions diesen Monat' },

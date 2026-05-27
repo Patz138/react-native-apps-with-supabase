@@ -8,32 +8,32 @@
     ]
   },
   "colors": {
-    "bg": "#141408",
+    "bg": "#eef6f0",
     "surface": {
-      "low": "#1d1c10",
-      "default": "#212013",
-      "high": "#2b2b1d",
-      "variant": "#363527",
-      "bright": "#3b3a2b"
+      "low": "#f6faf7",
+      "default": "#ffffff",
+      "high": "#ffffff",
+      "variant": "#e2efe7",
+      "bright": "#ffffff"
     },
     "outline": {
-      "default": "#949277",
-      "variant": "#494832"
+      "default": "#5b6b61",
+      "variant": "#d4e2d9"
     },
     "text": {
-      "primary": "#e6e3ce",
-      "secondary": "#cbc8ab"
+      "primary": "#0f1f15",
+      "secondary": "#4a5a50"
     },
-    "primary": "#ede900",
-    "primaryDim": "#d0cc00",
-    "onPrimary": "#1d1d00",
-    "secondary": "#a4c9ff",
-    "tertiary": "#99f1f3",
-    "error": "#ffb4ab",
+    "primary": "#16a34a",
+    "primaryDim": "#15803d",
+    "onPrimary": "#ffffff",
+    "secondary": "#0ea5e9",
+    "tertiary": "#0891b2",
+    "error": "#dc2626",
     "difficulty": {
-      "beginner":     { "bg": "#162816", "text": "#86efac", "dot": "#22c55e" },
-      "intermediate": { "bg": "#2a2200", "text": "#fde68a", "dot": "#f59e0b" },
-      "advanced":     { "bg": "#2a0a0a", "text": "#fca5a5", "dot": "#ef4444" }
+      "beginner":     { "bg": "#dcfce7", "text": "#15803d", "dot": "#22c55e" },
+      "intermediate": { "bg": "#fef3c7", "text": "#b45309", "dot": "#f59e0b" },
+      "advanced":     { "bg": "#fee2e2", "text": "#b91c1c", "dot": "#ef4444" }
     }
   },
   "spacing": {

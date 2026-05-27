@@ -9,9 +9,9 @@ const meta: Meta<typeof Avatar> = {
   component: Avatar,
   parameters: {
     layout: 'centered',
-    backgrounds: { default: 'kinetic-dark', values: [{ name: 'kinetic-dark', value: '#141408' }, { name: 'light', value: '#fff' }] },
+    backgrounds: { default: 'kinetic-light', values: [{ name: 'kinetic-light', value: '#eef6f0' }, { name: 'light', value: '#fff' }] },
   },
-  decorators: [(Story) => <View style={{ backgroundColor: '#141408', padding: 24 }}><Story /></View>],
+  decorators: [(Story) => <View style={{ backgroundColor: '#eef6f0', padding: 24 }}><Story /></View>],
   argTypes: {
     initials: { control: 'text',   description: '1–2 Buchstaben' },
     size:     { control: { type: 'number', min: 24, max: 96, step: 4 }, description: 'Durchmesser px' },

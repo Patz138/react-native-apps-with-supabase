@@ -163,9 +163,9 @@ export default function App() {
 
 const statusStyle: Record<HealthStatus, object> = {
   idle:      {},
-  loading:   { backgroundColor: '#2a2200', color: '#fde68a' },
-  healthy:   { backgroundColor: '#162816', color: '#86efac' },
-  unhealthy: { backgroundColor: '#2a0a0a', color: '#fca5a5' },
+  loading:   { backgroundColor: '#fef3c7', color: '#b45309' },
+  healthy:   { backgroundColor: '#dcfce7', color: '#15803d' },
+  unhealthy: { backgroundColor: '#fee2e2', color: '#b91c1c' },
 };
 
 const styles = StyleSheet.create({

@@ -9,22 +9,22 @@
        STITCH UNIT 1 — KINETIC TOKEN SYSTEM (from kineticTheme.ts)
        ============================================================ */
     :root {
-      --bg:              #141408;
-      --surface-low:     #1d1c10;
-      --surface:         #212013;
-      --surface-high:    #2b2b1d;
-      --surface-variant: #363527;
-      --surface-bright:  #3b3a2b;
-      --outline:         #949277;
-      --outline-variant: #494832;
-      --text:            #e6e3ce;
-      --text-secondary:  #cbc8ab;
-      --primary:         #ede900;
-      --primary-dim:     #d0cc00;
-      --on-primary:      #1d1d00;
-      --secondary:       #a4c9ff;
-      --tertiary:        #99f1f3;
-      --error:           #ffb4ab;
+      --bg:              #eef6f0;
+      --surface-low:     #f6faf7;
+      --surface:         #ffffff;
+      --surface-high:    #ffffff;
+      --surface-variant: #e2efe7;
+      --surface-bright:  #ffffff;
+      --outline:         #5b6b61;
+      --outline-variant: #d4e2d9;
+      --text:            #0f1f15;
+      --text-secondary:  #4a5a50;
+      --primary:         #16a34a;
+      --primary-dim:     #15803d;
+      --on-primary:      #ffffff;
+      --secondary:       #0ea5e9;
+      --tertiary:        #0891b2;
+      --error:           #dc2626;
 
       --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
@@ -69,7 +69,7 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(20, 20, 8, 0.88);
+      background: rgba(238, 246, 240, 0.88);
       backdrop-filter: blur(24px);
       -webkit-backdrop-filter: blur(24px);
       border-bottom: 1px solid var(--outline-variant);
@@ -138,7 +138,7 @@
     }
     .nav-link--cta:hover {
       background: var(--primary-dim);
-      box-shadow: 0 0 18px rgba(237,233,0,0.3);
+      box-shadow: 0 0 18px rgba(22,163,74,0.3);
     }
 
     .hamburger {
@@ -215,7 +215,7 @@
     .btn--primary:hover {
       background: var(--primary-dim);
       border-color: var(--primary-dim);
-      box-shadow: 0 0 24px rgba(237,233,0,0.28);
+      box-shadow: 0 0 24px rgba(22,163,74,0.28);
       transform: translateY(-1px);
     }
     .btn--primary:active { transform: translateY(0); }
@@ -231,9 +231,9 @@
     .btn--outline {
       background: transparent;
       color: var(--primary);
-      border-color: rgba(237,233,0,0.35);
+      border-color: rgba(22,163,74,0.35);
     }
-    .btn--outline:hover { background: rgba(237,233,0,0.07); border-color: var(--primary); }
+    .btn--outline:hover { background: rgba(22,163,74,0.07); border-color: var(--primary); }
     .btn--oauth {
       background: var(--surface-high);
       color: var(--text);
@@ -276,14 +276,14 @@
       border: 1px solid var(--outline-variant);
     }
     .badge--secondary {
-      background: rgba(164, 201, 255, 0.08);
+      background: rgba(14,165,233, 0.08);
       color: var(--secondary);
-      border-color: rgba(164, 201, 255, 0.18);
+      border-color: rgba(14,165,233, 0.18);
     }
     .badge--tertiary {
-      background: rgba(153, 241, 243, 0.08);
+      background: rgba(8,145,178, 0.08);
       color: var(--tertiary);
-      border-color: rgba(153, 241, 243, 0.18);
+      border-color: rgba(8,145,178, 0.18);
     }
     .hero-title {
       font-size: clamp(44px, 8vw, 88px);
@@ -446,7 +446,7 @@
     .form-input:focus {
       border-color: var(--primary);
       background: var(--surface-high);
-      box-shadow: 0 0 0 3px rgba(237,233,0,0.1);
+      box-shadow: 0 0 0 3px rgba(22,163,74,0.1);
     }
     .form-input:focus::placeholder { color: transparent; }
     .input-wrap { position: relative; }
@@ -498,9 +498,9 @@
       border: 1px solid transparent;
     }
     .form-feedback.hidden { display: none; }
-    .form-feedback--error   { background: rgba(255,180,171,0.1); color: var(--error);    border-color: rgba(255,180,171,0.2); }
-    .form-feedback--success { background: rgba(153,241,243,0.1); color: var(--tertiary); border-color: rgba(153,241,243,0.2); }
-    .form-feedback--loading { background: rgba(237,233,0,0.07);  color: var(--primary);  border-color: rgba(237,233,0,0.15); }
+    .form-feedback--error   { background: rgba(220,38,38,0.1); color: var(--error);    border-color: rgba(220,38,38,0.2); }
+    .form-feedback--success { background: rgba(8,145,178,0.1); color: var(--tertiary); border-color: rgba(8,145,178,0.2); }
+    .form-feedback--loading { background: rgba(22,163,74,0.07);  color: var(--primary);  border-color: rgba(22,163,74,0.15); }
 
     /* ============================================================
        STITCH UNIT 8 — EXERCISES DASHBOARD
@@ -589,7 +589,7 @@
       border-color: var(--outline);
       background: var(--surface);
       transform: translateY(-4px);
-      box-shadow: 0 16px 48px rgba(0,0,0,0.35);
+      box-shadow: 0 16px 48px rgba(15,31,21,0.10);
     }
     .card-header { display: flex; justify-content: space-between; align-items: flex-start; }
     .card-emoji { font-size: 30px; line-height: 1; }
@@ -1074,9 +1074,9 @@
     }
 
     const diffStyles = {
-      Beginner:     { bg: '#162816', color: '#86efac', dot: '#22c55e' },
-      Intermediate: { bg: '#2a2200', color: '#fde68a', dot: '#f59e0b' },
-      Advanced:     { bg: '#2a0a0a', color: '#fca5a5', dot: '#ef4444' },
+      Beginner:     { bg: '#dcfce7', color: '#15803d', dot: '#22c55e' },
+      Intermediate: { bg: '#fef3c7', color: '#b45309', dot: '#f59e0b' },
+      Advanced:     { bg: '#fee2e2', color: '#b91c1c', dot: '#ef4444' },
     };
 
     function workoutCard(w) {

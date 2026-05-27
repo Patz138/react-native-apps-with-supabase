@@ -11,10 +11,10 @@ const meta: Meta<typeof WorkoutCard> = {
   parameters: {
     layout: 'centered',
     backgrounds: {
-      default: 'kinetic-dark',
+      default: 'kinetic-light',
       values: [
-        { name: 'kinetic-dark',    value: '#141408' },
-        { name: 'kinetic-surface', value: '#1d1c10' },
+        { name: 'kinetic-light',    value: '#eef6f0' },
+        { name: 'kinetic-surface', value: '#ffffff' },
         { name: 'light',           value: '#ffffff' },
       ],
     },
@@ -22,7 +22,7 @@ const meta: Meta<typeof WorkoutCard> = {
   // ── DECORATOR — verhindert Crash: RN View mit Kinetic-Hintergrund ──
   decorators: [
     (Story) => (
-      <View style={{ backgroundColor: '#141408', padding: 24, minWidth: 320, maxWidth: 400 }}>
+      <View style={{ backgroundColor: '#eef6f0', padding: 24, minWidth: 320, maxWidth: 400 }}>
         <Story />
       </View>
     ),

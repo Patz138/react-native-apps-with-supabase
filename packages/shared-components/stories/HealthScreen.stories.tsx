@@ -9,10 +9,10 @@ const meta: Meta<typeof HealthScreen> = {
   component: HealthScreen,
   parameters: {
     layout: 'fullscreen',
-    backgrounds: { default: 'kinetic-dark', values: [{ name: 'kinetic-dark', value: '#141408' }] },
+    backgrounds: { default: 'kinetic-light', values: [{ name: 'kinetic-light', value: '#eef6f0' }] },
   },
   decorators: [(Story) => (
-    <View style={{ backgroundColor: '#141408', width: 390, height: 844 }}>
+    <View style={{ backgroundColor: '#eef6f0', width: 390, height: 844 }}>
       <Story />
     </View>
   )],

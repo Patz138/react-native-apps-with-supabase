@@ -3,7 +3,7 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { kineticTheme } from '../kineticTheme';
 import { Avatar } from '../molecules/Avatar';
 
-const { colors, spacing, radius } = kineticTheme;
+const { colors, spacing, radius, shadows } = kineticTheme;
 
 export interface TopBarProps {
   /** Begrüßungstext — z.B. "Good morning," */
@@ -42,6 +42,7 @@ export function TopBar({
           accessibilityLabel="Notifications"
         >
           <Text style={styles.iconBtnText}>🔔</Text>
+          <View style={styles.badge} />
         </Pressable>
         <Pressable
           onPress={onSettings}
@@ -85,14 +86,26 @@ const styles = StyleSheet.create({
     gap: spacing.xs,
   },
   iconBtn: {
-    width: 40,
-    height: 40,
+    width: 42,
+    height: 42,
     borderRadius: radius.pill,
-    backgroundColor: colors.surfaceContainerHigh,
+    backgroundColor: colors.surfaceContainer,
     alignItems: 'center',
     justifyContent: 'center',
+    ...shadows.sm,
   },
   iconBtnText: {
     fontSize: 18,
+  },
+  badge: {
+    position: 'absolute',
+    top: 9,
+    right: 9,
+    width: 9,
+    height: 9,
+    borderRadius: 5,
+    backgroundColor: colors.error,
+    borderWidth: 1.5,
+    borderColor: colors.surfaceContainer,
   },
 });

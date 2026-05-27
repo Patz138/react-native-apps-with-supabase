@@ -22,8 +22,6 @@ const meta: Meta<typeof WorkoutDashboard> = {
     streak:     { control: { type: 'number', min: 0, max: 365 } },
     sessions:   { control: { type: 'number', min: 0, max: 200 } },
     volumeTons: { control: { type: 'number', min: 0, max: 20, step: 0.1 } },
-    activeTab:  { control: 'select', options: ['workouts', 'health', 'register'] },
-    onTabChange:    { action: 'tab-changed' },
     onWorkoutPress: { action: 'workout-pressed' },
   },
   args: {
@@ -32,7 +30,6 @@ const meta: Meta<typeof WorkoutDashboard> = {
     streak: 12,
     sessions: 48,
     volumeTons: 2.4,
-    activeTab: 'workouts',
   },
 };
 export default meta;

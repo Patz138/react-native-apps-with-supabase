@@ -1,8 +1,9 @@
 import { StyleSheet, Text, View } from 'react-native';
 
 import { kineticTheme } from '../kineticTheme';
+import { Gradient } from '../atoms/Gradient';
 
-const { colors, spacing, radius } = kineticTheme;
+const { colors, gradients, spacing, radius, shadows } = kineticTheme;
 
 const WEEK_DAYS = ['M', 'T', 'W', 'T', 'F', 'S', 'S'] as const;
 
@@ -21,7 +22,7 @@ export function StreakBanner({ streakCount, todayIndex }: StreakBannerProps) {
   const today = todayIndex ?? (new Date().getDay() + 6) % 7;
 
   return (
-    <View style={styles.banner}>
+    <Gradient colors={gradients.banner} style={styles.banner}>
       {/* ── Info-Zeile ─────────────────────────────────── */}
       <View style={styles.infoRow}>
         <View style={styles.left}>
@@ -50,7 +51,8 @@ export function StreakBanner({ streakCount, todayIndex }: StreakBannerProps) {
               <Text
                 style={[
                   styles.dotLabel,
-                  (isDone || isToday) && styles.dotLabelActive,
+                  isDone  && styles.dotLabelDone,
+                  isToday && styles.dotLabelToday,
                 ]}
               >
                 {day}
@@ -59,18 +61,16 @@ export function StreakBanner({ streakCount, todayIndex }: StreakBannerProps) {
           );
         })}
       </View>
-    </View>
+    </Gradient>
   );
 }
 
 const styles = StyleSheet.create({
   banner: {
-    backgroundColor: colors.surfaceVariant,
     borderRadius: radius.lg,
-    padding: spacing.md,
-    gap: spacing.sm,
-    borderLeftWidth: 3,
-    borderLeftColor: colors.primary,
+    padding: spacing.lg,
+    gap: spacing.md,
+    ...shadows.primaryGlow,
   },
   infoRow: {
     flexDirection: 'row',
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 11,
     fontWeight: '700' as const,
-    color: colors.onSurfaceVariant,
+    color: 'rgba(255,255,255,0.9)',
     textTransform: 'uppercase',
     letterSpacing: 0.5,
   },
@@ -92,14 +92,14 @@ const styles = StyleSheet.create({
     alignItems: 'baseline',
   },
   value: {
-    fontSize: 26,
+    fontSize: 30,
     fontWeight: '700' as const,
-    color: colors.primary,
+    color: colors.onPrimary,
     letterSpacing: -0.5,
   },
   sub: {
     fontSize: 13,
-    color: colors.onSurfaceVariant,
+    color: 'rgba(255,255,255,0.85)',
   },
   dots: {
     flexDirection: 'row',
@@ -110,24 +110,27 @@ const styles = StyleSheet.create({
     aspectRatio: 1,
     maxWidth: 36,
     borderRadius: radius.pill,
-    backgroundColor: colors.surfaceContainerHigh,
+    backgroundColor: 'rgba(255,255,255,0.18)',
     alignItems: 'center',
     justifyContent: 'center',
   },
   dotDone: {
-    backgroundColor: colors.primary,
+    backgroundColor: 'rgba(255,255,255,0.95)',
   },
   dotToday: {
-    backgroundColor: colors.primaryDim,
+    backgroundColor: 'rgba(255,255,255,0.35)',
     borderWidth: 2,
-    borderColor: colors.primary,
+    borderColor: '#ffffff',
   },
   dotLabel: {
     fontSize: 11,
     fontWeight: '700' as const,
-    color: colors.onSurfaceVariant,
+    color: 'rgba(255,255,255,0.75)',
   },
-  dotLabelActive: {
+  dotLabelDone: {
+    color: colors.primaryDim,
+  },
+  dotLabelToday: {
     color: colors.onPrimary,
   },
 });

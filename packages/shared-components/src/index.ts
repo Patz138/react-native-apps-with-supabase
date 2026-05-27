@@ -2,6 +2,12 @@
 export { kineticTheme } from './kineticTheme';
 
 // ── Atoms ──────────────────────────────────────────────────────────
+export { Gradient, interpolate } from './atoms/Gradient';
+export type { GradientProps, GradientDirection } from './atoms/Gradient';
+
+export { ProgressBar } from './atoms/ProgressBar';
+export type { ProgressBarProps } from './atoms/ProgressBar';
+
 export { DifficultyBadge } from './atoms/DifficultyBadge';
 export type { DifficultyBadgeProps } from './atoms/DifficultyBadge';
 
@@ -28,6 +34,9 @@ export { StatCard } from './molecules/StatCard';
 export type { StatCardProps } from './molecules/StatCard';
 
 // ── Organisms ──────────────────────────────────────────────────────
+export { BottomNav, DEFAULT_TABS } from './organisms/BottomNav';
+export type { BottomNavProps, NavTab } from './organisms/BottomNav';
+
 export { TopBar } from './organisms/TopBar';
 export type { TopBarProps } from './organisms/TopBar';
 
@@ -42,3 +51,12 @@ export type { WorkoutDashboardProps, WorkoutItem } from './organisms/WorkoutDash
 
 export { HealthScreen } from './organisms/HealthScreen';
 export type { HealthScreenProps } from './organisms/HealthScreen';
+
+export { WorkoutDetailScreen } from './organisms/WorkoutDetailScreen';
+export type { WorkoutDetailScreenProps, Exercise } from './organisms/WorkoutDetailScreen';
+
+export { ProgressScreen } from './organisms/ProgressScreen';
+export type { ProgressScreenProps, Goal } from './organisms/ProgressScreen';
+
+export { ProfileScreen } from './organisms/ProfileScreen';
+export type { ProfileScreenProps, Badge, SettingsItem } from './organisms/ProfileScreen';

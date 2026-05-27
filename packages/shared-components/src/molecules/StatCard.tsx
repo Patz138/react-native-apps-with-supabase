@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import { kineticTheme } from '../kineticTheme';
 
-const { colors, spacing, radius } = kineticTheme;
+const { colors, spacing, radius, shadows } = kineticTheme;
 
 export interface StatCardProps {
   /** Emoji-Icon oder kurzes Symbol */
@@ -18,7 +18,9 @@ export interface StatCardProps {
 export function StatCard({ icon, value, unit, label }: StatCardProps) {
   return (
     <View style={styles.card}>
-      <Text style={styles.icon}>{icon}</Text>
+      <View style={styles.iconChip}>
+        <Text style={styles.icon}>{icon}</Text>
+      </View>
       <View style={styles.valueRow}>
         <Text style={styles.value}>{value}</Text>
         {unit ? <Text style={styles.unit}>{unit}</Text> : null}
@@ -34,11 +36,21 @@ const styles = StyleSheet.create({
     backgroundColor: colors.surfaceContainer,
     borderRadius: radius.lg,
     padding: spacing.md,
-    gap: 4,
+    gap: 6,
     minWidth: 90,
+    ...shadows.sm,
+  },
+  iconChip: {
+    width: 34,
+    height: 34,
+    borderRadius: radius.sm,
+    backgroundColor: colors.primaryContainer,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 2,
   },
   icon: {
-    fontSize: 22,
+    fontSize: 18,
   },
   valueRow: {
     flexDirection: 'row',

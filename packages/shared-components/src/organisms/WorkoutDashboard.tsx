@@ -2,7 +2,6 @@ import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import type { WorkoutDifficulty } from '@workout/shared-types';
 import { kineticTheme } from '../kineticTheme';
-import { NavButton } from '../atoms/NavButton';
 import { WorkoutCard } from '../WorkoutCard';
 import { TopBar } from './TopBar';
 import { StatsRow } from './StatsRow';
@@ -25,9 +24,6 @@ export interface WorkoutDashboardProps {
   sessions?: number;
   volumeTons?: number;
   workouts?: WorkoutItem[];
-  /** Aktueller Tab — für NavButton-Highlighting */
-  activeTab?: string;
-  onTabChange?: (tab: string) => void;
   onWorkoutPress?: (id: string) => void;
 }
 
@@ -45,8 +41,6 @@ export function WorkoutDashboard({
   sessions    = 48,
   volumeTons  = 2.4,
   workouts    = SAMPLE_WORKOUTS,
-  activeTab   = 'workouts',
-  onTabChange,
   onWorkoutPress,
 }: WorkoutDashboardProps) {
   return (
@@ -66,7 +60,10 @@ export function WorkoutDashboard({
 
       {/* ── 4. Upcoming Workouts ──────────────────────── */}
       <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Upcoming Workouts</Text>
+        <View style={styles.sectionHead}>
+          <Text style={styles.sectionTitle}>Upcoming Workouts</Text>
+          <Text style={styles.sectionAction}>See all</Text>
+        </View>
         <View style={styles.cardList}>
           {workouts.map((w) => (
             <WorkoutCard
@@ -79,29 +76,9 @@ export function WorkoutDashboard({
           ))}
         </View>
       </View>
-
-      {/* ── 5. Bottom Nav ─────────────────────────────── */}
-      {onTabChange && (
-        <View style={styles.tabRow}>
-          {NAV_TABS.map(({ key, label }) => (
-            <NavButton
-              key={key}
-              label={label}
-              active={key === activeTab}
-              onPress={() => onTabChange(key)}
-            />
-          ))}
-        </View>
-      )}
     </ScrollView>
   );
 }
-
-const NAV_TABS = [
-  { key: 'workouts', label: 'Workouts' },
-  { key: 'health',   label: 'Health'   },
-  { key: 'register', label: 'Profile'  },
-];
 
 const styles = StyleSheet.create({
   scroll: {
@@ -111,10 +88,15 @@ const styles = StyleSheet.create({
   content: {
     padding: spacing.containerMargin,
     gap: spacing.stackGap,
-    paddingBottom: 48,
+    paddingBottom: 140,
   },
   section: {
     gap: spacing.md,
+  },
+  sectionHead: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'baseline',
   },
   sectionTitle: {
     fontSize: 18,
@@ -122,13 +104,12 @@ const styles = StyleSheet.create({
     color: colors.onBackground,
     letterSpacing: -0.2,
   },
+  sectionAction: {
+    fontSize: 13,
+    fontWeight: '700' as const,
+    color: colors.primary,
+  },
   cardList: {
     gap: spacing.md,
-  },
-  tabRow: {
-    flexDirection: 'row',
-    gap: spacing.sm,
-    justifyContent: 'center',
-    paddingTop: spacing.sm,
   },
 });

@@ -4,7 +4,7 @@ import { kineticTheme } from '../kineticTheme';
 import { StatusPill } from '../atoms/StatusPill';
 import type { StatusPillStatus } from '../atoms/StatusPill';
 
-const { colors, spacing, radius } = kineticTheme;
+const { colors, spacing, radius, shadows } = kineticTheme;
 
 export type { StatusPillStatus };
 
@@ -41,12 +41,11 @@ export function HealthCard({ title, value, unit, status, description }: HealthCa
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: colors.surfaceContainerLow,
+    backgroundColor: colors.surfaceContainer,
     borderRadius: radius.lg,
-    borderWidth: 1,
-    borderColor: colors.outlineVariant,
     padding: spacing.lg,
     gap: spacing.sm,
+    ...shadows.sm,
   },
   header: {
     flexDirection: 'row',

@@ -4,7 +4,7 @@ import type { WorkoutDifficulty } from '@workout/shared-types';
 import { formatWorkoutDuration } from '@workout/shared-utils';
 import { kineticTheme } from './kineticTheme';
 
-const { colors, spacing, radius } = kineticTheme;
+const { colors, spacing, radius, shadows } = kineticTheme;
 
 export interface WorkoutCardProps {
   title: string;
@@ -15,18 +15,33 @@ export interface WorkoutCardProps {
 
 export function WorkoutCard({ title, durationInMinutes, difficulty, onPress }: WorkoutCardProps) {
   return (
-    <Pressable onPress={onPress} style={styles.card}>
-      <View style={styles.header}>
-        <Text style={styles.title}>{title}</Text>
-        <View style={[styles.badge, diffBadgeStyle[difficulty]]}>
-          <View style={[styles.diffDot, diffDotStyle[difficulty]]} />
-          <Text style={[styles.badgeText, diffTextStyle[difficulty]]}>{difficulty}</Text>
+    <Pressable
+      onPress={onPress}
+      style={({ pressed }) => [styles.card, pressed && styles.pressed]}
+    >
+      <View style={[styles.accent, { backgroundColor: colors.difficulty[diffKey[difficulty]].dot }]} />
+      <View style={styles.body}>
+        <View style={styles.header}>
+          <Text style={styles.title}>{title}</Text>
+          <View style={[styles.badge, diffBadgeStyle[difficulty]]}>
+            <View style={[styles.diffDot, diffDotStyle[difficulty]]} />
+            <Text style={[styles.badgeText, diffTextStyle[difficulty]]}>{difficulty}</Text>
+          </View>
+        </View>
+        <View style={styles.footer}>
+          <Text style={styles.meta}>⏱  {formatWorkoutDuration(durationInMinutes)}</Text>
+          <Text style={styles.chevron}>›</Text>
         </View>
       </View>
-      <Text style={styles.meta}>{formatWorkoutDuration(durationInMinutes)}</Text>
     </Pressable>
   );
 }
+
+const diffKey: Record<WorkoutDifficulty, 'beginner' | 'intermediate' | 'advanced'> = {
+  Beginner: 'beginner',
+  Intermediate: 'intermediate',
+  Advanced: 'advanced',
+};
 
 const diffBadgeStyle: Record<WorkoutDifficulty, object> = {
   Beginner:     { backgroundColor: colors.difficulty.beginner.bg },
@@ -48,10 +63,21 @@ const diffDotStyle: Record<WorkoutDifficulty, object> = {
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: colors.surfaceContainerLow,
+    flexDirection: 'row',
+    backgroundColor: colors.surfaceContainer,
     borderRadius: radius.lg,
-    borderWidth: 1,
-    borderColor: colors.outlineVariant,
+    overflow: 'hidden',
+    ...shadows.sm,
+  },
+  pressed: {
+    opacity: 0.85,
+    transform: [{ scale: 0.985 }],
+  },
+  accent: {
+    width: 5,
+  },
+  body: {
+    flex: 1,
     padding: spacing.lg,
     gap: spacing.sm,
   },
@@ -63,10 +89,8 @@ const styles = StyleSheet.create({
   },
   title: {
     flex: 1,
-    ...{
-      fontSize: 18,
-      fontWeight: '700' as const,
-    },
+    fontSize: 18,
+    fontWeight: '700' as const,
     color: colors.onBackground,
   },
   badge: {
@@ -87,9 +111,20 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     letterSpacing: 0.3,
   },
+  footer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
   meta: {
     fontSize: 13,
     fontWeight: '600',
     color: colors.onSurfaceVariant,
+  },
+  chevron: {
+    fontSize: 24,
+    lineHeight: 24,
+    fontWeight: '700',
+    color: colors.outlineVariant,
   },
 });

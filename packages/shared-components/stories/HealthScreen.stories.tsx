@@ -25,12 +25,10 @@ const meta: Meta<typeof HealthScreen> = {
     sleep:            { control: { type: 'number', min: 0, max: 12, step: 0.5 } },
     calories:         { control: { type: 'number', min: 0, max: 5000 } },
     onRunHealthCheck: { action: 'health-check-run' },
-    onTabChange:      { action: 'tab-changed' },
   },
   args: {
     connectionStatus: 'idle',
     healthMessage: 'No health check run yet.',
-    activeTab: 'health',
   },
 };
 export default meta;

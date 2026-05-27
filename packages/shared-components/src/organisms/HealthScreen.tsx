@@ -1,11 +1,11 @@
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { kineticTheme } from '../kineticTheme';
-import { NavButton } from '../atoms/NavButton';
+import { Gradient } from '../atoms/Gradient';
 import { HealthCard } from '../molecules/HealthCard';
 import type { StatusPillStatus } from '../atoms/StatusPill';
 
-const { colors, spacing, radius } = kineticTheme;
+const { colors, gradients, spacing, radius, shadows } = kineticTheme;
 
 export interface HealthScreenProps {
   /** Supabase-Verbindungsstatus */
@@ -23,8 +23,6 @@ export interface HealthScreenProps {
   /** Kalorien in kcal */
   calories?: number;
   onRunHealthCheck?: () => void;
-  activeTab?: string;
-  onTabChange?: (tab: string) => void;
 }
 
 export function HealthScreen({
@@ -36,8 +34,6 @@ export function HealthScreen({
   sleep,
   calories,
   onRunHealthCheck,
-  activeTab   = 'health',
-  onTabChange,
 }: HealthScreenProps) {
   return (
     <ScrollView
@@ -93,34 +89,19 @@ export function HealthScreen({
         {endpoint ? <Text style={styles.endpoint}>{endpoint}</Text> : null}
         <Text style={styles.message}>{healthMessage}</Text>
         {onRunHealthCheck && (
-          <Pressable onPress={onRunHealthCheck} style={styles.checkBtn}>
-            <Text style={styles.checkBtnText}>Run Health Check</Text>
+          <Pressable
+            onPress={onRunHealthCheck}
+            style={({ pressed }) => [styles.checkBtnShadow, pressed && styles.pressed]}
+          >
+            <Gradient colors={gradients.primary} style={styles.checkBtn}>
+              <Text style={styles.checkBtnText}>Run Health Check</Text>
+            </Gradient>
           </Pressable>
         )}
       </View>
-
-      {/* ── Bottom Nav ──────────────────────────────────── */}
-      {onTabChange && (
-        <View style={styles.tabRow}>
-          {NAV_TABS.map(({ key, label }) => (
-            <NavButton
-              key={key}
-              label={label}
-              active={key === activeTab}
-              onPress={() => onTabChange(key)}
-            />
-          ))}
-        </View>
-      )}
     </ScrollView>
   );
 }
-
-const NAV_TABS = [
-  { key: 'workouts', label: 'Workouts' },
-  { key: 'health',   label: 'Health'   },
-  { key: 'register', label: 'Profile'  },
-];
 
 const styles = StyleSheet.create({
   scroll: {
@@ -130,7 +111,7 @@ const styles = StyleSheet.create({
   content: {
     padding: spacing.containerMargin,
     gap: spacing.stackGap,
-    paddingBottom: 48,
+    paddingBottom: 140,
   },
   header: {
     gap: 4,
@@ -149,12 +130,11 @@ const styles = StyleSheet.create({
     gap: spacing.md,
   },
   connectionCard: {
-    backgroundColor: colors.surfaceContainerLow,
+    backgroundColor: colors.surfaceContainer,
     borderRadius: radius.lg,
-    borderWidth: 1,
-    borderColor: colors.outlineVariant,
     padding: spacing.lg,
     gap: spacing.sm,
+    ...shadows.sm,
   },
   connectionTitle: {
     fontSize: 14,
@@ -171,13 +151,20 @@ const styles = StyleSheet.create({
     color: colors.onBackground,
     lineHeight: 20,
   },
-  checkBtn: {
-    backgroundColor: colors.primary,
-    borderRadius: radius.md,
-    paddingHorizontal: spacing.md,
-    paddingVertical: spacing.sm,
+  checkBtnShadow: {
     alignSelf: 'flex-start',
     marginTop: spacing.xs,
+    borderRadius: radius.md,
+    ...shadows.primaryGlow,
+  },
+  pressed: {
+    opacity: 0.9,
+    transform: [{ scale: 0.98 }],
+  },
+  checkBtn: {
+    borderRadius: radius.md,
+    paddingHorizontal: spacing.lg,
+    paddingVertical: spacing.sm,
   },
   checkBtnText: {
     color: colors.onPrimary,

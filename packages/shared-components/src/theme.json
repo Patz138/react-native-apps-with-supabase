@@ -1,0 +1,73 @@
+{
+  "$meta": {
+    "generatedBy": "discovery-skill",
+    "version": "1.0.0",
+    "extractedFrom": [
+      "packages/shared-components/src/kineticTheme.ts",
+      "apps/workout-web/index.html"
+    ]
+  },
+  "colors": {
+    "bg": "#141408",
+    "surface": {
+      "low": "#1d1c10",
+      "default": "#212013",
+      "high": "#2b2b1d",
+      "variant": "#363527",
+      "bright": "#3b3a2b"
+    },
+    "outline": {
+      "default": "#949277",
+      "variant": "#494832"
+    },
+    "text": {
+      "primary": "#e6e3ce",
+      "secondary": "#cbc8ab"
+    },
+    "primary": "#ede900",
+    "primaryDim": "#d0cc00",
+    "onPrimary": "#1d1d00",
+    "secondary": "#a4c9ff",
+    "tertiary": "#99f1f3",
+    "error": "#ffb4ab",
+    "difficulty": {
+      "beginner":     { "bg": "#162816", "text": "#86efac", "dot": "#22c55e" },
+      "intermediate": { "bg": "#2a2200", "text": "#fde68a", "dot": "#f59e0b" },
+      "advanced":     { "bg": "#2a0a0a", "text": "#fca5a5", "dot": "#ef4444" }
+    }
+  },
+  "spacing": {
+    "xs": 8,
+    "sm": 12,
+    "md": 16,
+    "lg": 24,
+    "xl": 32,
+    "containerMargin": 24,
+    "inlineGap": 16,
+    "stackGap": 24,
+    "cardPadding": 16
+  },
+  "radius": {
+    "sm": 12,
+    "md": 16,
+    "lg": 24,
+    "xl": 32,
+    "pill": 9999
+  },
+  "typography": {
+    "displayXL":  { "fontSize": 32, "lineHeight": 38, "fontWeight": "700", "letterSpacing": -0.64 },
+    "headlineLG": { "fontSize": 24, "lineHeight": 30, "fontWeight": "700", "letterSpacing": -0.24 },
+    "titleMD":    { "fontSize": 18, "lineHeight": 22, "fontWeight": "700" },
+    "bodyBase":   { "fontSize": 16, "lineHeight": 24, "fontWeight": "400" },
+    "bodySM":     { "fontSize": 14, "lineHeight": 20, "fontWeight": "500" },
+    "labelCaps":  { "fontSize": 10, "lineHeight": 10, "fontWeight": "700", "letterSpacing": 0.5, "textTransform": "uppercase" }
+  },
+  "animation": {
+    "duration": 180,
+    "ease": "ease"
+  },
+  "breakpoints": {
+    "mobile": 600,
+    "tablet": 900
+  }
+}

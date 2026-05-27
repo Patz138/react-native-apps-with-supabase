@@ -9,6 +9,8 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
+    "dev:mobile": "npm run dev --workspace @workout/workout-app -- --lan",
+    "dev:mobile:tunnel": "npm run dev --workspace @workout/workout-app -- --tunnel",
     "lint": "turbo run lint",
     "check-types": "turbo run check-types",
     "storybook": "npm run storybook --workspace @workout/shared-components",

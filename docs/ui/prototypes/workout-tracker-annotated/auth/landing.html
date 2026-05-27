@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kinetic – Get Started</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --color-bg: #0D0D0D;
+      --color-surface: #1A1A1A;
+      --color-primary: #E8FF47;
+      --color-primary-dim: #c8df2a;
+      --color-text: #FFFFFF;
+      --color-text-muted: #888888;
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-full: 9999px;
+      --font: 'Inter', system-ui, sans-serif;
+    }
+    body {
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-family: var(--font);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* HEADER / LOGO */
+    .header {
+      width: 100%;
+      max-width: 480px;
+      padding: 48px 24px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--color-primary);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .logo-icon svg { width: 20px; height: 20px; }
+    .logo-text {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    /* HERO */
+    .hero {
+      width: 100%;
+      max-width: 480px;
+      padding: 56px 24px 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      flex: 1;
+    }
+    .hero-badge {
+      background: var(--color-surface);
+      border: 1px solid #2a2a2a;
+      border-radius: var(--radius-full);
+      padding: 6px 16px;
+      font-size: 12px;
+      color: var(--color-primary);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 28px;
+    }
+    .hero-illustration {
+      width: 200px;
+      height: 200px;
+      background: var(--color-surface);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-illustration::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 60% 40%, #e8ff4720 0%, transparent 70%);
+    }
+    .hero-illustration svg { width: 96px; height: 96px; }
+    .hero-title {
+      font-size: 38px;
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+    .hero-title span { color: var(--color-primary); }
+    .hero-desc {
+      font-size: 16px;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+      max-width: 320px;
+    }
+
+    /* FEATURES ROW */
+    .features {
+      width: 100%;
+      max-width: 480px;
+      padding: 0 24px;
+      display: flex;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+    .feature-chip {
+      flex: 1;
+      background: var(--color-surface);
+      border: 1px solid #2a2a2a;
+      border-radius: var(--radius-md);
+      padding: 16px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      text-align: center;
+    }
+    .feature-chip .icon {
+      font-size: 22px;
+    }
+    .feature-chip .label {
+      font-size: 11px;
+      color: var(--color-text-muted);
+      font-weight: 500;
+      line-height: 1.3;
+    }
+
+    /* CTA BUTTONS */
+    .cta-group {
+      width: 100%;
+      max-width: 480px;
+      padding: 0 24px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .btn-primary {
+      background: var(--color-primary);
+      color: #000;
+      border: none;
+      border-radius: var(--radius-full);
+      padding: 18px 24px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      display: block;
+      transition: background 0.15s;
+    }
+    .btn-primary:hover { background: var(--color-primary-dim); }
+    .btn-secondary {
+      background: transparent;
+      color: var(--color-text);
+      border: 1px solid #333;
+      border-radius: var(--radius-full);
+      padding: 18px 24px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      display: block;
+      transition: border-color 0.15s;
+    }
+    .btn-secondary:hover { border-color: #555; }
+    .terms {
+      text-align: center;
+      font-size: 12px;
+      color: var(--color-text-muted);
+      padding-top: 4px;
+    }
+    .terms a { color: var(--color-primary); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <header class="header" data-cdd-id="org-appheader-01">
+    <div class="logo-icon" data-cdd-id="mol-logoicon-01">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.5" stroke-linecap="round" data-cdd-id="atm-icon-01">
+        <path d="M6 4v16M18 4v16M4 8h4M16 8h4M4 16h4M16 16h4"/>
+      </svg>
+    </div>
+    <span class="logo-text" data-cdd-id="atm-logotext-01">Kinetic</span>
+  </header>
+
+  <section class="hero" data-cdd-id="org-herosection-01">
+    <div class="hero-badge" data-cdd-id="mol-herobadge-01">Free to start &middot; No credit card</div>
+    <div class="hero-illustration" data-cdd-id="mol-heroillustration-01">
+      <svg viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="48" cy="48" r="36" fill="#2a2a2a"/>
+        <path d="M30 54l10-14 8 10 6-8 12 12" stroke="#E8FF47" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="30" cy="54" r="3" fill="#E8FF47"/>
+        <circle cx="66" cy="54" r="3" fill="#E8FF47"/>
+      </svg>
+    </div>
+    <h1 class="hero-title" data-cdd-id="atm-herotitle-01">Train smarter,<br/><span>not harder.</span></h1>
+    <p class="hero-desc" data-cdd-id="atm-herodesc-01">Track every rep, every set, every PR. Kinetic gives athletes the data-driven edge to level up consistently.</p>
+  </section>
+
+  <div class="features" data-cdd-id="org-view-01">
+    <div class="feature-chip" data-cdd-id="mol-featurechip-01">
+      <span class="icon" data-cdd-id="atm-text-02">&#128170;</span>
+      <span class="label" data-cdd-id="atm-text-03">Strength Tracking</span>
+    </div>
+    <div class="feature-chip">
+      <span class="icon">&#128200;</span>
+      <span class="label">Progress Charts</span>
+    </div>
+    <div class="feature-chip">
+      <span class="icon">&#127919;</span>
+      <span class="label">Custom Plans</span>
+    </div>
+  </div>
+
+  <div class="cta-group" data-cdd-id="org-ctagroup-01">
+    <a href="registration.html" class="btn-primary" data-cdd-id="atm-primarybutton-01">Create Free Account</a>
+    <a href="login.html" class="btn-secondary" data-cdd-id="atm-secondarybutton-01">I already have an account</a>
+    <p class="terms" data-cdd-id="atm-paragraph-01">By continuing you agree to our <a href="#">Terms</a> &amp; <a href="#">Privacy Policy</a></p>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,96 @@
+PODCAST MITSCHRIFT
+
+KI agenten simplen HTML produkt geben und denken KI macht frontend (traum)
+stattdessen chaos
+
+KI erfindet etwas keine Ahnung und baut Schwachstellen erfindet
+das hier ist die autonome ki entwicklung
+
+man muss ihr mehr input geben damit man alles richtig macht
+nur ein riesiger Prompt reicht nicht mehr aus
+
+
+aktuelle Frameworks und agent skills und JFRock angeschaut
+
+Frage beantworten welche skills man für KI Agenten workflow erstellen muss damit
+man frontend development richtig zu machen und mit CDD
+
+Wenn LLM Dom versucht zu bauen mit tausenden css Zeilen verliert KI langsam den
+Faden weil zu viel
+(Burg nicht nach Kopf nachbauen sondern in Teile zerlegen Atomic Design)
+
+Zuerst Atome bauen und dann in Moleküle zusammenstellen (CDD halt)
+Agentenstruktur erstellen und jeder von denen hat begrenztes Sichtfeld damit er 
+sich nur auf sein Ding fokusiert
+
+Sucht nach Mustern, schaut nach Design und extrahiert Designtoken und dann
+wird alles in eine theme.json zusammengestellt z.B.
+
+Prototyp schaut normal nicht sauber aus sondern chaos
+Agent läuft gegen Token Limit Wand wenn er versucht das zu cleanen
+-> Progressive Disclosure (Gesamter Skillcode nicht direkt im Speicher sondern
+in Stufen)
+
+1. Trigger, jeder hat eine MD Datei und sieht nur den Namen und eine kurze
+    Beschreibung von diesem Skill damit er checkt was das ist
+
+2. Instruktionen
+
+3. Externe Referenzdateien (z.b. externe Mappings)
+
+= Context bleibt sauber und Tokens bleiben auch eher da
+
+Jetzt Manager Skill, Breakdown Skill (CDD Roadmap)
+Verwaltet den Task State 
+zwingt Atome abzuschließen bevor man Moleküle macht 
+(Redundanzen von zwischenarbeit verhindern)
+
+Worker Agent mit UI-Conversion-Skill
+Rohe HTML auf React oder React-Native umgewandelt
+HTML Standardlayout horzontal aber in RN vertikal
+Ki muss Flex Direktion row machen
+Agent muss es in margin-vertikal und margin-horizontal manuell zerlegen
+
+WIE STELLEN WIR SICHER DAS DER CODE FEHLERFREI IST?
+Plan-Validate-Execute muster (esentiell für Worker SKill)
+
+/Skills ordner wo die Skills sind und erstellt zuerst einen Plan
+Source of Truth
+Error wenn er nicht existierenden Token versucht zu benutzen
+Wenn alles richtig ist dann erst execute (Erst speichern wenn alles passt)
+
+
+
+4. Skill ist Storybook generation skills
+man muss den Code überprüfen isoliert prüfen
+der Skill analisiert metadaten der Componenten
+und generiert automatisch CSF file und speicher diese sachen da
+Title -
+Metaobject - Standardargumente
+Storyobjects -
+Decorators - (wickeln komponente ein damit kein Crash kommt)
+
+Wenn agent Story generiert muss man selber den Code nicht mehr anfassen
+
+Infrastuktur ist das wichtigste
+aber wie verpackt man sie technisch sicher?
+wenn man das alles verbindet ist sicherheitsaspekt relevant
+
+Skill.md und Scripts ordner wird nachgeschaut wenn man es braucht
+Zugriff JFrog (absoluter Albtraum oder so)
+Prompt poisoning, Skills müssen 0 trust architektur sein so das man trusten muss
+
+Auf Schadcode geprüft sonst weigert sich Agent den Skill auszuführen
+
+1. Discovery Skill
+2. Manager Skill
+3. Worker Skill
+4. Story generation skills
+
+man quält sich nicht mehr stundenlang css zu programmiert
+man baut fabrik die arbeit macht und man wird so architekt
+
+Metaskills
+Ein sich selbst erweiterndes System ohne das man selber was anfassen muss
+Programmiert selber Skills und so ohne das man selber was macht
+alles im hintergrund und so 

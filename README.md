@@ -1,5 +1,7 @@
 # Workout App Platform
 
+> **Dokumentation:** [Vollständige Projektdokumentation](docs/PROJECT.md) · [Skills Tutorial](docs/SKILLS.md)
+
 Dieses Projekt beschreibt eine Workout-App-Plattform, die aus zwei Frontends und einem Supabase-basierten Backend besteht:
 
 - einer mobilen Workout-App fuer Endnutzer

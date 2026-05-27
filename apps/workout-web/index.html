@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KINETIC — Workout App</title>
+  <style>
+    /* ============================================================
+       STITCH UNIT 1 — KINETIC TOKEN SYSTEM (from kineticTheme.ts)
+       ============================================================ */
+    :root {
+      --bg:              #141408;
+      --surface-low:     #1d1c10;
+      --surface:         #212013;
+      --surface-high:    #2b2b1d;
+      --surface-variant: #363527;
+      --surface-bright:  #3b3a2b;
+      --outline:         #949277;
+      --outline-variant: #494832;
+      --text:            #e6e3ce;
+      --text-secondary:  #cbc8ab;
+      --primary:         #ede900;
+      --primary-dim:     #d0cc00;
+      --on-primary:      #1d1d00;
+      --secondary:       #a4c9ff;
+      --tertiary:        #99f1f3;
+      --error:           #ffb4ab;
+
+      --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+      --space-xs: 8px;
+      --space-sm: 12px;
+      --space-md: 16px;
+      --space-lg: 24px;
+      --space-xl: 32px;
+      --space-2xl: 48px;
+
+      --radius-sm:   12px;
+      --radius-md:   16px;
+      --radius-lg:   24px;
+      --radius-xl:   32px;
+      --radius-pill: 9999px;
+
+      --ease: 180ms ease;
+    }
+
+    /* ============================================================
+       STITCH UNIT 2 — CSS RESET & BASE
+       ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; font-family: inherit; }
+    input, button { outline: none; }
+    img { display: block; max-width: 100%; }
+
+    /* ============================================================
+       STITCH UNIT 3 — NAVBAR
+       ============================================================ */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(20, 20, 8, 0.88);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--outline-variant);
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--space-lg);
+      height: 64px;
+      display: flex;
+      align-items: center;
+      gap: var(--space-lg);
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: -0.4px;
+      margin-right: auto;
+    }
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      background: var(--primary);
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+    .logo-text { color: var(--text); }
+    .logo-text span { color: var(--primary); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .nav-link {
+      padding: 8px 14px;
+      border-radius: var(--radius-pill);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      border: 1px solid transparent;
+      transition: all var(--ease);
+    }
+    .nav-link:hover, .nav-link.active {
+      color: var(--text);
+      background: var(--surface-high);
+    }
+    .nav-link--ghost {
+      border-color: var(--outline-variant);
+      color: var(--text);
+    }
+    .nav-link--ghost:hover {
+      background: var(--surface-variant);
+      border-color: var(--outline);
+    }
+    .nav-link--cta {
+      background: var(--primary);
+      color: var(--on-primary);
+      border-color: var(--primary);
+    }
+    .nav-link--cta:hover {
+      background: var(--primary-dim);
+      box-shadow: 0 0 18px rgba(237,233,0,0.3);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      padding: 8px;
+      border-radius: 8px;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all var(--ease);
+    }
+
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      padding: var(--space-sm) var(--space-lg) var(--space-md);
+      background: var(--surface-low);
+      border-bottom: 1px solid var(--outline-variant);
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav-link {
+      padding: 11px var(--space-md);
+      border-radius: var(--radius-sm);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      transition: all var(--ease);
+    }
+    .mobile-nav-link:hover { background: var(--surface-high); color: var(--text); }
+
+    /* ============================================================
+       STITCH UNIT 4 — VIEW SHELL & ROUTER
+       ============================================================ */
+    .view {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: var(--space-xl) var(--space-lg) var(--space-2xl);
+    }
+    .hidden { display: none !important; }
+
+    /* ============================================================
+       STITCH UNIT 5 — BUTTON SYSTEM
+       ============================================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: var(--radius-md);
+      font-size: 15px;
+      font-weight: 700;
+      border: 1.5px solid transparent;
+      transition: all var(--ease);
+      letter-spacing: -0.1px;
+      white-space: nowrap;
+    }
+    .btn-arrow { transition: transform var(--ease); }
+    .btn:hover .btn-arrow { transform: translateX(4px); }
+    .btn--primary {
+      background: var(--primary);
+      color: var(--on-primary);
+      border-color: var(--primary);
+    }
+    .btn--primary:hover {
+      background: var(--primary-dim);
+      border-color: var(--primary-dim);
+      box-shadow: 0 0 24px rgba(237,233,0,0.28);
+      transform: translateY(-1px);
+    }
+    .btn--primary:active { transform: translateY(0); }
+    .btn--ghost {
+      background: transparent;
+      color: var(--text);
+      border-color: var(--outline-variant);
+    }
+    .btn--ghost:hover {
+      background: var(--surface-high);
+      border-color: var(--outline);
+    }
+    .btn--outline {
+      background: transparent;
+      color: var(--primary);
+      border-color: rgba(237,233,0,0.35);
+    }
+    .btn--outline:hover { background: rgba(237,233,0,0.07); border-color: var(--primary); }
+    .btn--oauth {
+      background: var(--surface-high);
+      color: var(--text);
+      border-color: var(--outline-variant);
+      gap: 12px;
+    }
+    .btn--oauth:hover { background: var(--surface-variant); border-color: var(--outline); }
+    .btn--lg { padding: 14px 28px; font-size: 16px; border-radius: var(--radius-lg); }
+    .btn--sm { padding: 8px 16px; font-size: 13px; border-radius: var(--radius-sm); }
+    .btn--full { width: 100%; }
+
+    /* ============================================================
+       STITCH UNIT 6 — HOMEPAGE / HERO
+       ============================================================ */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: calc(100vh - 160px);
+      padding: var(--space-2xl) 0 var(--space-xl);
+      max-width: 820px;
+    }
+    .hero-eyebrow {
+      display: flex;
+      gap: var(--space-xs);
+      margin-bottom: var(--space-lg);
+      flex-wrap: wrap;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      background: var(--surface-variant);
+      color: var(--text-secondary);
+      border: 1px solid var(--outline-variant);
+    }
+    .badge--secondary {
+      background: rgba(164, 201, 255, 0.08);
+      color: var(--secondary);
+      border-color: rgba(164, 201, 255, 0.18);
+    }
+    .badge--tertiary {
+      background: rgba(153, 241, 243, 0.08);
+      color: var(--tertiary);
+      border-color: rgba(153, 241, 243, 0.18);
+    }
+    .hero-title {
+      font-size: clamp(44px, 8vw, 88px);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -2px;
+      color: var(--text);
+      margin-bottom: var(--space-lg);
+    }
+    .text-primary { color: var(--primary); }
+    .hero-subtitle {
+      font-size: 18px;
+      line-height: 1.75;
+      color: var(--text-secondary);
+      max-width: 540px;
+      margin-bottom: var(--space-xl);
+    }
+    .hero-cta { display: flex; gap: var(--space-md); flex-wrap: wrap; }
+
+    .features {
+      padding-top: var(--space-2xl);
+      border-top: 1px solid var(--outline-variant);
+      margin-top: var(--space-2xl);
+    }
+    .features-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--outline);
+      margin-bottom: var(--space-lg);
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+    }
+    .feature-card {
+      background: var(--surface-low);
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+      transition: all var(--ease);
+    }
+    .feature-card:hover {
+      background: var(--surface);
+      border-color: var(--outline);
+      transform: translateY(-2px);
+    }
+    .feature-icon { font-size: 30px; margin-bottom: var(--space-sm); }
+    .feature-title { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .feature-text { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+
+    /* ============================================================
+       STITCH UNIT 7 — AUTH FORMS (Supabase Auth prepared)
+       ============================================================ */
+    .auth-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-2xl);
+      align-items: start;
+      padding-top: var(--space-xl);
+    }
+    .auth-layout--center {
+      grid-template-columns: 1fr;
+      place-items: center;
+    }
+    .auth-branding {
+      position: sticky;
+      top: 96px;
+      padding-top: var(--space-xl);
+    }
+    .auth-brand-mark { font-size: 52px; margin-bottom: var(--space-lg); line-height: 1; }
+    .auth-brand-title {
+      font-size: 40px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: var(--space-xs);
+    }
+    .auth-brand-sub { font-size: 17px; color: var(--text-secondary); margin-bottom: var(--space-lg); }
+    .auth-perks { list-style: none; display: flex; flex-direction: column; gap: var(--space-sm); }
+    .auth-perks li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 15px;
+      color: var(--text-secondary);
+    }
+    .perk-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--primary);
+      flex-shrink: 0;
+    }
+
+    .auth-card {
+      background: var(--surface-low);
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--radius-xl);
+      padding: var(--space-xl);
+    }
+    .auth-card--wide { width: 100%; max-width: 440px; }
+    .auth-card-logo { font-size: 34px; text-align: center; margin-bottom: var(--space-md); }
+    .auth-card-title {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      text-align: center;
+      margin-bottom: 6px;
+    }
+    .auth-card-sub {
+      font-size: 14px;
+      color: var(--text-secondary);
+      text-align: center;
+      margin-bottom: var(--space-lg);
+    }
+    .auth-link { color: var(--primary); font-weight: 700; transition: color var(--ease); }
+    .auth-link:hover { color: var(--primary-dim); }
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      margin: var(--space-lg) 0;
+      color: var(--outline);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    .divider::before, .divider::after {
+      content: ''; flex: 1; height: 1px; background: var(--outline-variant);
+    }
+
+    /* Form elements */
+    .auth-form { display: flex; flex-direction: column; gap: var(--space-md); }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-sm);
+    }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+    }
+    .form-input {
+      width: 100%;
+      padding: 12px var(--space-md);
+      background: var(--surface);
+      border: 1.5px solid var(--outline-variant);
+      border-radius: var(--radius-sm);
+      color: var(--text);
+      font-size: 15px;
+      font-family: var(--font);
+      transition: all var(--ease);
+    }
+    .form-input::placeholder { color: var(--outline); }
+    .form-input:focus {
+      border-color: var(--primary);
+      background: var(--surface-high);
+      box-shadow: 0 0 0 3px rgba(237,233,0,0.1);
+    }
+    .form-input:focus::placeholder { color: transparent; }
+    .input-wrap { position: relative; }
+    .input-wrap .form-input { padding-right: 46px; }
+    .pw-toggle {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      font-size: 16px;
+      color: var(--outline);
+      padding: 4px;
+      line-height: 1;
+      transition: color var(--ease);
+    }
+    .pw-toggle:hover { color: var(--text); }
+    .form-hint {
+      font-size: 12px;
+      color: var(--outline);
+      margin-top: 2px;
+    }
+    .form-hint--link {
+      color: var(--secondary);
+      font-weight: 600;
+      align-self: flex-end;
+      cursor: pointer;
+    }
+    .form-hint--link:hover { color: var(--text); }
+    .form-checkbox-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      cursor: pointer;
+    }
+    .form-checkbox-row input[type="checkbox"] {
+      width: 18px; height: 18px;
+      accent-color: var(--primary);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .checkbox-text { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+    .form-feedback {
+      padding: 11px var(--space-md);
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 600;
+      border: 1px solid transparent;
+    }
+    .form-feedback.hidden { display: none; }
+    .form-feedback--error   { background: rgba(255,180,171,0.1); color: var(--error);    border-color: rgba(255,180,171,0.2); }
+    .form-feedback--success { background: rgba(153,241,243,0.1); color: var(--tertiary); border-color: rgba(153,241,243,0.2); }
+    .form-feedback--loading { background: rgba(237,233,0,0.07);  color: var(--primary);  border-color: rgba(237,233,0,0.15); }
+
+    /* ============================================================
+       STITCH UNIT 8 — EXERCISES DASHBOARD
+       ============================================================ */
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: var(--space-lg);
+      margin-bottom: var(--space-xl);
+      flex-wrap: wrap;
+    }
+    .page-title {
+      font-size: 38px;
+      font-weight: 800;
+      letter-spacing: -0.8px;
+    }
+    .page-sub {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+    .page-controls { display: flex; flex-direction: column; gap: var(--space-sm); align-items: flex-end; }
+
+    .search-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--surface-low);
+      border: 1.5px solid var(--outline-variant);
+      border-radius: var(--radius-md);
+      padding: 9px var(--space-md);
+      transition: border-color var(--ease);
+    }
+    .search-wrap:focus-within { border-color: var(--primary); }
+    .search-icon { font-size: 14px; color: var(--outline); }
+    .search-input {
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 14px;
+      font-family: var(--font);
+      width: 210px;
+    }
+    .search-input::placeholder { color: var(--outline); }
+
+    .filter-tabs {
+      display: flex;
+      gap: 4px;
+      background: var(--surface-low);
+      padding: 4px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--outline-variant);
+    }
+    .filter-tab {
+      padding: 7px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 700;
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      transition: all var(--ease);
+      letter-spacing: 0.1px;
+    }
+    .filter-tab.active { background: var(--primary); color: var(--on-primary); }
+    .filter-tab:not(.active):hover { background: var(--surface-high); color: var(--text); }
+
+    .workout-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+    }
+    .workout-card {
+      background: var(--surface-low);
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+      transition: all var(--ease);
+      cursor: default;
+    }
+    .workout-card:hover {
+      border-color: var(--outline);
+      background: var(--surface);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.35);
+    }
+    .card-header { display: flex; justify-content: space-between; align-items: flex-start; }
+    .card-emoji { font-size: 30px; line-height: 1; }
+    .diff-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+    .diff-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+    .card-title { font-size: 17px; font-weight: 700; line-height: 1.3; }
+    .card-meta { display: flex; align-items: center; gap: var(--space-md); }
+    .card-duration {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+    .card-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+    .tag {
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+      font-size: 11px;
+      font-weight: 600;
+      background: var(--surface-variant);
+      color: var(--text-secondary);
+      border: 1px solid var(--outline-variant);
+      letter-spacing: 0.2px;
+    }
+    .card-action { margin-top: 4px; }
+
+    /* empty state */
+    .empty-state {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: var(--space-2xl);
+      color: var(--text-secondary);
+    }
+    .empty-state-icon { font-size: 40px; margin-bottom: var(--space-md); }
+    .empty-state p { font-size: 16px; }
+
+    /* ============================================================
+       STITCH UNIT 9 — RESPONSIVE BREAKPOINTS
+       ============================================================ */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .auth-layout { grid-template-columns: 1fr; }
+      .auth-branding { display: none; }
+      .workout-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 600px) {
+      .hero-title { font-size: 38px; letter-spacing: -1px; }
+      .hero-cta { flex-direction: column; }
+      .hero-cta .btn { width: 100%; justify-content: center; }
+      .workout-grid { grid-template-columns: 1fr; }
+      .page-header { flex-direction: column; align-items: flex-start; }
+      .page-controls { align-items: flex-start; width: 100%; }
+      .search-wrap { width: 100%; }
+      .search-input { width: 100%; flex: 1; }
+      .filter-tabs { width: 100%; overflow-x: auto; }
+      .form-row { grid-template-columns: 1fr; }
+      .auth-card { padding: var(--space-lg); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════
+       NAVBAR
+       ═══════════════════════════════════════ -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a class="nav-logo" href="#" data-route="home">
+        <div class="logo-mark">⚡</div>
+        <span class="logo-text">KINE<span>TIC</span></span>
+      </a>
+      <nav class="nav-links">
+        <a href="#" class="nav-link active" data-route="home">Home</a>
+        <a href="#" class="nav-link" data-route="exercises">Übungen</a>
+        <a href="#" class="nav-link nav-link--ghost" data-route="login">Anmelden</a>
+        <a href="#" class="nav-link nav-link--cta" data-route="register">Registrieren</a>
+      </nav>
+      <button class="hamburger" id="menuBtn" aria-label="Menü öffnen">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Nav -->
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#" class="mobile-nav-link" data-route="home">Home</a>
+    <a href="#" class="mobile-nav-link" data-route="exercises">Übungen</a>
+    <a href="#" class="mobile-nav-link" data-route="login">Anmelden</a>
+    <a href="#" class="mobile-nav-link" data-route="register">Registrieren</a>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       VIEW: HOMEPAGE
+       ═══════════════════════════════════════ -->
+  <main class="view" id="view-home">
+    <section class="hero">
+      <div class="hero-eyebrow">
+        <span class="badge">v1.0 — Web Preview</span>
+        <span class="badge badge--secondary">Powered by Supabase</span>
+        <span class="badge badge--tertiary">Kinetic Design System</span>
+      </div>
+      <h1 class="hero-title">
+        Train smarter.<br>
+        <span class="text-primary">Stay healthy.</span>
+      </h1>
+      <p class="hero-subtitle">
+        Deine persönliche Workout-App für Trainingsplanung, Übungsverwaltung und Fortschrittsverfolgung — nahtlos mit Supabase Auth verbunden.
+      </p>
+      <div class="hero-cta">
+        <!-- ★ HEALTHY BUTTON — Ausgabe "healthy" via alert + console.log -->
+        <button class="btn btn--primary btn--lg" id="healthyBtn">
+          Check Connection
+          <span class="btn-arrow">→</span>
+        </button>
+        <button class="btn btn--ghost btn--lg" data-route-btn="exercises">
+          Übungen ansehen
+        </button>
+      </div>
+    </section>
+
+    <section class="features">
+      <p class="features-label">Was Kinetic bietet</p>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">💪</div>
+          <h3 class="feature-title">Workout-Tracking</h3>
+          <p class="feature-text">Plane und verfolge deine Trainingseinheiten mit präziser Statistik und Fortschrittsanzeige.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h3 class="feature-title">Fortschrittsanalyse</h3>
+          <p class="feature-text">Visualisiere deinen Fortschritt mit detaillierten Charts — täglich, wöchentlich, monatlich.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔐</div>
+          <h3 class="feature-title">Supabase Auth</h3>
+          <p class="feature-text">Deine Daten sind durch Supabase Auth geschützt — mit E-Mail, Passwort und OAuth (Google).</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ═══════════════════════════════════════
+       VIEW: REGISTER
+       Supabase: supabase.auth.signUp(...)
+       ═══════════════════════════════════════ -->
+  <main class="view hidden" id="view-register">
+    <div class="auth-layout">
+      <div class="auth-branding">
+        <div class="auth-brand-mark">⚡</div>
+        <h2 class="auth-brand-title">Join KINETIC</h2>
+        <p class="auth-brand-sub">Starte deine Fitness-Reise noch heute — kostenlos.</p>
+        <ul class="auth-perks">
+          <li><span class="perk-dot"></span>Kostenlos & werbefrei</li>
+          <li><span class="perk-dot"></span>Über 200 geführte Übungen</li>
+          <li><span class="perk-dot"></span>Sync auf allen Geräten</li>
+          <li><span class="perk-dot"></span>Persönliche Trainingspläne</li>
+        </ul>
+      </div>
+
+      <div class="auth-card">
+        <h2 class="auth-card-title">Account erstellen</h2>
+        <p class="auth-card-sub">
+          Bereits registriert?
+          <a href="#" data-route="login" class="auth-link">Anmelden →</a>
+        </p>
+
+        <!-- Supabase Hook: supabase.auth.signUp({ email, password, options: { data: { full_name } } }) -->
+        <form class="auth-form" id="registerForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="reg-firstname">Vorname</label>
+              <input class="form-input" type="text" id="reg-firstname" name="firstname"
+                     placeholder="Max" autocomplete="given-name" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="reg-lastname">Nachname</label>
+              <input class="form-input" type="text" id="reg-lastname" name="lastname"
+                     placeholder="Mustermann" autocomplete="family-name">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-email">E-Mail-Adresse</label>
+            <input class="form-input" type="email" id="reg-email" name="email"
+                   placeholder="max@beispiel.de" autocomplete="email" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-password">Passwort</label>
+            <div class="input-wrap">
+              <input class="form-input" type="password" id="reg-password" name="password"
+                     placeholder="Min. 8 Zeichen" autocomplete="new-password" required minlength="8">
+              <button type="button" class="pw-toggle" data-target="reg-password">👁</button>
+            </div>
+            <span class="form-hint">Mindestens 8 Zeichen — Groß-/Kleinbuchstaben empfohlen</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-confirm">Passwort bestätigen</label>
+            <div class="input-wrap">
+              <input class="form-input" type="password" id="reg-confirm" name="confirm"
+                     placeholder="Passwort wiederholen" autocomplete="new-password" required>
+              <button type="button" class="pw-toggle" data-target="reg-confirm">👁</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-checkbox-row">
+              <input type="checkbox" name="terms" required>
+              <span class="checkbox-text">
+                Ich akzeptiere die <a href="#" class="auth-link">AGB</a> und
+                <a href="#" class="auth-link">Datenschutzrichtlinie</a>
+              </span>
+            </label>
+          </div>
+
+          <div class="form-feedback hidden" id="reg-feedback"></div>
+
+          <button type="submit" class="btn btn--primary btn--full">
+            Account erstellen
+          </button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <!-- ═══════════════════════════════════════
+       VIEW: LOGIN
+       Supabase: supabase.auth.signInWithPassword(...)
+       ═══════════════════════════════════════ -->
+  <main class="view hidden" id="view-login">
+    <div class="auth-layout auth-layout--center">
+      <div class="auth-card auth-card--wide">
+        <div class="auth-card-logo">⚡</div>
+        <h2 class="auth-card-title">Willkommen zurück</h2>
+        <p class="auth-card-sub">
+          Noch kein Account?
+          <a href="#" data-route="register" class="auth-link">Jetzt registrieren</a>
+        </p>
+
+        <!-- Supabase Hook: supabase.auth.signInWithPassword({ email, password }) -->
+        <form class="auth-form" id="loginForm" novalidate>
+          <div class="form-group">
+            <label class="form-label" for="login-email">E-Mail-Adresse</label>
+            <input class="form-input" type="email" id="login-email" name="email"
+                   placeholder="deine@email.de" autocomplete="email" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="login-password">Passwort</label>
+            <div class="input-wrap">
+              <input class="form-input" type="password" id="login-password" name="password"
+                     placeholder="Dein Passwort" autocomplete="current-password" required>
+              <button type="button" class="pw-toggle" data-target="login-password">👁</button>
+            </div>
+            <a href="#" class="form-hint form-hint--link">Passwort vergessen?</a>
+          </div>
+
+          <div class="form-feedback hidden" id="login-feedback"></div>
+
+          <button type="submit" class="btn btn--primary btn--full">
+            Anmelden
+          </button>
+        </form>
+
+        <div class="divider">oder weiter mit</div>
+
+        <!-- Supabase Hook: supabase.auth.signInWithOAuth({ provider: 'google' }) -->
+        <button class="btn btn--oauth btn--full" id="googleSignIn">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844a4.14 4.14 0 01-1.796 2.716v2.259h2.908c1.702-1.567 2.684-3.875 2.684-6.615z" fill="#4285F4"/>
+            <path d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 009 18z" fill="#34A853"/>
+            <path d="M3.964 10.706A5.41 5.41 0 013.682 9c0-.593.102-1.17.282-1.706V4.962H.957A8.996 8.996 0 000 9c0 1.452.348 2.827.957 4.038l3.007-2.332z" fill="#FBBC05"/>
+            <path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 00.957 4.962L3.964 7.294C4.672 5.163 6.656 3.58 9 3.58z" fill="#EA4335"/>
+          </svg>
+          Mit Google anmelden
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <!-- ═══════════════════════════════════════
+       VIEW: EXERCISES / ÜBERSICHT
+       ═══════════════════════════════════════ -->
+  <main class="view hidden" id="view-exercises">
+    <div class="page-header">
+      <div>
+        <h1 class="page-title">Übungen</h1>
+        <p class="page-sub" id="workoutCount">6 Workouts · Alle Schwierigkeitsstufen</p>
+      </div>
+      <div class="page-controls">
+        <div class="search-wrap">
+          <span class="search-icon">🔍</span>
+          <input type="search" class="search-input" id="searchInput" placeholder="Workout suchen…">
+        </div>
+        <div class="filter-tabs" id="filterTabs">
+          <button class="filter-tab active" data-filter="all">Alle</button>
+          <button class="filter-tab" data-filter="Beginner">Beginner</button>
+          <button class="filter-tab" data-filter="Intermediate">Intermediate</button>
+          <button class="filter-tab" data-filter="Advanced">Advanced</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="workout-grid" id="workoutGrid"></div>
+  </main>
+
+
+  <!-- ═══════════════════════════════════════
+       SCRIPT
+       ═══════════════════════════════════════ -->
+  <script>
+    'use strict';
+
+    // ── SUPABASE CONFIG (Workout App) ─────────────────────────────
+    // Activate by: npm install @supabase/supabase-js
+    // import { createClient } from '@supabase/supabase-js'
+    // const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY)
+    const SUPABASE_URL = 'https://dktvzuoyexrasqqemebz.supabase.co';
+    const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_dk7mSgtZ_qD8uNWHuLRKkQ_ElTX7LPn';
+
+
+    // ── ROUTER ───────────────────────────────────────────────────
+    const views = {
+      home:      document.getElementById('view-home'),
+      register:  document.getElementById('view-register'),
+      login:     document.getElementById('view-login'),
+      exercises: document.getElementById('view-exercises'),
+    };
+
+    function navigate(route) {
+      if (!views[route]) return;
+      Object.entries(views).forEach(([k, el]) => el.classList.toggle('hidden', k !== route));
+      document.querySelectorAll('[data-route]').forEach(link => {
+        link.classList.toggle('active', link.dataset.route === route);
+      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    document.addEventListener('click', e => {
+      const routeLink = e.target.closest('[data-route]');
+      if (routeLink) { e.preventDefault(); navigate(routeLink.dataset.route); }
+
+      const routeBtn = e.target.closest('[data-route-btn]');
+      if (routeBtn) { navigate(routeBtn.dataset.routeBtn); }
+    });
+
+
+    // ── MOBILE NAV ───────────────────────────────────────────────
+    document.getElementById('menuBtn').addEventListener('click', () => {
+      document.getElementById('mobileNav').classList.toggle('open');
+    });
+
+
+    // ── HEALTHY BUTTON ───────────────────────────────────────────
+    // Anforderung: Button auf Homepage → gibt "healthy" aus
+    document.getElementById('healthyBtn').addEventListener('click', () => {
+      alert('healthy');
+      console.log('healthy');
+    });
+
+
+    // ── PASSWORD VISIBILITY ──────────────────────────────────────
+    document.querySelectorAll('.pw-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const input = document.getElementById(btn.dataset.target);
+        input.type = input.type === 'password' ? 'text' : 'password';
+        btn.textContent = input.type === 'password' ? '👁' : '🙈';
+      });
+    });
+
+
+    // ── FEEDBACK HELPER ──────────────────────────────────────────
+    function showFeedback(el, message, type) {
+      el.textContent = message;
+      el.className = 'form-feedback form-feedback--' + type;
+    }
+
+
+    // ── REGISTER FORM ────────────────────────────────────────────
+    // Supabase: supabase.auth.signUp({ email, password, options: { data: { full_name } } })
+    document.getElementById('registerForm').addEventListener('submit', async e => {
+      e.preventDefault();
+      const fd   = new FormData(e.target);
+      const fb   = document.getElementById('reg-feedback');
+
+      if (!fd.get('email') || !fd.get('password')) {
+        showFeedback(fb, 'Bitte E-Mail und Passwort ausfüllen.', 'error'); return;
+      }
+      if (fd.get('password').length < 8) {
+        showFeedback(fb, 'Passwort muss mindestens 8 Zeichen haben.', 'error'); return;
+      }
+      if (fd.get('password') !== fd.get('confirm')) {
+        showFeedback(fb, 'Passwörter stimmen nicht überein.', 'error'); return;
+      }
+      if (!fd.get('terms')) {
+        showFeedback(fb, 'Bitte AGB und Datenschutz akzeptieren.', 'error'); return;
+      }
+
+      showFeedback(fb, 'Account wird erstellt…', 'loading');
+
+      // TODO — Supabase signUp aktivieren:
+      // const { data, error } = await supabase.auth.signUp({
+      //   email: fd.get('email'),
+      //   password: fd.get('password'),
+      //   options: { data: { full_name: `${fd.get('firstname')} ${fd.get('lastname')}` } }
+      // });
+      // if (error) { showFeedback(fb, error.message, 'error'); return; }
+      // showFeedback(fb, 'Registrierung erfolgreich! Bitte bestätige deine E-Mail.', 'success');
+
+      await simulateDelay(1000);
+      showFeedback(fb, '✓ Registrierung erfolgreich! Bitte bestätige deine E-Mail.', 'success');
+      e.target.reset();
+    });
+
+
+    // ── LOGIN FORM ───────────────────────────────────────────────
+    // Supabase: supabase.auth.signInWithPassword({ email, password })
+    document.getElementById('loginForm').addEventListener('submit', async e => {
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      const fb = document.getElementById('login-feedback');
+
+      if (!fd.get('email') || !fd.get('password')) {
+        showFeedback(fb, 'Bitte E-Mail und Passwort eingeben.', 'error'); return;
+      }
+
+      showFeedback(fb, 'Anmeldung läuft…', 'loading');
+
+      // TODO — Supabase signIn aktivieren:
+      // const { data, error } = await supabase.auth.signInWithPassword({
+      //   email: fd.get('email'),
+      //   password: fd.get('password'),
+      // });
+      // if (error) { showFeedback(fb, error.message, 'error'); return; }
+      // navigate('exercises');
+
+      await simulateDelay(900);
+      showFeedback(fb, '✓ Anmeldung erfolgreich! Weiterleitung…', 'success');
+      setTimeout(() => navigate('exercises'), 900);
+    });
+
+
+    // ── GOOGLE OAUTH ─────────────────────────────────────────────
+    // Supabase: supabase.auth.signInWithOAuth({ provider: 'google' })
+    document.getElementById('googleSignIn').addEventListener('click', async () => {
+      const fb = document.getElementById('login-feedback');
+      showFeedback(fb, 'Google OAuth: @supabase/supabase-js einbinden und signInWithOAuth({ provider: "google" }) aufrufen.', 'loading');
+      // TODO: await supabase.auth.signInWithOAuth({ provider: 'google' });
+    });
+
+
+    // ── WORKOUT DATA ─────────────────────────────────────────────
+    const workouts = [
+      { id: 'w-001', title: 'Lower Body Strength',    minutes: 45, difficulty: 'Intermediate', emoji: '🦵', tags: ['Kraft', 'Beine'] },
+      { id: 'w-002', title: 'Core Stability Circuit', minutes: 20, difficulty: 'Beginner',     emoji: '🎯', tags: ['Core', 'Stabilität'] },
+      { id: 'w-003', title: 'Upper Body Power',       minutes: 60, difficulty: 'Advanced',     emoji: '💪', tags: ['Kraft', 'Oberkörper'] },
+      { id: 'w-004', title: 'Morning Mobility Flow',  minutes: 15, difficulty: 'Beginner',     emoji: '🌅', tags: ['Mobilität', 'Morgen'] },
+      { id: 'w-005', title: 'HIIT Cardio Blast',      minutes: 30, difficulty: 'Intermediate', emoji: '🔥', tags: ['HIIT', 'Cardio'] },
+      { id: 'w-006', title: 'Full Body Functional',   minutes: 50, difficulty: 'Advanced',     emoji: '⚡', tags: ['Funktional', 'Ganzkörper'] },
+    ];
+
+    function fmtDuration(min) {
+      if (min < 60) return min + ' min';
+      const h = Math.floor(min / 60), m = min % 60;
+      return h + 'h' + (m ? ' ' + m + 'min' : '');
+    }
+
+    const diffStyles = {
+      Beginner:     { bg: '#162816', color: '#86efac', dot: '#22c55e' },
+      Intermediate: { bg: '#2a2200', color: '#fde68a', dot: '#f59e0b' },
+      Advanced:     { bg: '#2a0a0a', color: '#fca5a5', dot: '#ef4444' },
+    };
+
+    function workoutCard(w) {
+      const d = diffStyles[w.difficulty];
+      return `
+        <article class="workout-card" data-difficulty="${w.difficulty}">
+          <div class="card-header">
+            <span class="card-emoji">${w.emoji}</span>
+            <span class="diff-badge" style="background:${d.bg};color:${d.color}">
+              <span class="diff-dot" style="background:${d.dot}"></span>
+              ${w.difficulty}
+            </span>
+          </div>
+          <h3 class="card-title">${w.title}</h3>
+          <div class="card-meta">
+            <span class="card-duration">⏱ ${fmtDuration(w.minutes)}</span>
+          </div>
+          <div class="card-tags">
+            ${w.tags.map(t => `<span class="tag">${t}</span>`).join('')}
+          </div>
+          <div class="card-action">
+            <button class="btn btn--outline btn--sm btn--full">Workout starten →</button>
+          </div>
+        </article>`;
+    }
+
+    function renderWorkouts(filter = 'all', query = '') {
+      const grid = document.getElementById('workoutGrid');
+      const list = workouts.filter(w =>
+        (filter === 'all' || w.difficulty === filter) &&
+        (query === '' || w.title.toLowerCase().includes(query.toLowerCase()))
+      );
+      if (list.length === 0) {
+        grid.innerHTML = `
+          <div class="empty-state">
+            <div class="empty-state-icon">🔍</div>
+            <p>Keine Workouts gefunden.</p>
+          </div>`;
+      } else {
+        grid.innerHTML = list.map(workoutCard).join('');
+      }
+      document.getElementById('workoutCount').textContent =
+        list.length + ' Workout' + (list.length !== 1 ? 's' : '') + ' · ' + (filter === 'all' ? 'Alle Stufen' : filter);
+    }
+
+    renderWorkouts();
+
+    // Filter tabs
+    document.getElementById('filterTabs').addEventListener('click', e => {
+      const tab = e.target.closest('.filter-tab');
+      if (!tab) return;
+      document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      renderWorkouts(tab.dataset.filter, document.getElementById('searchInput').value);
+    });
+
+    // Search
+    document.getElementById('searchInput').addEventListener('input', e => {
+      const activeFilter = document.querySelector('.filter-tab.active')?.dataset.filter ?? 'all';
+      renderWorkouts(activeFilter, e.target.value);
+    });
+
+
+    // ── UTILS ────────────────────────────────────────────────────
+    function simulateDelay(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+  </script>
+</body>
+</html>

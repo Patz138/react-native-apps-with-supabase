@@ -15,7 +15,12 @@ export const kineticColors = {
   onPrimary: '#1d1d00',
   secondary: '#a4c9ff',
   tertiary: '#99f1f3',
-  error: '#ffb4ab'
+  error: '#ffb4ab',
+  difficulty: {
+    beginner:     { bg: '#162816', text: '#86efac', dot: '#22c55e' },
+    intermediate: { bg: '#2a2200', text: '#fde68a', dot: '#f59e0b' },
+    advanced:     { bg: '#2a0a0a', text: '#fca5a5', dot: '#ef4444' },
+  },
 } as const;
 
 export const kineticSpacing = {

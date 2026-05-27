@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kinetic – Register</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --color-bg: #0D0D0D;
+      --color-surface: #1A1A1A;
+      --color-border: #2a2a2a;
+      --color-primary: #E8FF47;
+      --color-primary-dim: #c8df2a;
+      --color-text: #FFFFFF;
+      --color-text-muted: #888888;
+      --color-error: #FF5C5C;
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-full: 9999px;
+      --font: 'Inter', system-ui, sans-serif;
+    }
+    body {
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-family: var(--font);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* NAV */
+    .nav {
+      width: 100%;
+      max-width: 480px;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .btn-back {
+      width: 40px; height: 40px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; text-decoration: none; color: var(--color-text);
+      font-size: 18px;
+    }
+    .nav-title { font-size: 16px; font-weight: 600; }
+
+    /* PROGRESS */
+    .progress-bar {
+      width: 100%;
+      max-width: 480px;
+      padding: 0 24px;
+      margin-bottom: 32px;
+    }
+    .progress-track {
+      width: 100%;
+      height: 4px;
+      background: var(--color-surface);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      width: 33%;
+      background: var(--color-primary);
+      border-radius: var(--radius-full);
+    }
+    .progress-label {
+      font-size: 12px;
+      color: var(--color-text-muted);
+      margin-top: 8px;
+    }
+
+    /* FORM */
+    .form-container {
+      width: 100%;
+      max-width: 480px;
+      padding: 0 24px;
+      flex: 1;
+    }
+    .form-title { font-size: 28px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 6px; }
+    .form-subtitle { font-size: 14px; color: var(--color-text-muted); margin-bottom: 32px; }
+
+    .field { margin-bottom: 20px; }
+    .field-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      margin-bottom: 8px;
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .field-input {
+      width: 100%;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      font-size: 15px;
+      color: var(--color-text);
+      font-family: var(--font);
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .field-input::placeholder { color: #555; }
+    .field-input:focus { border-color: var(--color-primary); }
+
+    .field-row { display: flex; gap: 12px; }
+    .field-row .field { flex: 1; }
+
+    /* Password strength */
+    .strength-bar {
+      margin-top: 8px;
+      display: flex;
+      gap: 4px;
+    }
+    .strength-segment {
+      flex: 1; height: 3px;
+      border-radius: var(--radius-full);
+      background: var(--color-border);
+    }
+    .strength-segment.active { background: var(--color-primary); }
+    .strength-label { font-size: 11px; color: var(--color-text-muted); margin-top: 4px; }
+
+    /* Checkbox */
+    .checkbox-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+    .checkbox {
+      width: 20px; height: 20px; min-width: 20px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; margin-top: 1px;
+    }
+    .checkbox.checked { background: var(--color-primary); border-color: var(--color-primary); }
+    .checkbox.checked::after { content: '✓'; font-size: 13px; color: #000; font-weight: 700; }
+    .checkbox-text { font-size: 13px; color: var(--color-text-muted); line-height: 1.5; }
+    .checkbox-text a { color: var(--color-primary); text-decoration: none; }
+
+    /* Social divider */
+    .divider {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 20px;
+    }
+    .divider-line { flex: 1; height: 1px; background: var(--color-border); }
+    .divider-text { font-size: 13px; color: var(--color-text-muted); }
+
+    .btn-social {
+      width: 100%;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-full);
+      padding: 16px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-text);
+      cursor: pointer;
+      font-family: var(--font);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      text-decoration: none;
+    }
+    .btn-social:hover { border-color: #555; }
+
+    /* Submit */
+    .cta-group {
+      padding: 0 0 48px;
+    }
+    .btn-primary {
+      width: 100%;
+      background: var(--color-primary);
+      color: #000;
+      border: none;
+      border-radius: var(--radius-full);
+      padding: 18px 24px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: var(--font);
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      margin-bottom: 16px;
+      transition: background 0.15s;
+    }
+    .btn-primary:hover { background: var(--color-primary-dim); }
+    .login-hint {
+      text-align: center;
+      font-size: 13px;
+      color: var(--color-text-muted);
+    }
+    .login-hint a { color: var(--color-primary); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="landing.html" class="btn-back">&#8592;</a>
+    <span class="nav-title">Create Account</span>
+  </nav>
+
+  <div class="progress-bar">
+    <div class="progress-track">
+      <div class="progress-fill"></div>
+    </div>
+    <span class="progress-label">Step 1 of 3 &mdash; Account details</span>
+  </div>
+
+  <div class="form-container">
+    <h1 class="form-title">Join Kinetic</h1>
+    <p class="form-subtitle">Start tracking your workouts today &mdash; it's free.</p>
+
+    <div class="field-row">
+      <div class="field">
+        <label class="field-label" for="first-name">First Name</label>
+        <input id="first-name" class="field-input" type="text" placeholder="Max" />
+      </div>
+      <div class="field">
+        <label class="field-label" for="last-name">Last Name</label>
+        <input id="last-name" class="field-input" type="text" placeholder="Mustermann" />
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="field-label" for="email">Email Address</label>
+      <input id="email" class="field-input" type="email" placeholder="max@example.com" />
+    </div>
+
+    <div class="field">
+      <label class="field-label" for="username">Username</label>
+      <input id="username" class="field-input" type="text" placeholder="@maxmustermann" />
+    </div>
+
+    <div class="field">
+      <label class="field-label" for="password">Password</label>
+      <input id="password" class="field-input" type="password" placeholder="Min. 8 characters" />
+      <div class="strength-bar">
+        <div class="strength-segment active"></div>
+        <div class="strength-segment active"></div>
+        <div class="strength-segment"></div>
+        <div class="strength-segment"></div>
+      </div>
+      <div class="strength-label">Password strength: Fair</div>
+    </div>
+
+    <div class="field">
+      <label class="field-label" for="confirm-password">Confirm Password</label>
+      <input id="confirm-password" class="field-input" type="password" placeholder="Repeat password" />
+    </div>
+
+    <div class="checkbox-row">
+      <div class="checkbox checked"></div>
+      <span class="checkbox-text">
+        I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
+        I confirm I am at least 16 years old.
+      </span>
+    </div>
+
+    <div class="cta-group">
+      <a href="../overview/overview.html" class="btn-primary">Create Account</a>
+
+      <div class="divider">
+        <div class="divider-line"></div>
+        <span class="divider-text">or continue with</span>
+        <div class="divider-line"></div>
+      </div>
+
+      <a href="#" class="btn-social">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z" fill="#4285F4"/>
+          <path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z" fill="#34A853"/>
+          <path d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/>
+          <path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z" fill="#EA4335"/>
+        </svg>
+        Continue with Google
+      </a>
+      <a href="#" class="btn-social">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <path d="M9 0C4.029 0 0 4.029 0 9c0 3.979 2.579 7.348 6.158 8.541.45.083.614-.195.614-.434 0-.214-.008-.783-.012-1.537-2.504.544-3.033-1.207-3.033-1.207-.409-1.04-1-1.317-1-1.317-.818-.559.062-.548.062-.548.904.063 1.38.928 1.38.928.803 1.376 2.107.978 2.62.748.082-.582.314-.978.571-1.203-1.999-.227-4.103-1-4.103-4.449 0-.982.351-1.785.927-2.414-.093-.227-.402-1.142.088-2.381 0 0 .755-.242 2.475.923A8.626 8.626 0 0 1 9 4.408c.765.004 1.535.103 2.254.302 1.718-1.165 2.472-.923 2.472-.923.491 1.239.182 2.154.089 2.381.577.629.926 1.432.926 2.414 0 3.458-2.107 4.219-4.113 4.44.323.279.611.829.611 1.671 0 1.207-.011 2.179-.011 2.476 0 .241.162.522.619.433C15.424 16.345 18 12.977 18 9c0-4.971-4.029-9-9-9z" fill="#fff"/>
+        </svg>
+        Continue with GitHub
+      </a>
+
+      <p class="login-hint">Already have an account? <a href="login.html">Sign in</a></p>
+    </div>
+  </div>
+
+</body>
+</html>

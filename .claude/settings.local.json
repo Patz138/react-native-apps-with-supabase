@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p \"C:\\\\Users\\\\Lenovo\\\\Desktop\\\\IRGENDEINE APP BRO\\\\react-native-apps-with-supabase\\\\.agents\\\\skills\")",
+      "Bash(mkdir -p \"C:\\\\Users\\\\Lenovo\\\\Desktop\\\\IRGENDEINE APP BRO\\\\react-native-apps-with-supabase\\\\apps\\\\workout-web\")",
+      "Bash(npm run *)",
+      "Bash(npm install *)",
+      "Bash(python -c \"import fitz; doc = fitz.open\\('c:/Users/Lenovo/Desktop/IRGENDEINE APP BRO/react-native-apps-with-supabase/exercise-skill-creation-ui-conversiation.pdf'\\); print\\('\\\\n'.join\\([page.get_text\\(\\) for page in doc]\\)\\)\")"
+    ]
+  }
+}

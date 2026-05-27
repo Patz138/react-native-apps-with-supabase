@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FORGE — AI Agent Workflow</title>
+  <style>
+    /* ═══════════════════════════════════════════════
+       DESIGN TOKENS — KINETIC SYSTEM + FORGE LAYER
+       ═══════════════════════════════════════════════ */
+    :root {
+      --bg:              #0e0e08;
+      --surface-low:     #161610;
+      --surface:         #1c1c12;
+      --surface-high:    #252518;
+      --surface-variant: #2e2e1f;
+      --surface-bright:  #363625;
+      --outline:         #86856a;
+      --outline-variant: #3f3e2c;
+      --text:            #e8e5d0;
+      --text-secondary:  #c8c5a8;
+      --text-muted:      #7a7860;
+
+      --primary:         #ede900;
+      --primary-dim:     #ccc800;
+      --primary-glow:    rgba(237, 233, 0, 0.18);
+      --on-primary:      #1a1a00;
+
+      --agent-discovery: #a4c9ff;
+      --agent-discovery-bg: rgba(164, 201, 255, 0.07);
+      --agent-discovery-border: rgba(164, 201, 255, 0.2);
+
+      --agent-manager:   #c4b5fd;
+      --agent-manager-bg: rgba(196, 181, 253, 0.07);
+      --agent-manager-border: rgba(196, 181, 253, 0.2);
+
+      --agent-worker:    #ede900;
+      --agent-worker-bg: rgba(237, 233, 0, 0.06);
+      --agent-worker-border: rgba(237, 233, 0, 0.2);
+
+      --agent-story:     #99f1f3;
+      --agent-story-bg:  rgba(153, 241, 243, 0.07);
+      --agent-story-border: rgba(153, 241, 243, 0.2);
+
+      --error:           #ffb4ab;
+      --success:         #86efac;
+
+      --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'SF Mono', 'Fira Code', 'Cascadia Code', Menlo, monospace;
+
+      --space-xs: 6px;
+      --space-sm: 10px;
+      --space-md: 16px;
+      --space-lg: 24px;
+      --space-xl: 36px;
+      --space-2xl: 56px;
+
+      --radius-sm: 10px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-xl: 28px;
+      --radius-pill: 9999px;
+
+      --ease: 160ms ease;
+      --ease-spring: 240ms cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    /* ═══════════════════════════════════════════════
+       RESET & BASE
+       ═══════════════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; font-family: inherit; border: none; }
+    input { outline: none; font-family: inherit; }
+
+    /* ═══════════════════════════════════════════════
+       GRID NOISE BACKGROUND
+       ═══════════════════════════════════════════════ */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(237,233,0,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(237,233,0,0.025) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ═══════════════════════════════════════════════
+       GLOW ORBS
+       ═══════════════════════════════════════════════ */
+    .glow-orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(120px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.35;
+    }
+    .glow-orb--1 {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(237,233,0,0.15) 0%, transparent 70%);
+      top: -200px; left: -100px;
+    }
+    .glow-orb--2 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(164,201,255,0.12) 0%, transparent 70%);
+      bottom: -100px; right: -100px;
+    }
+    .glow-orb--3 {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(196,181,253,0.08) 0%, transparent 70%);
+      top: 50%; right: 20%;
+    }
+
+    /* ═══════════════════════════════════════════════
+       LAYOUT
+       ═══════════════════════════════════════════════ */
+    .page {
+      position: relative;
+      z-index: 1;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 var(--space-lg);
+    }
+
+    /* ═══════════════════════════════════════════════
+       NAVBAR
+       ═══════════════════════════════════════════════ */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(14, 14, 8, 0.85);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      border-bottom: 1px solid var(--outline-variant);
+    }
+    .nav-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 var(--space-lg);
+      height: 60px;
+      display: flex;
+      align-items: center;
+      gap: var(--space-lg);
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      margin-right: auto;
+    }
+    .brand-icon {
+      width: 30px;
+      height: 30px;
+      background: var(--primary);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+    .brand-text { color: var(--text); }
+    .brand-text em { color: var(--primary); font-style: normal; }
+    .brand-sub {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.3px;
+      border-left: 1px solid var(--outline-variant);
+      padding-left: 10px;
+      margin-left: 2px;
+    }
+
+    .nav-pills {
+      display: flex;
+      gap: 2px;
+      background: var(--surface-low);
+      padding: 3px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--outline-variant);
+    }
+    .nav-pill {
+      padding: 5px 14px;
+      border-radius: var(--radius-pill);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      background: none;
+      transition: all var(--ease);
+    }
+    .nav-pill.active, .nav-pill:hover {
+      background: var(--surface-high);
+      color: var(--text);
+    }
+    .nav-pill.active { color: var(--primary); }
+
+    .nav-status {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 5px 12px;
+      background: var(--surface-low);
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--radius-pill);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+    .status-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--success);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.5; transform: scale(0.85); }
+    }
+
+    /* ═══════════════════════════════════════════════
+       HERO
+       ═══════════════════════════════════════════════ */
+    .hero {
+      padding: var(--space-2xl) 0 var(--space-xl);
+      max-width: 760px;
+    }
+    .hero-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 14px;
+      background: var(--surface-variant);
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--radius-pill);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: var(--space-lg);
+    }
+    .chip-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--primary);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    .hero-title {
+      font-size: clamp(42px, 6vw, 80px);
+      font-weight: 900;
+      line-height: 1.03;
+      letter-spacing: -2.5px;
+      color: var(--text);
+      margin-bottom: var(--space-md);
+    }
+    .hero-title .accent { color: var(--primary); }
+    .hero-title .muted  { color: var(--text-secondary); }
+    .hero-desc {
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      max-width: 520px;
+      margin-bottom: var(--space-xl);
+    }
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+    }
+
+    /* ═══════════════════════════════════════════════
+       PIPELINE CONNECTOR
+       ═══════════════════════════════════════════════ */
+    .pipeline-section {
+      margin-bottom: var(--space-2xl);
+    }
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      margin-bottom: var(--space-lg);
+    }
+    .section-label-text {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--outline);
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--outline-variant);
+    }
+
+    .pipeline {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+    .pipeline-step {
+      flex: 1;
+      min-width: 160px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+    .pipeline-step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 24px;
+      right: -1px;
+      width: 2px;
+      height: 24px;
+      background: linear-gradient(to bottom, var(--outline-variant), transparent);
+    }
+    .pipeline-connector {
+      display: flex;
+      align-items: center;
+      padding: 0 var(--space-sm);
+      color: var(--outline);
+      font-size: 18px;
+      margin-top: 14px;
+    }
+    .pipeline-node {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      border: 1.5px solid;
+      transition: all var(--ease-spring);
+      margin-bottom: 10px;
+      position: relative;
+    }
+    .pipeline-node::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 18px;
+      border: 1px solid;
+      opacity: 0;
+      transition: opacity var(--ease);
+    }
+    .pipeline-step:hover .pipeline-node::before { opacity: 1; }
+    .pipeline-step:hover .pipeline-node { transform: translateY(-3px); }
+
+    .pipeline-name {
+      font-size: 12px;
+      font-weight: 700;
+      text-align: center;
+    }
+    .pipeline-desc {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-align: center;
+      max-width: 120px;
+      line-height: 1.4;
+      margin-top: 3px;
+    }
+
+    .pipeline-row {
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+
+    /* ═══════════════════════════════════════════════
+       AGENT CARDS
+       ═══════════════════════════════════════════════ */
+    .agents-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-md);
+      margin-bottom: var(--space-2xl);
+    }
+
+    .agent-card {
+      background: var(--surface-low);
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--radius-xl);
+      padding: var(--space-xl);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      transition: all var(--ease);
+      position: relative;
+      overflow: hidden;
+      cursor: default;
+    }
+    .agent-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+      opacity: 0;
+      transition: opacity var(--ease);
+    }
+    .agent-card:hover {
+      border-color: var(--outline);
+      background: var(--surface);
+      transform: translateY(-3px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+    .agent-card:hover::before { opacity: 1; }
+    .agent-card:hover .agent-glow { opacity: 1; }
+
+    .agent-glow {
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 300ms ease;
+    }
+
+    .agent-card--discovery { --accent: var(--agent-discovery); }
+    .agent-card--discovery::before { background: var(--agent-discovery); }
+    .agent-card--discovery .agent-glow { background: var(--agent-discovery); }
+    .agent-card--discovery .agent-icon { background: var(--agent-discovery-bg); border-color: var(--agent-discovery-border); color: var(--agent-discovery); }
+    .agent-card--discovery .agent-cmd { background: var(--agent-discovery-bg); color: var(--agent-discovery); border-color: var(--agent-discovery-border); }
+    .agent-card--discovery .agent-badge { background: var(--agent-discovery-bg); color: var(--agent-discovery); border-color: var(--agent-discovery-border); }
+
+    .agent-card--manager { --accent: var(--agent-manager); }
+    .agent-card--manager::before { background: var(--agent-manager); }
+    .agent-card--manager .agent-glow { background: var(--agent-manager); }
+    .agent-card--manager .agent-icon { background: var(--agent-manager-bg); border-color: var(--agent-manager-border); color: var(--agent-manager); }
+    .agent-card--manager .agent-cmd { background: var(--agent-manager-bg); color: var(--agent-manager); border-color: var(--agent-manager-border); }
+    .agent-card--manager .agent-badge { background: var(--agent-manager-bg); color: var(--agent-manager); border-color: var(--agent-manager-border); }
+
+    .agent-card--worker { --accent: var(--agent-worker); }
+    .agent-card--worker::before { background: var(--agent-worker); }
+    .agent-card--worker .agent-glow { background: var(--agent-worker); }
+    .agent-card--worker .agent-icon { background: var(--agent-worker-bg); border-color: var(--agent-worker-border); color: var(--agent-worker); }
+    .agent-card--worker .agent-cmd { background: var(--agent-worker-bg); color: var(--agent-worker); border-color: var(--agent-worker-border); }
+    .agent-card--worker .agent-badge { background: var(--agent-worker-bg); color: var(--agent-worker); border-color: var(--agent-worker-border); }
+
+    .agent-card--story { --accent: var(--agent-story); }
+    .agent-card--story::before { background: var(--agent-story); }
+    .agent-card--story .agent-glow { background: var(--agent-story); }
+    .agent-card--story .agent-icon { background: var(--agent-story-bg); border-color: var(--agent-story-border); color: var(--agent-story); }
+    .agent-card--story .agent-cmd { background: var(--agent-story-bg); color: var(--agent-story); border-color: var(--agent-story-border); }
+    .agent-card--story .agent-badge { background: var(--agent-story-bg); color: var(--agent-story); border-color: var(--agent-story-border); }
+
+    .agent-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--space-md);
+    }
+    .agent-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      border: 1px solid;
+      flex-shrink: 0;
+    }
+    .agent-meta { flex: 1; }
+    .agent-index {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 3px;
+    }
+    .agent-name {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.4px;
+      line-height: 1.2;
+    }
+    .agent-cmd {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 12px;
+      border-radius: var(--radius-pill);
+      font-size: 12px;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      border: 1px solid;
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+    }
+
+    .agent-desc {
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--text-secondary);
+    }
+
+    .agent-features {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .agent-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    .feature-bullet {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+
+    .agent-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: var(--space-sm);
+      border-top: 1px solid var(--outline-variant);
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+    }
+    .agent-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+    .agent-badge {
+      padding: 3px 9px;
+      border-radius: var(--radius-pill);
+      font-size: 11px;
+      font-weight: 600;
+      border: 1px solid;
+    }
+    .agent-trigger-hint {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════
+       PHILOSOPHY SECTION
+       ═══════════════════════════════════════════════ */
+    .philosophy-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+      margin-bottom: var(--space-2xl);
+    }
+    .philosophy-card {
+      background: var(--surface-low);
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+      transition: all var(--ease);
+    }
+    .philosophy-card:hover {
+      background: var(--surface);
+      border-color: var(--outline);
+      transform: translateY(-2px);
+    }
+    .philosophy-icon { font-size: 28px; margin-bottom: 12px; }
+    .philosophy-title {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      letter-spacing: -0.2px;
+    }
+    .philosophy-text {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ═══════════════════════════════════════════════
+       PROGRESSIVE DISCLOSURE SECTION
+       ═══════════════════════════════════════════════ */
+    .disclosure-section {
+      background: var(--surface-low);
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--radius-xl);
+      padding: var(--space-xl);
+      margin-bottom: var(--space-2xl);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-xl);
+      align-items: center;
+    }
+    .disclosure-title {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.6px;
+      margin-bottom: var(--space-sm);
+    }
+    .disclosure-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: var(--space-lg);
+    }
+    .disclosure-stages {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+    .disclosure-stage {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      padding: 12px var(--space-md);
+      background: var(--surface);
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--radius-md);
+      transition: all var(--ease);
+    }
+    .disclosure-stage:hover {
+      border-color: var(--primary-dim);
+      background: var(--surface-high);
+    }
+    .stage-num {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--surface-variant);
+      border: 1px solid var(--primary-dim);
+      color: var(--primary);
+      font-size: 12px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .stage-content { flex: 1; }
+    .stage-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+    .stage-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .stage-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    .token-visual {
+      background: var(--surface);
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+      font-family: var(--font-mono);
+      font-size: 12px;
+    }
+    .token-line {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 5px 0;
+      border-bottom: 1px solid var(--outline-variant);
+    }
+    .token-line:last-child { border-bottom: none; }
+    .token-swatch {
+      width: 14px; height: 14px;
+      border-radius: 4px;
+      flex-shrink: 0;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .token-name { color: var(--agent-discovery); flex: 1; }
+    .token-value { color: var(--text-muted); }
+    .token-category {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--outline);
+      padding: var(--space-sm) 0 5px;
+    }
+
+    /* ═══════════════════════════════════════════════
+       QUICK START TERMINAL
+       ═══════════════════════════════════════════════ */
+    .terminal-section {
+      background: var(--surface-low);
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      margin-bottom: var(--space-2xl);
+    }
+    .terminal-header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      padding: 12px var(--space-lg);
+      background: var(--surface);
+      border-bottom: 1px solid var(--outline-variant);
+    }
+    .terminal-dots {
+      display: flex;
+      gap: 6px;
+    }
+    .terminal-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+    }
+    .terminal-dot--red    { background: #ff5f57; }
+    .terminal-dot--yellow { background: #febc2e; }
+    .terminal-dot--green  { background: #28c840; }
+    .terminal-title {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+    .terminal-body {
+      padding: var(--space-lg) var(--space-xl);
+      font-family: var(--font-mono);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+    .t-comment { color: var(--text-muted); }
+    .t-prompt   { color: var(--primary); }
+    .t-cmd      { color: var(--text); }
+    .t-output   { color: var(--text-secondary); padding-left: 20px; }
+    .t-success  { color: var(--success); padding-left: 20px; }
+    .t-info     { color: var(--agent-discovery); padding-left: 20px; }
+    .t-warn     { color: var(--agent-manager); padding-left: 20px; }
+    .t-blank    { height: 6px; }
+    .cursor {
+      display: inline-block;
+      width: 8px; height: 14px;
+      background: var(--primary);
+      vertical-align: text-bottom;
+      animation: blink 1.2s step-end infinite;
+    }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+    /* ═══════════════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════════════ */
+    .footer {
+      border-top: 1px solid var(--outline-variant);
+      padding: var(--space-xl) 0 var(--space-2xl);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+    }
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 800;
+    }
+    .footer-mini-icon {
+      width: 22px; height: 22px;
+      background: var(--primary);
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px;
+    }
+    .footer-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .footer-links {
+      display: flex;
+      gap: var(--space-lg);
+    }
+    .footer-link {
+      font-size: 12px;
+      color: var(--text-muted);
+      transition: color var(--ease);
+    }
+    .footer-link:hover { color: var(--text); }
+
+    /* ═══════════════════════════════════════════════
+       RESPONSIVE
+       ═══════════════════════════════════════════════ */
+    @media (max-width: 900px) {
+      .nav-pills { display: none; }
+      .agents-grid { grid-template-columns: 1fr; }
+      .philosophy-grid { grid-template-columns: 1fr 1fr; }
+      .disclosure-section { grid-template-columns: 1fr; }
+      .pipeline { gap: 0; }
+    }
+    @media (max-width: 600px) {
+      .hero-title { letter-spacing: -1.5px; }
+      .philosophy-grid { grid-template-columns: 1fr; }
+      .pipeline-connector { display: none; }
+      .pipeline { flex-wrap: wrap; gap: var(--space-md); }
+      .pipeline-step { min-width: 140px; }
+      .footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- AMBIENT GLOW -->
+  <div class="glow-orb glow-orb--1"></div>
+  <div class="glow-orb glow-orb--2"></div>
+  <div class="glow-orb glow-orb--3"></div>
+
+  <!-- ═══════════════════════════════════════
+       NAVBAR
+       ═══════════════════════════════════════ -->
+  <header class="navbar">
+    <div class="nav-inner">
+      <div class="nav-brand">
+        <div class="brand-icon">⚙</div>
+        <span class="brand-text">FOR<em>GE</em></span>
+        <span class="brand-sub">AI Agent Skills</span>
+      </div>
+      <div class="nav-pills">
+        <button class="nav-pill active">Overview</button>
+        <button class="nav-pill">Pipeline</button>
+        <button class="nav-pill">Docs</button>
+      </div>
+      <div class="nav-status">
+        <span class="status-dot"></span>
+        4 Skills active
+      </div>
+    </div>
+  </header>
+
+  <div class="page">
+
+    <!-- ═══════════════════════════════════════
+         HERO
+         ═══════════════════════════════════════ -->
+    <section class="hero">
+      <div class="hero-chip">
+        <span class="chip-dot"></span>
+        Component-Driven Development · AI Agent System
+      </div>
+      <h1 class="hero-title">
+        Bau die<br>
+        <span class="accent">Fabrik.</span><br>
+        <span class="muted">Nicht das Produkt.</span>
+      </h1>
+      <p class="hero-desc">
+        4 spezialisierte KI-Agenten ersetzen hunderte Stunden manuelles CSS-Schreiben.
+        Du wirst zum Architekten — die Agenten bauen nach Atomic Design, validieren jeden Token
+        und generieren Storybook-Stories vollautomatisch.
+      </p>
+      <div class="hero-tags">
+        <span class="hero-tag" style="background:var(--agent-discovery-bg);color:var(--agent-discovery);border:1px solid var(--agent-discovery-border);">
+          🔍 Token Discovery
+        </span>
+        <span class="hero-tag" style="background:var(--agent-manager-bg);color:var(--agent-manager);border:1px solid var(--agent-manager-border);">
+          📋 CDD Manager
+        </span>
+        <span class="hero-tag" style="background:var(--agent-worker-bg);color:var(--agent-worker);border:1px solid var(--agent-worker-border);">
+          ⚡ UI Worker
+        </span>
+        <span class="hero-tag" style="background:var(--agent-story-bg);color:var(--agent-story);border:1px solid var(--agent-story-border);">
+          📖 Story Gen
+        </span>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         PIPELINE FLOW
+         ═══════════════════════════════════════ -->
+    <section class="pipeline-section">
+      <div class="section-label">
+        <span class="section-label-text">Agent Pipeline</span>
+      </div>
+      <div class="pipeline-row">
+        <div class="pipeline-step">
+          <div class="pipeline-node" style="background:var(--agent-discovery-bg);border-color:var(--agent-discovery-border);color:var(--agent-discovery);">🔍</div>
+          <div class="pipeline-name" style="color:var(--agent-discovery);">Discovery</div>
+          <div class="pipeline-desc">Scannt Design, extrahiert Tokens</div>
+        </div>
+        <div class="pipeline-connector">→</div>
+        <div class="pipeline-step">
+          <div class="pipeline-node" style="background:var(--agent-manager-bg);border-color:var(--agent-manager-border);color:var(--agent-manager);">📋</div>
+          <div class="pipeline-name" style="color:var(--agent-manager);">Manager</div>
+          <div class="pipeline-desc">CDD Roadmap, Gate-Kontrolle</div>
+        </div>
+        <div class="pipeline-connector">→</div>
+        <div class="pipeline-step">
+          <div class="pipeline-node" style="background:var(--agent-worker-bg);border-color:var(--agent-worker-border);color:var(--agent-worker);">⚡</div>
+          <div class="pipeline-name" style="color:var(--agent-worker);">Worker</div>
+          <div class="pipeline-desc">HTML → React / React Native</div>
+        </div>
+        <div class="pipeline-connector">→</div>
+        <div class="pipeline-step">
+          <div class="pipeline-node" style="background:var(--agent-story-bg);border-color:var(--agent-story-border);color:var(--agent-story);">📖</div>
+          <div class="pipeline-name" style="color:var(--agent-story);">Story Gen</div>
+          <div class="pipeline-desc">CSF Storybook Files</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         AGENT CARDS
+         ═══════════════════════════════════════ -->
+    <section>
+      <div class="section-label">
+        <span class="section-label-text">Die 4 Skills</span>
+      </div>
+
+      <div class="agents-grid">
+
+        <!-- DISCOVERY -->
+        <div class="agent-card agent-card--discovery">
+          <div class="agent-glow"></div>
+          <div class="agent-header">
+            <div class="agent-icon">🔍</div>
+            <div class="agent-meta">
+              <div class="agent-index">Skill 01</div>
+              <div class="agent-name">Discovery</div>
+            </div>
+            <span class="agent-cmd">/ discovery</span>
+          </div>
+          <p class="agent-desc">
+            Scannt die gesamte Codebase nach Design-Mustern. Extrahiert Farben, Abstände,
+            Typografie und Radien aus CSS-Variablen, Inline-Styles und Theme-Dateien —
+            kompiliert alles in eine einzige <code style="color:var(--agent-discovery)">theme.json</code> als Source of Truth.
+          </p>
+          <div class="agent-features">
+            <div class="agent-feature">
+              <span class="feature-bullet"></span>
+              <span>Analysiert <code style="color:var(--agent-discovery)">:root { }</code> CSS-Variablen, TypeScript Theme-Dateien und Inline-Styles</span>
+            </div>
+            <div class="agent-feature">
+              <span class="feature-bullet"></span>
+              <span>Validiert jeden Token vor dem Schreiben — Fehler bei ungültigen CSS-Werten</span>
+            </div>
+            <div class="agent-feature">
+              <span class="feature-bullet"></span>
+              <span>Semantische Benennung: <code style="color:var(--agent-discovery)">colors.surface.high</code>, <code style="color:var(--agent-discovery)">spacing.xl</code>, <code style="color:var(--agent-discovery)">radius.pill</code></span>
+            </div>
+          </div>
+          <div class="agent-footer">
+            <div class="agent-badges">
+              <span class="agent-badge">theme.json</span>
+              <span class="agent-badge">Token Extraction</span>
+              <span class="agent-badge">Validation</span>
+            </div>
+            <span class="agent-trigger-hint">Zuerst ausführen</span>
+          </div>
+        </div>
+
+        <!-- MANAGER -->
+        <div class="agent-card agent-card--manager">
+          <div class="agent-glow"></div>
+          <div class="agent-header">
+            <div class="agent-icon">📋</div>
+            <div class="agent-meta">
+              <div class="agent-index">Skill 02</div>
+              <div class="agent-name">Manager</div>
+            </div>
+            <span class="agent-cmd">/ manager</span>
+          </div>
+          <p class="agent-desc">
+            Zerlegt eine UI in eine Atomic Design Roadmap — Atoms, Molecules, Organisms, Templates.
+            Verwaltet den Build-State und blockiert Molecules, bis alle zugehörigen Atoms fertig sind.
+            Verhindert Redundanzen in der Zwischenarbeit.
+          </p>
+          <div class="agent-features">
+            <div class="agent-feature">
+              <span class="feature-bullet"></span>
+              <span>Gate-System: Molecule kann erst starten wenn alle Atom-Abhängigkeiten <code style="color:var(--agent-manager)">completed</code> sind</span>
+            </div>
+            <div class="agent-feature">
+              <span class="feature-bullet"></span>
+              <span>Cross-referenziert Tokens gegen <code style="color:var(--agent-manager)">theme.json</code> — Fehler bei unbekannten Tokens</span>
+            </div>
+            <div class="agent-feature">
+              <span class="feature-bullet"></span>
+              <span>Persistiert Zustand in <code style="color:var(--agent-manager)">.claude/cdd-state.json</code></span>
+            </div>
+          </div>
+          <div class="agent-footer">
+            <div class="agent-badges">
+              <span class="agent-badge">Atomic Design</span>
+              <span class="agent-badge">Gate System</span>
+              <span class="agent-badge">cdd-state.json</span>
+            </div>
+            <span class="agent-trigger-hint">Nach Discovery</span>
+          </div>
+        </div>
+
+        <!-- WORKER -->
+        <div class="agent-card agent-card--worker">
+          <div class="agent-glow"></div>
+          <div class="agent-header">
+            <div class="agent-icon">⚡</div>
+            <div class="agent-meta">
+              <div class="agent-index">Skill 03</div>
+              <div class="agent-name">Worker</div>
+            </div>
+            <span class="agent-cmd">/ worker</span>
+          </div>
+          <p class="agent-desc">
+            Konvertiert rohes HTML in produktionsreifen React- oder React-Native-Code.
+            Folgt dem <strong style="color:var(--agent-worker)">Plan → Validate → Execute</strong> Muster strikt —
+            kein Code wird geschrieben, bevor der Plan gegen <code style="color:var(--agent-worker)">theme.json</code> und <code style="color:var(--agent-worker)">cdd-state.json</code> validiert ist.
+          </p>
+          <div class="agent-features">
+            <div class="agent-feature">
+              <span class="feature-bullet"></span>
+              <span>Automatische RN-Konvertierungen: <code style="color:var(--agent-worker)">flex-direction: row</code>, <code style="color:var(--agent-worker)">marginVertical/Horizontal</code>, <code style="color:var(--agent-worker)">elevation</code></span>
+            </div>
+            <div class="agent-feature">
+              <span class="feature-bullet"></span>
+              <span>Erkennt und flaggt alle ungültigen RN-Properties vor der Ausführung</span>
+            </div>
+            <div class="agent-feature">
+              <span class="feature-bullet"></span>
+              <span>Schreibt Datei erst nach erfolgreicher Plan-Validierung — Source of Truth bleibt sauber</span>
+            </div>
+          </div>
+          <div class="agent-footer">
+            <div class="agent-badges">
+              <span class="agent-badge">Plan-Validate-Execute</span>
+              <span class="agent-badge">HTML→RN</span>
+              <span class="agent-badge">StyleSheet</span>
+            </div>
+            <span class="agent-trigger-hint">Pro Atom/Molecule</span>
+          </div>
+        </div>
+
+        <!-- STORYBOOK GEN -->
+        <div class="agent-card agent-card--story">
+          <div class="agent-glow"></div>
+          <div class="agent-header">
+            <div class="agent-icon">📖</div>
+            <div class="agent-meta">
+              <div class="agent-index">Skill 04</div>
+              <div class="agent-name">Storybook Gen</div>
+            </div>
+            <span class="agent-cmd">/ storybook-gen</span>
+          </div>
+          <p class="agent-desc">
+            Analysiert Komponenten-Metadaten (Props Interface, Varianten, Types) und generiert
+            vollständige CSF3-Story-Dateien. Kein manuelles Anfassen des Story-Codes mehr nötig.
+          </p>
+          <div class="agent-features">
+            <div class="agent-feature">
+              <span class="feature-bullet"></span>
+              <span>Generiert: <code style="color:var(--agent-story)">Title</code>, <code style="color:var(--agent-story)">Meta-Object</code> (default args), <code style="color:var(--agent-story)">Story-Objects</code> pro Variant, <code style="color:var(--agent-story)">Decorators</code></span>
+            </div>
+            <div class="agent-feature">
+              <span class="feature-bullet"></span>
+              <span>Decorators verhindern Crashes: Wrapping mit NavigationContainer, Theme-Provider, RN-View</span>
+            </div>
+            <div class="agent-feature">
+              <span class="feature-bullet"></span>
+              <span>Union-Types → Select Controls, Booleans → Toggle, Functions → Action-Logger</span>
+            </div>
+          </div>
+          <div class="agent-footer">
+            <div class="agent-badges">
+              <span class="agent-badge">CSF3</span>
+              <span class="agent-badge">ArgTypes</span>
+              <span class="agent-badge">Decorators</span>
+            </div>
+            <span class="agent-trigger-hint">Nach Worker</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         PROGRESSIVE DISCLOSURE
+         ═══════════════════════════════════════ -->
+    <section>
+      <div class="section-label">
+        <span class="section-label-text">Progressive Disclosure</span>
+      </div>
+      <div class="disclosure-section">
+        <div>
+          <h2 class="disclosure-title">Context bleibt sauber.<br>Tokens bleiben da.</h2>
+          <p class="disclosure-desc">
+            Kein Agent lädt den gesamten Skill-Code in den Speicher.
+            Jeder Skill wird in 3 Stufen geladen — nur was gerade gebraucht wird kommt rein.
+            Das Agent läuft nicht gegen das Token-Limit.
+          </p>
+          <div class="disclosure-stages">
+            <div class="disclosure-stage">
+              <div class="stage-num">1</div>
+              <div class="stage-content">
+                <div class="stage-title">Trigger — Name &amp; Beschreibung</div>
+                <div class="stage-desc">Agent sieht nur den Skill-Namen und eine kurze Beschreibung. Entscheidet ob relevant.</div>
+              </div>
+              <div class="stage-label">~50 tokens</div>
+            </div>
+            <div class="disclosure-stage">
+              <div class="stage-num">2</div>
+              <div class="stage-content">
+                <div class="stage-title">Instruktionen laden</div>
+                <div class="stage-desc">Nur wenn der Skill ausgelöst wird, lädt der Agent die vollständigen Anweisungen.</div>
+              </div>
+              <div class="stage-label">~500 tokens</div>
+            </div>
+            <div class="disclosure-stage">
+              <div class="stage-num">3</div>
+              <div class="stage-content">
+                <div class="stage-title">Externe Referenzdateien</div>
+                <div class="stage-desc">Mappings, theme.json, cdd-state.json — nur on-demand gelesen, nie komplett im Speicher.</div>
+              </div>
+              <div class="stage-label">on-demand</div>
+            </div>
+          </div>
+        </div>
+        <div class="token-visual">
+          <div class="token-category">theme.json — colors</div>
+          <div class="token-line">
+            <div class="token-swatch" style="background:#0e0e08"></div>
+            <span class="token-name">colors.bg</span>
+            <span class="token-value">#0e0e08</span>
+          </div>
+          <div class="token-line">
+            <div class="token-swatch" style="background:#161610"></div>
+            <span class="token-name">colors.surface.low</span>
+            <span class="token-value">#161610</span>
+          </div>
+          <div class="token-line">
+            <div class="token-swatch" style="background:#ede900"></div>
+            <span class="token-name">colors.primary</span>
+            <span class="token-value">#ede900</span>
+          </div>
+          <div class="token-line">
+            <div class="token-swatch" style="background:#a4c9ff"></div>
+            <span class="token-name">colors.secondary</span>
+            <span class="token-value">#a4c9ff</span>
+          </div>
+          <div class="token-line">
+            <div class="token-swatch" style="background:#99f1f3"></div>
+            <span class="token-name">colors.tertiary</span>
+            <span class="token-value">#99f1f3</span>
+          </div>
+          <div class="token-category" style="margin-top:8px;">theme.json — spacing</div>
+          <div class="token-line">
+            <span class="token-name">spacing.xs</span>
+            <span class="token-value">6px</span>
+          </div>
+          <div class="token-line">
+            <span class="token-name">spacing.md</span>
+            <span class="token-value">16px</span>
+          </div>
+          <div class="token-line">
+            <span class="token-name">spacing.xl</span>
+            <span class="token-value">36px</span>
+          </div>
+          <div class="token-category" style="margin-top:8px;">theme.json — radius</div>
+          <div class="token-line">
+            <span class="token-name">radius.pill</span>
+            <span class="token-value">9999px</span>
+          </div>
+          <div class="token-line">
+            <span class="token-name">radius.lg</span>
+            <span class="token-value">20px</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         PHILOSOPHY CARDS
+         ═══════════════════════════════════════ -->
+    <section>
+      <div class="section-label">
+        <span class="section-label-text">Prinzipien</span>
+      </div>
+      <div class="philosophy-grid">
+        <div class="philosophy-card">
+          <div class="philosophy-icon">🏰</div>
+          <h3 class="philosophy-title">Nicht nach Kopf nachbauen</h3>
+          <p class="philosophy-text">
+            Statt eine Burg aus dem Gedächtnis zu rekonstruieren, zerlegst du sie in Steine.
+            Atomic Design zwingt jeden Agenten, nur seinen Teil zu sehen.
+          </p>
+        </div>
+        <div class="philosophy-card">
+          <div class="philosophy-icon">🎯</div>
+          <h3 class="philosophy-title">Begrenztes Sichtfeld</h3>
+          <p class="philosophy-text">
+            Jeder Agent fokussiert sich nur auf seinen Task. Kein Agent versucht,
+            die gesamte App zu verstehen — Context bleibt sauber.
+          </p>
+        </div>
+        <div class="philosophy-card">
+          <div class="philosophy-icon">🏗</div>
+          <h3 class="philosophy-title">Zero Trust Architecture</h3>
+          <p class="philosophy-text">
+            Skills werden auf Schadcode geprüft. Agent weigert sich,
+            nicht verifizierten Code auszuführen. Sicherheit by Default.
+          </p>
+        </div>
+        <div class="philosophy-card">
+          <div class="philosophy-icon">⚙</div>
+          <h3 class="philosophy-title">Fabrik, nicht Produkt</h3>
+          <p class="philosophy-text">
+            Du baust das System, das das System baut. Infrastruktur ist das wichtigste —
+            danach laufen alle Komponenten automatisch.
+          </p>
+        </div>
+        <div class="philosophy-card">
+          <div class="philosophy-icon">🔗</div>
+          <h3 class="philosophy-title">Source of Truth</h3>
+          <p class="philosophy-text">
+            <code style="color:var(--primary)">theme.json</code> und <code style="color:var(--primary)">cdd-state.json</code> sind
+            unveränderliche Referenzen. Kein Token wird benutzt, der nicht existiert.
+          </p>
+        </div>
+        <div class="philosophy-card">
+          <div class="philosophy-icon">🤖</div>
+          <h3 class="philosophy-title">Metaskills</h3>
+          <p class="philosophy-text">
+            Das System erweitert sich selbst. Skills generieren neue Skills.
+            Du wirst Architekt — nicht mehr Implementierer.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         QUICK START TERMINAL
+         ═══════════════════════════════════════ -->
+    <section>
+      <div class="section-label">
+        <span class="section-label-text">Quick Start</span>
+      </div>
+      <div class="terminal-section">
+        <div class="terminal-header">
+          <div class="terminal-dots">
+            <div class="terminal-dot terminal-dot--red"></div>
+            <div class="terminal-dot terminal-dot--yellow"></div>
+            <div class="terminal-dot terminal-dot--green"></div>
+          </div>
+          <span class="terminal-title">claude — FORGE Agent Pipeline</span>
+        </div>
+        <div class="terminal-body">
+          <div class="t-comment"># Schritt 1: Design-Tokens aus der Codebase extrahieren</div>
+          <div><span class="t-prompt">→</span> <span class="t-cmd">/discovery</span></div>
+          <div class="t-success">✅ 42 Tokens extrahiert aus 3 Dateien</div>
+          <div class="t-info">   Geschrieben: packages/shared-components/src/theme.json</div>
+          <div class="t-info">   colors(14) · spacing(6) · radius(5) · typography(4)</div>
+          <div class="t-blank"></div>
+          <div class="t-comment"># Schritt 2: CDD Roadmap für das Feature erstellen</div>
+          <div><span class="t-prompt">→</span> <span class="t-cmd">/manager init workout-dashboard</span></div>
+          <div class="t-success">✅ Roadmap erstellt: 5 Atoms · 3 Molecules · 2 Organisms</div>
+          <div class="t-warn">   NÄCHSTE ACTION: /worker Button --target rn</div>
+          <div class="t-blank"></div>
+          <div class="t-comment"># Schritt 3: Erstes Atom bauen (Plan-Validate-Execute)</div>
+          <div><span class="t-prompt">→</span> <span class="t-cmd">/worker Button --target rn</span></div>
+          <div class="t-output">   PLAN: Button (React Native) · 4 Variants · 3 Sizes</div>
+          <div class="t-output">   VALIDATE: ✅ 6 Tokens valid · ✅ CDD gate clear</div>
+          <div class="t-success">   EXECUTE: packages/shared-components/src/atoms/Button.tsx</div>
+          <div class="t-blank"></div>
+          <div class="t-comment"># Schritt 4: Story automatisch generieren</div>
+          <div><span class="t-prompt">→</span> <span class="t-cmd">/storybook-gen Button</span></div>
+          <div class="t-success">✅ 7 Stories generiert: Primary · Ghost · Outline · Small · Large · Loading · Disabled</div>
+          <div class="t-info">   Decorators: RN View wrapper · dark background</div>
+          <div class="t-blank"></div>
+          <div><span class="t-prompt">→</span> <span class="cursor"></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         FOOTER
+         ═══════════════════════════════════════ -->
+    <footer class="footer">
+      <div>
+        <div class="footer-brand">
+          <div class="footer-mini-icon">⚙</div>
+          FORGE — AI Agent Skills
+        </div>
+        <div class="footer-desc" style="margin-top:4px;">
+          Powered by Claude Code · Kinetic Design System · CDD Architecture
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="../workout-web/index.html" class="footer-link">→ KINETIC App</a>
+        <a href="#" class="footer-link">Docs</a>
+        <a href="#" class="footer-link">Skills</a>
+      </div>
+    </footer>
+
+  </div><!-- /page -->
+
+  <script>
+    'use strict';
+
+    // Nav pill interaction
+    document.querySelectorAll('.nav-pill').forEach(pill => {
+      pill.addEventListener('click', () => {
+        document.querySelectorAll('.nav-pill').forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+      });
+    });
+
+    // Pipeline node hover — subtle glow pulse
+    document.querySelectorAll('.pipeline-step').forEach(step => {
+      const node = step.querySelector('.pipeline-node');
+      step.addEventListener('mouseenter', () => {
+        node.style.boxShadow = `0 0 24px ${getComputedStyle(node).color}55`;
+      });
+      step.addEventListener('mouseleave', () => {
+        node.style.boxShadow = '';
+      });
+    });
+
+    // Agent card — track mouse for glow position
+    document.querySelectorAll('.agent-card').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect  = card.getBoundingClientRect();
+        const glow  = card.querySelector('.agent-glow');
+        const x     = e.clientX - rect.left;
+        const y     = e.clientY - rect.top;
+        glow.style.left = (x - 100) + 'px';
+        glow.style.top  = (y - 100) + 'px';
+      });
+    });
+
+    // Token visual — staggered entrance
+    const tokenLines = document.querySelectorAll('.token-line');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          tokenLines.forEach((line, i) => {
+            setTimeout(() => {
+              line.style.opacity = '1';
+              line.style.transform = 'translateX(0)';
+            }, i * 40);
+          });
+          observer.disconnect();
+        }
+      });
+    }, { threshold: 0.3 });
+
+    tokenLines.forEach(line => {
+      line.style.opacity = '0';
+      line.style.transform = 'translateX(-8px)';
+      line.style.transition = 'opacity 200ms ease, transform 200ms ease';
+    });
+
+    const tokenVisual = document.querySelector('.token-visual');
+    if (tokenVisual) observer.observe(tokenVisual);
+
+    // Card entrance animation
+    const cards = document.querySelectorAll('.agent-card, .philosophy-card');
+    const cardObserver = new IntersectionObserver(entries => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }, 60);
+          cardObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    cards.forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(16px)';
+      card.style.transition = 'opacity 400ms ease, transform 400ms ease';
+      cardObserver.observe(card);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kinetic – Overview</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --color-bg: #0D0D0D;
+      --color-surface: #1A1A1A;
+      --color-surface-2: #222222;
+      --color-border: #2a2a2a;
+      --color-primary: #E8FF47;
+      --color-primary-dim: #c8df2a;
+      --color-text: #FFFFFF;
+      --color-text-muted: #888888;
+      --color-accent-blue: #4FA3FF;
+      --color-accent-orange: #FF8C42;
+      --color-accent-green: #4ADE80;
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-full: 9999px;
+      --font: 'Inter', system-ui, sans-serif;
+    }
+    body {
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-family: var(--font);
+      min-height: 100vh;
+      max-width: 480px;
+      margin: 0 auto;
+      padding-bottom: 100px;
+    }
+
+    /* ---- TOP BAR ---- */
+    .topbar {
+      padding: 20px 20px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .user-row { display: flex; align-items: center; gap: 12px; }
+    .avatar {
+      width: 42px; height: 42px;
+      border-radius: var(--radius-full);
+      background: linear-gradient(135deg, var(--color-primary) 0%, #c8df2a 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; font-weight: 700; color: #000;
+    }
+    .greeting { }
+    .greeting-sub { font-size: 12px; color: var(--color-text-muted); }
+    .greeting-name { font-size: 16px; font-weight: 700; }
+    .topbar-actions { display: flex; gap: 8px; }
+    .icon-btn {
+      width: 40px; height: 40px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 18px; text-decoration: none; color: var(--color-text);
+      position: relative;
+    }
+    .badge {
+      position: absolute; top: 6px; right: 6px;
+      width: 8px; height: 8px;
+      background: var(--color-primary);
+      border-radius: var(--radius-full);
+    }
+
+    /* ---- SECTION TITLES ---- */
+    .section-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 28px 20px 14px;
+    }
+    .section-title { font-size: 18px; font-weight: 700; }
+    .section-link { font-size: 13px; color: var(--color-primary); text-decoration: none; }
+
+    /* ---- STATS ROW ---- */
+    .stats-row {
+      display: flex; gap: 12px;
+      padding: 20px 20px 0;
+    }
+    .stat-card {
+      flex: 1;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 16px 14px;
+    }
+    .stat-card .icon { font-size: 20px; margin-bottom: 8px; }
+    .stat-card .value { font-size: 22px; font-weight: 800; }
+    .stat-card .unit { font-size: 12px; font-weight: 600; color: var(--color-text-muted); }
+    .stat-card .label { font-size: 12px; color: var(--color-text-muted); margin-top: 2px; }
+
+    /* ---- STREAK BANNER ---- */
+    .streak-banner {
+      margin: 20px 20px 0;
+      background: linear-gradient(135deg, #1c2a00 0%, #2a3d00 100%);
+      border: 1px solid #3d5900;
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .streak-left { }
+    .streak-label { font-size: 12px; color: #a0c040; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+    .streak-value { font-size: 28px; font-weight: 900; color: var(--color-primary); }
+    .streak-sub { font-size: 12px; color: var(--color-text-muted); }
+    .streak-dots { display: flex; gap: 6px; }
+    .streak-dot {
+      width: 28px; height: 28px;
+      border-radius: var(--radius-full);
+      background: #2a3d00;
+      border: 1px solid #3d5900;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; color: var(--color-text-muted);
+      font-weight: 600;
+    }
+    .streak-dot.done { background: var(--color-primary); border-color: var(--color-primary); color: #000; }
+    .streak-dot.today { border-color: var(--color-primary); color: var(--color-primary); }
+
+    /* ---- TODAY'S WORKOUT ---- */
+    .today-card {
+      margin: 20px 20px 0;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .today-card-header {
+      padding: 20px 20px 16px;
+      border-bottom: 1px solid var(--color-border);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .today-tag {
+      background: var(--color-primary);
+      color: #000;
+      border-radius: var(--radius-full);
+      padding: 4px 10px;
+      font-size: 11px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .today-card-title { font-size: 20px; font-weight: 800; margin-top: 6px; }
+    .today-card-meta { font-size: 13px; color: var(--color-text-muted); margin-top: 4px; }
+    .today-card-body { padding: 16px 20px; }
+
+    .exercise-row {
+      display: flex; align-items: center; gap: 14px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .exercise-row:last-child { border-bottom: none; }
+    .exercise-num {
+      width: 30px; height: 30px;
+      background: var(--color-surface-2);
+      border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700; color: var(--color-text-muted);
+      flex-shrink: 0;
+    }
+    .exercise-num.done {
+      background: var(--color-primary);
+      color: #000;
+    }
+    .exercise-info { flex: 1; }
+    .exercise-name { font-size: 14px; font-weight: 600; }
+    .exercise-detail { font-size: 12px; color: var(--color-text-muted); margin-top: 2px; }
+    .exercise-sets {
+      font-size: 12px; color: var(--color-text-muted);
+      background: var(--color-surface-2);
+      border-radius: var(--radius-sm);
+      padding: 4px 8px;
+    }
+
+    .today-card-footer {
+      padding: 16px 20px;
+      border-top: 1px solid var(--color-border);
+    }
+    .btn-primary {
+      width: 100%;
+      background: var(--color-primary);
+      color: #000;
+      border: none;
+      border-radius: var(--radius-full);
+      padding: 16px;
+      font-size: 15px; font-weight: 700;
+      cursor: pointer; font-family: var(--font);
+      text-align: center; text-decoration: none; display: block;
+      transition: background 0.15s;
+    }
+    .btn-primary:hover { background: var(--color-primary-dim); }
+
+    /* ---- RECENT WORKOUTS ---- */
+    .workout-card {
+      margin: 0 20px;
+      margin-bottom: 12px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      text-decoration: none;
+      color: var(--color-text);
+    }
+    .workout-card:hover { border-color: #444; }
+    .workout-icon {
+      width: 48px; height: 48px;
+      border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+    .workout-info { flex: 1; }
+    .workout-name { font-size: 15px; font-weight: 700; }
+    .workout-meta { font-size: 12px; color: var(--color-text-muted); margin-top: 3px; }
+    .workout-tags { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
+    .tag {
+      background: var(--color-surface-2);
+      border-radius: var(--radius-full);
+      padding: 3px 8px;
+      font-size: 11px; font-weight: 600;
+      color: var(--color-text-muted);
+    }
+    .tag.primary { color: var(--color-primary); background: #1e2500; }
+    .workout-vol { text-align: right; }
+    .workout-vol .value { font-size: 15px; font-weight: 700; }
+    .workout-vol .unit { font-size: 11px; color: var(--color-text-muted); }
+
+    /* ---- WEEKLY CHART ---- */
+    .chart-card {
+      margin: 0 20px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 20px;
+    }
+    .chart-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .chart-title { font-size: 15px; font-weight: 700; }
+    .chart-toggle { display: flex; gap: 4px; }
+    .toggle-btn {
+      background: none; border: none;
+      padding: 4px 10px;
+      font-size: 12px; font-weight: 600; color: var(--color-text-muted);
+      cursor: pointer; border-radius: var(--radius-full);
+      font-family: var(--font);
+    }
+    .toggle-btn.active { background: var(--color-surface-2); color: var(--color-text); }
+    .chart-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+      height: 80px;
+    }
+    .chart-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+    .bar-wrap { width: 100%; flex: 1; display: flex; align-items: flex-end; }
+    .bar {
+      width: 100%;
+      border-radius: 4px 4px 0 0;
+      background: var(--color-surface-2);
+    }
+    .bar.primary { background: var(--color-primary); }
+    .bar.active { background: var(--color-primary); }
+    .bar-label { font-size: 10px; color: var(--color-text-muted); font-weight: 500; }
+
+    /* ---- BOTTOM NAV ---- */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 100%; max-width: 480px;
+      background: var(--color-surface);
+      border-top: 1px solid var(--color-border);
+      display: flex;
+      padding: 10px 0 20px;
+    }
+    .nav-item {
+      flex: 1;
+      display: flex; flex-direction: column; align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      color: var(--color-text-muted);
+    }
+    .nav-item.active { color: var(--color-primary); }
+    .nav-item .nav-icon { font-size: 20px; }
+    .nav-item .nav-label { font-size: 10px; font-weight: 600; }
+
+    /* FAB */
+    .fab {
+      position: fixed;
+      bottom: 72px;
+      left: 50%; transform: translateX(-50%);
+      margin-left: 120px;
+      width: 56px; height: 56px;
+      background: var(--color-primary);
+      border-radius: var(--radius-full);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 28px; color: #000;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(232,255,71,0.3);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="user-row">
+      <div class="avatar">M</div>
+      <div class="greeting">
+        <div class="greeting-sub">Good morning,</div>
+        <div class="greeting-name">Max Mustermann</div>
+      </div>
+    </div>
+    <div class="topbar-actions">
+      <a href="#" class="icon-btn">
+        &#128276;
+        <span class="badge"></span>
+      </a>
+      <a href="#" class="icon-btn">&#9881;</a>
+    </div>
+  </div>
+
+  <!-- STATS ROW -->
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="icon">&#128293;</div>
+      <div class="value">12 <span class="unit">days</span></div>
+      <div class="label">Current Streak</div>
+    </div>
+    <div class="stat-card">
+      <div class="icon">&#127947;</div>
+      <div class="value">48 <span class="unit">sessions</span></div>
+      <div class="label">This Month</div>
+    </div>
+    <div class="stat-card">
+      <div class="icon">&#9889;</div>
+      <div class="value">2.4 <span class="unit">t</span></div>
+      <div class="label">Volume Lifted</div>
+    </div>
+  </div>
+
+  <!-- STREAK BANNER -->
+  <div class="streak-banner">
+    <div class="streak-left">
+      <div class="streak-label">&#128293; Weekly Streak</div>
+      <div class="streak-value">12</div>
+      <div class="streak-sub">days in a row &mdash; keep it up!</div>
+    </div>
+    <div class="streak-dots">
+      <div class="streak-dot done">M</div>
+      <div class="streak-dot done">T</div>
+      <div class="streak-dot done">W</div>
+      <div class="streak-dot today">T</div>
+      <div class="streak-dot">F</div>
+      <div class="streak-dot">S</div>
+      <div class="streak-dot">S</div>
+    </div>
+  </div>
+
+  <!-- TODAY'S WORKOUT -->
+  <div class="section-header">
+    <span class="section-title">Today's Workout</span>
+    <a href="#" class="section-link">View plan</a>
+  </div>
+
+  <div class="today-card">
+    <div class="today-card-header">
+      <div>
+        <span class="today-tag">Upper Body</span>
+        <div class="today-card-title">Push Day A</div>
+        <div class="today-card-meta">5 exercises &bull; ~55 min &bull; Intermediate</div>
+      </div>
+    </div>
+    <div class="today-card-body">
+      <div class="exercise-row">
+        <div class="exercise-num done">&#10003;</div>
+        <div class="exercise-info">
+          <div class="exercise-name">Bench Press</div>
+          <div class="exercise-detail">Last: 80 kg &times; 8 &bull; PR: 92.5 kg</div>
+        </div>
+        <div class="exercise-sets">4 &times; 8</div>
+      </div>
+      <div class="exercise-row">
+        <div class="exercise-num done">&#10003;</div>
+        <div class="exercise-info">
+          <div class="exercise-name">Overhead Press</div>
+          <div class="exercise-detail">Last: 55 kg &times; 6</div>
+        </div>
+        <div class="exercise-sets">3 &times; 6</div>
+      </div>
+      <div class="exercise-row">
+        <div class="exercise-num">3</div>
+        <div class="exercise-info">
+          <div class="exercise-name">Incline Dumbbell Press</div>
+          <div class="exercise-detail">Last: 24 kg &times; 10</div>
+        </div>
+        <div class="exercise-sets">3 &times; 10</div>
+      </div>
+      <div class="exercise-row">
+        <div class="exercise-num">4</div>
+        <div class="exercise-info">
+          <div class="exercise-name">Tricep Rope Pushdown</div>
+          <div class="exercise-detail">Last: 22.5 kg &times; 12</div>
+        </div>
+        <div class="exercise-sets">3 &times; 12</div>
+      </div>
+      <div class="exercise-row">
+        <div class="exercise-num">5</div>
+        <div class="exercise-info">
+          <div class="exercise-name">Lateral Raises</div>
+          <div class="exercise-detail">Last: 10 kg &times; 15</div>
+        </div>
+        <div class="exercise-sets">4 &times; 15</div>
+      </div>
+    </div>
+    <div class="today-card-footer">
+      <a href="#" class="btn-primary">Continue Workout</a>
+    </div>
+  </div>
+
+  <!-- WEEKLY VOLUME CHART -->
+  <div class="section-header">
+    <span class="section-title">Weekly Volume</span>
+    <div class="chart-toggle">
+      <button class="toggle-btn active">W</button>
+      <button class="toggle-btn">M</button>
+      <button class="toggle-btn">Y</button>
+    </div>
+  </div>
+
+  <div class="chart-card">
+    <div class="chart-bars">
+      <div class="chart-col">
+        <div class="bar-wrap"><div class="bar primary" style="height:65%"></div></div>
+        <span class="bar-label">Mo</span>
+      </div>
+      <div class="chart-col">
+        <div class="bar-wrap"><div class="bar primary" style="height:80%"></div></div>
+        <span class="bar-label">Tu</span>
+      </div>
+      <div class="chart-col">
+        <div class="bar-wrap"><div class="bar primary" style="height:50%"></div></div>
+        <span class="bar-label">We</span>
+      </div>
+      <div class="chart-col">
+        <div class="bar-wrap"><div class="bar active" style="height:90%"></div></div>
+        <span class="bar-label">Th</span>
+      </div>
+      <div class="chart-col">
+        <div class="bar-wrap"><div class="bar" style="height:30%"></div></div>
+        <span class="bar-label">Fr</span>
+      </div>
+      <div class="chart-col">
+        <div class="bar-wrap"><div class="bar" style="height:10%"></div></div>
+        <span class="bar-label">Sa</span>
+      </div>
+      <div class="chart-col">
+        <div class="bar-wrap"><div class="bar" style="height:5%"></div></div>
+        <span class="bar-label">Su</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECENT WORKOUTS -->
+  <div class="section-header">
+    <span class="section-title">Recent Workouts</span>
+    <a href="#" class="section-link">See all</a>
+  </div>
+
+  <a href="#" class="workout-card">
+    <div class="workout-icon" style="background:#1a2800">&#128170;</div>
+    <div class="workout-info">
+      <div class="workout-name">Pull Day B</div>
+      <div class="workout-meta">Yesterday &bull; 61 min</div>
+      <div class="workout-tags">
+        <span class="tag primary">Back</span>
+        <span class="tag">Biceps</span>
+        <span class="tag">Rear Delt</span>
+      </div>
+    </div>
+    <div class="workout-vol">
+      <div class="value">4.2t</div>
+      <div class="unit">volume</div>
+    </div>
+  </a>
+
+  <a href="#" class="workout-card">
+    <div class="workout-icon" style="background:#001a2a">&#127939;</div>
+    <div class="workout-info">
+      <div class="workout-name">Leg Day</div>
+      <div class="workout-meta">2 days ago &bull; 72 min</div>
+      <div class="workout-tags">
+        <span class="tag primary">Quads</span>
+        <span class="tag">Hamstrings</span>
+        <span class="tag">Calves</span>
+      </div>
+    </div>
+    <div class="workout-vol">
+      <div class="value">6.8t</div>
+      <div class="unit">volume</div>
+    </div>
+  </a>
+
+  <a href="#" class="workout-card">
+    <div class="workout-icon" style="background:#1a1a00">&#9889;</div>
+    <div class="workout-info">
+      <div class="workout-name">Push Day A</div>
+      <div class="workout-meta">3 days ago &bull; 58 min</div>
+      <div class="workout-tags">
+        <span class="tag primary">Chest</span>
+        <span class="tag">Shoulders</span>
+        <span class="tag">Triceps</span>
+      </div>
+    </div>
+    <div class="workout-vol">
+      <div class="value">3.9t</div>
+      <div class="unit">volume</div>
+    </div>
+  </a>
+
+  <!-- BOTTOM NAV -->
+  <nav class="bottom-nav">
+    <a href="#" class="nav-item active">
+      <span class="nav-icon">&#127968;</span>
+      <span class="nav-label">Home</span>
+    </a>
+    <a href="#" class="nav-item">
+      <span class="nav-icon">&#128200;</span>
+      <span class="nav-label">Progress</span>
+    </a>
+    <a href="#" class="nav-item">
+      <span class="nav-icon">&#128203;</span>
+      <span class="nav-label">Plans</span>
+    </a>
+    <a href="#" class="nav-item">
+      <span class="nav-icon">&#128100;</span>
+      <span class="nav-label">Profile</span>
+    </a>
+  </nav>
+
+  <!-- FAB -->
+  <a href="#" class="fab">+</a>
+
+</body>
+</html>

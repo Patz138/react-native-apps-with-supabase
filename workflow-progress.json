@@ -1,0 +1,5028 @@
+{
+  "meta": {
+    "input": "C:\\Users\\Lenovo\\Desktop\\IRGENDEINE APP BRO\\react-native-apps-with-supabase\\docs\\ui\\prototypes\\workout-tracker",
+    "files_processed": 4,
+    "total_elements": 286,
+    "canonical_elements": 207,
+    "duplicate_elements": 79,
+    "parameterized_elements": 83,
+    "file_hashes": {
+      "auth/landing.html": "2281664dff218ce8c6ea6bbfa0addaa8627f13f5245ae725e9a389ec2d3d096f",
+      "auth/login.html": "9877d8bc17d80ecaf2532c5b6642157edc97fa882edd564802eeb41e590a9f0e",
+      "auth/registration.html": "f91b2f0288602665daa7780656ee3fe2537d33ecde55266b037dc41ca7f0281c",
+      "overview/overview.html": "98e9f14e811ba63c628abdad25b30cc37ed68da82ec9a51058d15b1c24ed05b6"
+    }
+  },
+  "elements": [
+    {
+      "cdd_id": "org-appheader-01",
+      "tag": "header",
+      "classes": [
+        "header"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "auth/landing.html",
+      "hash": "812eabc3",
+      "level": "organism",
+      "component_name": "AppHeader",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-logoicon-01",
+      "tag": "div",
+      "classes": [
+        "logo-icon"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "auth/landing.html",
+      "hash": "8c863d67",
+      "level": "molecule",
+      "component_name": "LogoIcon",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "atm-icon-01",
+      "tag": "svg",
+      "classes": [],
+      "text": "",
+      "attrs": {
+        "viewbox": "0 0 24 24",
+        "fill": "none",
+        "stroke": "#000",
+        "stroke-width": "2.5",
+        "stroke-linecap": "round"
+      },
+      "source": "auth/landing.html",
+      "hash": "35cfc7c2",
+      "level": "atom",
+      "component_name": "Icon",
+      "rn_component": "Svg",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "atm-logotext-01",
+      "tag": "span",
+      "classes": [
+        "logo-text"
+      ],
+      "text": "Kinetic",
+      "attrs": {},
+      "source": "auth/landing.html",
+      "hash": "d3991b77",
+      "level": "atom",
+      "component_name": "LogoText",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "org-herosection-01",
+      "tag": "section",
+      "classes": [
+        "hero"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "auth/landing.html",
+      "hash": "39e46b06",
+      "level": "organism",
+      "component_name": "HeroSection",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-herobadge-01",
+      "tag": "div",
+      "classes": [
+        "hero-badge"
+      ],
+      "text": "Free to start · No credit card",
+      "attrs": {},
+      "source": "auth/landing.html",
+      "hash": "b1b79f1c",
+      "level": "molecule",
+      "component_name": "HeroBadge",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-heroillustration-01",
+      "tag": "div",
+      "classes": [
+        "hero-illustration"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "auth/landing.html",
+      "hash": "b0868dff",
+      "level": "molecule",
+      "component_name": "HeroIllustration",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "atm-icon-02",
+      "tag": "svg",
+      "classes": [],
+      "text": "",
+      "attrs": {
+        "viewbox": "0 0 96 96",
+        "fill": "none",
+        "xmlns": "http://www.w3.org/2000/svg"
+      },
+      "source": "auth/landing.html",
+      "hash": "35cfc7c2",
+      "level": "atom",
+      "component_name": "Icon",
+      "rn_component": "Svg",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "atm-icon-01"
+    },
+    {
+      "cdd_id": "atm-herotitle-01",
+      "tag": "h1",
+      "classes": [
+        "hero-title"
+      ],
+      "text": "Train smarter,",
+      "attrs": {},
+      "source": "auth/landing.html",
+      "hash": "d571f2c6",
+      "level": "atom",
+      "component_name": "HeroTitle",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "atm-text-01",
+      "tag": "span",
+      "classes": [],
+      "text": "not harder.",
+      "attrs": {},
+      "source": "auth/landing.html",
+      "hash": "eb0c8293",
+      "level": "atom",
+      "component_name": "Text",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "atm-herodesc-01",
+      "tag": "p",
+      "classes": [
+        "hero-desc"
+      ],
+      "text": "Track every rep, every set, every PR. Kinetic gives athletes the data-driven edge to level up consistently.",
+      "attrs": {},
+      "source": "auth/landing.html",
+      "hash": "6be52570",
+      "level": "atom",
+      "component_name": "HeroDesc",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "org-view-01",
+      "tag": "div",
+      "classes": [
+        "features"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "auth/landing.html",
+      "hash": "46b49d99",
+      "level": "organism",
+      "component_name": "View",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-featurechip-01",
+      "tag": "div",
+      "classes": [
+        "feature-chip"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "auth/landing.html",
+      "hash": "9f012c5a",
+      "level": "molecule",
+      "component_name": "FeatureChip",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "atm-text-02",
+      "tag": "span",
+      "classes": [
+        "icon"
+      ],
+      "text": "💪",
+      "attrs": {},
+      "source": "auth/landing.html",
+      "hash": "c65eb025",
+      "level": "atom",
+      "component_name": "Text",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "atm-text-03",
+      "tag": "span",
+      "classes": [
+        "label"
+      ],
+      "text": "Strength Tracking",
+      "attrs": {},
+      "source": "auth/landing.html",
+      "hash": "20a0aee4",
+      "level": "atom",
+      "component_name": "Text",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-featurechip-02",
+      "tag": "div",
+      "classes": [
+        "feature-chip"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "auth/landing.html",
+      "hash": "9f012c5a",
+      "level": "molecule",
+      "component_name": "FeatureChip",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-featurechip-01"
+    },
+    {
+      "cdd_id": "atm-text-04",
+      "tag": "span",
+      "classes": [
+        "icon"
+      ],
+      "text": "📈",
+      "attrs": {},
+      "source": "auth/landing.html",
+      "hash": "a97d5d1d",
+      "level": "atom",
+      "component_name": "Text",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "atm-text-02"
+    },
+    {
+      "cdd_id": "atm-text-05",
+      "tag": "span",
+      "classes": [
+        "label"
+      ],
+      "text": "Progress Charts",
+      "attrs": {},
+      "source": "auth/landing.html",
+      "hash": "b2438d47",
+      "level": "atom",
+      "component_name": "Text",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "atm-text-03"
+    },
+    {
+      "cdd_id": "mol-featurechip-03",
+      "tag": "div",
+      "classes": [
+        "feature-chip"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "auth/landing.html",
+      "hash": "9f012c5a",
+      "level": "molecule",
+      "component_name": "FeatureChip",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-featurechip-01"
+    },
+    {
+      "cdd_id": "atm-text-06",
+      "tag": "span",
+      "classes": [
+        "icon"
+      ],
+      "text": "🎯",
+      "attrs": {},
+      "source": "auth/landing.html",
+      "hash": "bfa82b9e",
+      "level": "atom",
+      "component_name": "Text",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "atm-text-02"
+    },
+    {
+      "cdd_id": "atm-text-07",
+      "tag": "span",
+      "classes": [
+        "label"
+      ],
+      "text": "Custom Plans",
+      "attrs": {},
+      "source": "auth/landing.html",
+      "hash": "798d8598",
+      "level": "atom",
+      "component_name": "Text",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "atm-text-03"
+    },
+    {
+      "cdd_id": "org-ctagroup-01",
+      "tag": "div",
+      "classes": [
+        "cta-group"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "auth/landing.html",
+      "hash": "b127f819",
+      "level": "organism",
+      "component_name": "CTAGroup",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "atm-primarybutton-01",
+      "tag": "a",
+      "classes": [
+        "btn-primary"
+      ],
+      "text": "Create Free Account",
+      "attrs": {
+        "href": "registration.html"
+      },
+      "source": "auth/landing.html",
+      "hash": "220ec2b3",
+      "level": "atom",
+      "component_name": "PrimaryButton",
+      "rn_component": "TouchableOpacity",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "atm-secondarybutton-01",
+      "tag": "a",
+      "classes": [
+        "btn-secondary"
+      ],
+      "text": "I already have an account",
+      "attrs": {
+        "href": "login.html"
+      },
+      "source": "auth/landing.html",
+      "hash": "2aee552f",
+      "level": "atom",
+      "component_name": "SecondaryButton",
+      "rn_component": "TouchableOpacity",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "atm-paragraph-01",
+      "tag": "p",
+      "classes": [
+        "terms"
+      ],
+      "text": "By continuing you agree to our &",
+      "attrs": {},
+      "source": "auth/landing.html",
+      "hash": "a10a1090",
+      "level": "atom",
+      "component_name": "Paragraph",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "atm-link-01",
+      "tag": "a",
+      "classes": [],
+      "text": "Terms",
+      "attrs": {
+        "href": "#"
+      },
+      "source": "auth/landing.html",
+      "hash": "782b6a61",
+      "level": "atom",
+      "component_name": "Link",
+      "rn_component": "TouchableOpacity",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "atm-link-02",
+      "tag": "a",
+      "classes": [],
+      "text": "Privacy Policy",
+      "attrs": {
+        "href": "#"
+      },
+      "source": "auth/landing.html",
+      "hash": "88ab817c",
+      "level": "atom",
+      "component_name": "Link",
+      "rn_component": "TouchableOpacity",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "atm-link-01"
+    },
+    {
+      "cdd_id": "org-navbar-01",
+      "tag": "nav",
+      "classes": [
+        "nav"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "auth/login.html",
+      "hash": "cf043f95",
+      "level": "organism",
+      "component_name": "NavBar",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "atm-backbutton-01",
+      "tag": "a",
+      "classes": [
+        "btn-back"
+      ],
+      "text": "←",
+      "attrs": {
+        "href": "landing.html"
+      },
+      "source": "auth/login.html",
+      "hash": "ca40301d",
+      "level": "atom",
+      "component_name": "BackButton",
+      "rn_component": "TouchableOpacity",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "atm-text-08",
+      "tag": "span",
+      "classes": [
+        "nav-title"
+      ],
+      "text": "Sign In",
+      "attrs": {},
+      "source": "auth/login.html",
+      "hash": "0fd6b045",
+      "level": "atom",
+      "component_name": "Text",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "org-authform-01",
+      "tag": "div",
+      "classes": [
+        "form-container"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "auth/login.html",
+      "hash": "fb7f2bb8",
+      "level": "organism",
+      "component_name": "AuthForm",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-logorow-01",
+      "tag": "div",
+      "classes": [
+        "logo-row"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "auth/login.html",
+      "hash": "d2a42031",
+      "level": "molecule",
+      "component_name": "LogoRow",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-logoicon-02",
+      "tag": "div",
+      "classes": [
+        "logo-icon"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "auth/login.html",
+      "hash": "8c863d67",
+      "level": "molecule",
+      "component_name": "LogoIcon",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-logoicon-01"
+    },
+    {
+      "cdd_id": "atm-icon-03",
+      "tag": "svg",
+      "classes": [],
+      "text": "",
+      "attrs": {
+        "viewbox": "0 0 24 24",
+        "fill": "none",
+        "stroke": "#000",
+        "stroke-width": "2.5",
+        "stroke-linecap": "round"
+      },
+      "source": "auth/login.html",
+      "hash": "35cfc7c2",
+      "level": "atom",
+      "component_name": "Icon",
+      "rn_component": "Svg",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "atm-icon-01"
+    },
+    {
+      "cdd_id": "atm-logotext-02",
+      "tag": "span",
+      "classes": [
+        "logo-text"
+      ],
+      "text": "Kinetic",
+      "attrs": {},
+      "source": "auth/login.html",
+      "hash": "d3991b77",
+      "level": "atom",
+      "component_name": "LogoText",
+      "rn_component": "Text",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "atm-logotext-01"
+    },
+    {
+      "cdd_id": "atm-formtitle-01",
+      "tag": "h1",
+      "classes": [
+        "form-title"
+      ],
+      "text": "Welcome back",
+      "attrs": {},
+      "source": "auth/login.html",
+      "hash": "c95f617c",
+      "level": "atom",
+      "component_name": "FormTitle",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "atm-formsubtitle-01",
+      "tag": "p",
+      "classes": [
+        "form-subtitle"
+      ],
+      "text": "Sign in to continue your training journey.",
+      "attrs": {},
+      "source": "auth/login.html",
+      "hash": "3cc9e260",
+      "level": "atom",
+      "component_name": "FormSubtitle",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-errorbanner-01",
+      "tag": "div",
+      "classes": [
+        "error-banner"
+      ],
+      "text": "",
+      "attrs": {
+        "style": "display:none;"
+      },
+      "source": "auth/login.html",
+      "hash": "eb6db915",
+      "level": "molecule",
+      "component_name": "ErrorBanner",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "atm-text-09",
+      "tag": "span",
+      "classes": [
+        "error-banner-icon"
+      ],
+      "text": "⚠",
+      "attrs": {},
+      "source": "auth/login.html",
+      "hash": "d57bab1e",
+      "level": "atom",
+      "component_name": "Text",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "atm-text-10",
+      "tag": "span",
+      "classes": [],
+      "text": "Invalid email or password. Please try again.",
+      "attrs": {},
+      "source": "auth/login.html",
+      "hash": "bc1bf96e",
+      "level": "atom",
+      "component_name": "Text",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "atm-text-01"
+    },
+    {
+      "cdd_id": "mol-formfield-01",
+      "tag": "div",
+      "classes": [
+        "field"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "auth/login.html",
+      "hash": "56d9c188",
+      "level": "molecule",
+      "component_name": "FormField",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "atm-fieldlabel-01",
+      "tag": "label",
+      "classes": [
+        "field-label"
+      ],
+      "text": "Email Address",
+      "attrs": {
+        "for": "email"
+      },
+      "source": "auth/login.html",
+      "hash": "86b9bb4b",
+      "level": "atom",
+      "component_name": "FieldLabel",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "atm-textinput-01",
+      "tag": "input",
+      "classes": [
+        "field-input"
+      ],
+      "text": "",
+      "attrs": {
+        "type": "email",
+        "placeholder": "max@example.com",
+        "value": "max@example.com"
+      },
+      "source": "auth/login.html",
+      "hash": "52aaa8de",
+      "level": "atom",
+      "component_name": "TextInput",
+      "rn_component": "TextInput",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-formfield-02",
+      "tag": "div",
+      "classes": [
+        "field"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "auth/login.html",
+      "hash": "56d9c188",
+      "level": "molecule",
+      "component_name": "FormField",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-formfield-01"
+    },
+    {
+      "cdd_id": "atm-fieldlabel-02",
+      "tag": "label",
+      "classes": [
+        "field-label"
+      ],
+      "text": "Password",
+      "attrs": {
+        "for": "password"
+      },
+      "source": "auth/login.html",
+      "hash": "06215864",
+      "level": "atom",
+      "component_name": "FieldLabel",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "atm-fieldlabel-01"
+    },
+    {
+      "cdd_id": "mol-passwordfield-01",
+      "tag": "div",
+      "classes": [
+        "password-wrapper"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "auth/login.html",
+      "hash": "e2ba0705",
+      "level": "molecule",
+      "component_name": "PasswordField",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "atm-textinput-02",
+      "tag": "input",
+      "classes": [
+        "field-input"
+      ],
+      "text": "",
+      "attrs": {
+        "type": "password",
+        "placeholder": "Your password"
+      },
+      "source": "auth/login.html",
+      "hash": "52aaa8de",
+      "level": "atom",
+      "component_name": "TextInput",
+      "rn_component": "TextInput",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "atm-textinput-01"
+    },
+    {
+      "cdd_id": "atm-passwordtoggle-01",
+      "tag": "button",
+      "classes": [
+        "show-hide"
+      ],
+      "text": "Show",
+      "attrs": {
+        "type": "button"
+      },
+      "source": "auth/login.html",
+      "hash": "99bd3d9e",
+      "level": "atom",
+      "component_name": "PasswordToggle",
+      "rn_component": "TouchableOpacity",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-view-01",
+      "tag": "div",
+      "classes": [
+        "forgot-row"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "auth/login.html",
+      "hash": "246615f7",
+      "level": "molecule",
+      "component_name": "View",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "atm-forgotlink-01",
+      "tag": "a",
+      "classes": [
+        "forgot-link"
+      ],
+      "text": "Forgot password?",
+      "attrs": {
+        "href": "#"
+      },
+      "source": "auth/login.html",
+      "hash": "3404da7f",
+      "level": "atom",
+      "component_name": "ForgotLink",
+      "rn_component": "TouchableOpacity",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-remembermerow-01",
+      "tag": "div",
+      "classes": [
+        "remember-row"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "auth/login.html",
+      "hash": "5eea895d",
+      "level": "molecule",
+      "component_name": "RememberMeRow",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-checkbox-01",
+      "tag": "div",
+      "classes": [
+        "checkbox",
+        "checked"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "auth/login.html",
+      "hash": "ccc9c200",
+      "level": "molecule",
+      "component_name": "Checkbox",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "atm-rememberlabel-01",
+      "tag": "span",
+      "classes": [
+        "remember-label"
+      ],
+      "text": "Remember me for 30 days",
+      "attrs": {},
+      "source": "auth/login.html",
+      "hash": "46043e2f",
+      "level": "atom",
+      "component_name": "RememberLabel",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "atm-primarybutton-02",
+      "tag": "a",
+      "classes": [
+        "btn-primary"
+      ],
+      "text": "Sign In",
+      "attrs": {
+        "href": "../overview/overview.html"
+      },
+      "source": "auth/login.html",
+      "hash": "de427be3",
+      "level": "atom",
+      "component_name": "PrimaryButton",
+      "rn_component": "TouchableOpacity",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "atm-primarybutton-01"
+    },
+    {
+      "cdd_id": "mol-divider-01",
+      "tag": "div",
+      "classes": [
+        "divider"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "auth/login.html",
+      "hash": "0c6a5f7d",
+      "level": "molecule",
+      "component_name": "Divider",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-dividerline-01",
+      "tag": "div",
+      "classes": [
+        "divider-line"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "auth/login.html",
+      "hash": "34c0e0d4",
+      "level": "molecule",
+      "component_name": "DividerLine",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "atm-dividertext-01",
+      "tag": "span",
+      "classes": [
+        "divider-text"
+      ],
+      "text": "or continue with",
+      "attrs": {},
+      "source": "auth/login.html",
+      "hash": "e36cabf7",
+      "level": "atom",
+      "component_name": "DividerText",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-dividerline-02",
+      "tag": "div",
+      "classes": [
+        "divider-line"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "auth/login.html",
+      "hash": "34c0e0d4",
+      "level": "molecule",
+      "component_name": "DividerLine",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-dividerline-01"
+    },
+    {
+      "cdd_id": "atm-socialbutton-01",
+      "tag": "a",
+      "classes": [
+        "btn-social"
+      ],
+      "text": "Continue with Google",
+      "attrs": {
+        "href": "#"
+      },
+      "source": "auth/login.html",
+      "hash": "c61cb081",
+      "level": "atom",
+      "component_name": "SocialButton",
+      "rn_component": "TouchableOpacity",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "atm-icon-04",
+      "tag": "svg",
+      "classes": [],
+      "text": "",
+      "attrs": {
+        "width": "18",
+        "height": "18",
+        "viewbox": "0 0 18 18",
+        "fill": "none"
+      },
+      "source": "auth/login.html",
+      "hash": "35cfc7c2",
+      "level": "atom",
+      "component_name": "Icon",
+      "rn_component": "Svg",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "atm-icon-01"
+    },
+    {
+      "cdd_id": "atm-socialbutton-02",
+      "tag": "a",
+      "classes": [
+        "btn-social"
+      ],
+      "text": "Continue with GitHub",
+      "attrs": {
+        "href": "#"
+      },
+      "source": "auth/login.html",
+      "hash": "f602ec60",
+      "level": "atom",
+      "component_name": "SocialButton",
+      "rn_component": "TouchableOpacity",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "atm-socialbutton-01"
+    },
+    {
+      "cdd_id": "atm-icon-05",
+      "tag": "svg",
+      "classes": [],
+      "text": "",
+      "attrs": {
+        "width": "18",
+        "height": "18",
+        "viewbox": "0 0 18 18",
+        "fill": "none"
+      },
+      "source": "auth/login.html",
+      "hash": "35cfc7c2",
+      "level": "atom",
+      "component_name": "Icon",
+      "rn_component": "Svg",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "atm-icon-01"
+    },
+    {
+      "cdd_id": "atm-authhint-01",
+      "tag": "p",
+      "classes": [
+        "register-hint"
+      ],
+      "text": "Don't have an account?",
+      "attrs": {},
+      "source": "auth/login.html",
+      "hash": "c91e566a",
+      "level": "atom",
+      "component_name": "AuthHint",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "atm-link-03",
+      "tag": "a",
+      "classes": [],
+      "text": "Create one",
+      "attrs": {
+        "href": "registration.html"
+      },
+      "source": "auth/login.html",
+      "hash": "b64f1cfa",
+      "level": "atom",
+      "component_name": "Link",
+      "rn_component": "TouchableOpacity",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "atm-link-01"
+    },
+    {
+      "cdd_id": "org-navbar-02",
+      "tag": "nav",
+      "classes": [
+        "nav"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "auth/registration.html",
+      "hash": "cf043f95",
+      "level": "organism",
+      "component_name": "NavBar",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "org-navbar-01"
+    },
+    {
+      "cdd_id": "atm-backbutton-02",
+      "tag": "a",
+      "classes": [
+        "btn-back"
+      ],
+      "text": "←",
+      "attrs": {
+        "href": "landing.html"
+      },
+      "source": "auth/registration.html",
+      "hash": "ca40301d",
+      "level": "atom",
+      "component_name": "BackButton",
+      "rn_component": "TouchableOpacity",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "atm-backbutton-01"
+    },
+    {
+      "cdd_id": "atm-text-11",
+      "tag": "span",
+      "classes": [
+        "nav-title"
+      ],
+      "text": "Create Account",
+      "attrs": {},
+      "source": "auth/registration.html",
+      "hash": "c5cd317e",
+      "level": "atom",
+      "component_name": "Text",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "atm-text-08"
+    },
+    {
+      "cdd_id": "mol-progressbar-01",
+      "tag": "div",
+      "classes": [
+        "progress-bar"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "auth/registration.html",
+      "hash": "2771bafe",
+      "level": "molecule",
+      "component_name": "ProgressBar",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-view-02",
+      "tag": "div",
+      "classes": [
+        "progress-track"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "auth/registration.html",
+      "hash": "18baa5e0",
+      "level": "molecule",
+      "component_name": "View",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-progressfill-01",
+      "tag": "div",
+      "classes": [
+        "progress-fill"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "auth/registration.html",
+      "hash": "518484e5",
+      "level": "molecule",
+      "component_name": "ProgressFill",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "atm-text-12",
+      "tag": "span",
+      "classes": [
+        "progress-label"
+      ],
+      "text": "Step 1 of 3 — Account details",
+      "attrs": {},
+      "source": "auth/registration.html",
+      "hash": "4e4be274",
+      "level": "atom",
+      "component_name": "Text",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "org-authform-02",
+      "tag": "div",
+      "classes": [
+        "form-container"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "auth/registration.html",
+      "hash": "fb7f2bb8",
+      "level": "organism",
+      "component_name": "AuthForm",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "org-authform-01"
+    },
+    {
+      "cdd_id": "atm-formtitle-02",
+      "tag": "h1",
+      "classes": [
+        "form-title"
+      ],
+      "text": "Join Kinetic",
+      "attrs": {},
+      "source": "auth/registration.html",
+      "hash": "cfd6f685",
+      "level": "atom",
+      "component_name": "FormTitle",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "atm-formtitle-01"
+    },
+    {
+      "cdd_id": "atm-formsubtitle-02",
+      "tag": "p",
+      "classes": [
+        "form-subtitle"
+      ],
+      "text": "Start tracking your workouts today — it's free.",
+      "attrs": {},
+      "source": "auth/registration.html",
+      "hash": "c66e46a0",
+      "level": "atom",
+      "component_name": "FormSubtitle",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "atm-formsubtitle-01"
+    },
+    {
+      "cdd_id": "mol-view-03",
+      "tag": "div",
+      "classes": [
+        "field-row"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "auth/registration.html",
+      "hash": "8c34de1c",
+      "level": "molecule",
+      "component_name": "View",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-formfield-03",
+      "tag": "div",
+      "classes": [
+        "field"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "auth/registration.html",
+      "hash": "56d9c188",
+      "level": "molecule",
+      "component_name": "FormField",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-formfield-01"
+    },
+    {
+      "cdd_id": "atm-fieldlabel-03",
+      "tag": "label",
+      "classes": [
+        "field-label"
+      ],
+      "text": "First Name",
+      "attrs": {
+        "for": "first-name"
+      },
+      "source": "auth/registration.html",
+      "hash": "e486efe0",
+      "level": "atom",
+      "component_name": "FieldLabel",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "atm-fieldlabel-01"
+    },
+    {
+      "cdd_id": "atm-textinput-03",
+      "tag": "input",
+      "classes": [
+        "field-input"
+      ],
+      "text": "",
+      "attrs": {
+        "type": "text",
+        "placeholder": "Max"
+      },
+      "source": "auth/registration.html",
+      "hash": "52aaa8de",
+      "level": "atom",
+      "component_name": "TextInput",
+      "rn_component": "TextInput",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "atm-textinput-01"
+    },
+    {
+      "cdd_id": "mol-formfield-04",
+      "tag": "div",
+      "classes": [
+        "field"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "auth/registration.html",
+      "hash": "56d9c188",
+      "level": "molecule",
+      "component_name": "FormField",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-formfield-01"
+    },
+    {
+      "cdd_id": "atm-fieldlabel-04",
+      "tag": "label",
+      "classes": [
+        "field-label"
+      ],
+      "text": "Last Name",
+      "attrs": {
+        "for": "last-name"
+      },
+      "source": "auth/registration.html",
+      "hash": "9051c036",
+      "level": "atom",
+      "component_name": "FieldLabel",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "atm-fieldlabel-01"
+    },
+    {
+      "cdd_id": "atm-textinput-04",
+      "tag": "input",
+      "classes": [
+        "field-input"
+      ],
+      "text": "",
+      "attrs": {
+        "type": "text",
+        "placeholder": "Mustermann"
+      },
+      "source": "auth/registration.html",
+      "hash": "52aaa8de",
+      "level": "atom",
+      "component_name": "TextInput",
+      "rn_component": "TextInput",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "atm-textinput-01"
+    },
+    {
+      "cdd_id": "mol-formfield-05",
+      "tag": "div",
+      "classes": [
+        "field"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "auth/registration.html",
+      "hash": "56d9c188",
+      "level": "molecule",
+      "component_name": "FormField",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-formfield-01"
+    },
+    {
+      "cdd_id": "atm-fieldlabel-05",
+      "tag": "label",
+      "classes": [
+        "field-label"
+      ],
+      "text": "Email Address",
+      "attrs": {
+        "for": "email"
+      },
+      "source": "auth/registration.html",
+      "hash": "86b9bb4b",
+      "level": "atom",
+      "component_name": "FieldLabel",
+      "rn_component": "Text",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "atm-fieldlabel-01"
+    },
+    {
+      "cdd_id": "atm-textinput-05",
+      "tag": "input",
+      "classes": [
+        "field-input"
+      ],
+      "text": "",
+      "attrs": {
+        "type": "email",
+        "placeholder": "max@example.com"
+      },
+      "source": "auth/registration.html",
+      "hash": "52aaa8de",
+      "level": "atom",
+      "component_name": "TextInput",
+      "rn_component": "TextInput",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "atm-textinput-01"
+    },
+    {
+      "cdd_id": "mol-formfield-06",
+      "tag": "div",
+      "classes": [
+        "field"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "auth/registration.html",
+      "hash": "56d9c188",
+      "level": "molecule",
+      "component_name": "FormField",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-formfield-01"
+    },
+    {
+      "cdd_id": "atm-fieldlabel-06",
+      "tag": "label",
+      "classes": [
+        "field-label"
+      ],
+      "text": "Username",
+      "attrs": {
+        "for": "username"
+      },
+      "source": "auth/registration.html",
+      "hash": "3e021729",
+      "level": "atom",
+      "component_name": "FieldLabel",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "atm-fieldlabel-01"
+    },
+    {
+      "cdd_id": "atm-textinput-06",
+      "tag": "input",
+      "classes": [
+        "field-input"
+      ],
+      "text": "",
+      "attrs": {
+        "type": "text",
+        "placeholder": "@maxmustermann"
+      },
+      "source": "auth/registration.html",
+      "hash": "52aaa8de",
+      "level": "atom",
+      "component_name": "TextInput",
+      "rn_component": "TextInput",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "atm-textinput-01"
+    },
+    {
+      "cdd_id": "mol-formfield-07",
+      "tag": "div",
+      "classes": [
+        "field"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "auth/registration.html",
+      "hash": "56d9c188",
+      "level": "molecule",
+      "component_name": "FormField",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-formfield-01"
+    },
+    {
+      "cdd_id": "atm-fieldlabel-07",
+      "tag": "label",
+      "classes": [
+        "field-label"
+      ],
+      "text": "Password",
+      "attrs": {
+        "for": "password"
+      },
+      "source": "auth/registration.html",
+      "hash": "06215864",
+      "level": "atom",
+      "component_name": "FieldLabel",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "atm-fieldlabel-01"
+    },
+    {
+      "cdd_id": "atm-textinput-07",
+      "tag": "input",
+      "classes": [
+        "field-input"
+      ],
+      "text": "",
+      "attrs": {
+        "type": "password",
+        "placeholder": "Min. 8 characters"
+      },
+      "source": "auth/registration.html",
+      "hash": "52aaa8de",
+      "level": "atom",
+      "component_name": "TextInput",
+      "rn_component": "TextInput",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "atm-textinput-01"
+    },
+    {
+      "cdd_id": "mol-strengthbar-01",
+      "tag": "div",
+      "classes": [
+        "strength-bar"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "auth/registration.html",
+      "hash": "5e4d1a4c",
+      "level": "molecule",
+      "component_name": "StrengthBar",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-strengthsegment-01",
+      "tag": "div",
+      "classes": [
+        "strength-segment",
+        "active"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "auth/registration.html",
+      "hash": "a396d7ba",
+      "level": "molecule",
+      "component_name": "StrengthSegment",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-strengthsegment-02",
+      "tag": "div",
+      "classes": [
+        "strength-segment",
+        "active"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "auth/registration.html",
+      "hash": "a396d7ba",
+      "level": "molecule",
+      "component_name": "StrengthSegment",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-strengthsegment-01"
+    },
+    {
+      "cdd_id": "mol-strengthsegment-03",
+      "tag": "div",
+      "classes": [
+        "strength-segment"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "auth/registration.html",
+      "hash": "83954e3d",
+      "level": "molecule",
+      "component_name": "StrengthSegment",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-strengthsegment-04",
+      "tag": "div",
+      "classes": [
+        "strength-segment"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "auth/registration.html",
+      "hash": "83954e3d",
+      "level": "molecule",
+      "component_name": "StrengthSegment",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-strengthsegment-03"
+    },
+    {
+      "cdd_id": "mol-strengthlabel-01",
+      "tag": "div",
+      "classes": [
+        "strength-label"
+      ],
+      "text": "Password strength: Fair",
+      "attrs": {},
+      "source": "auth/registration.html",
+      "hash": "d03ccfad",
+      "level": "molecule",
+      "component_name": "StrengthLabel",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-formfield-08",
+      "tag": "div",
+      "classes": [
+        "field"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "auth/registration.html",
+      "hash": "56d9c188",
+      "level": "molecule",
+      "component_name": "FormField",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-formfield-01"
+    },
+    {
+      "cdd_id": "atm-fieldlabel-08",
+      "tag": "label",
+      "classes": [
+        "field-label"
+      ],
+      "text": "Confirm Password",
+      "attrs": {
+        "for": "confirm-password"
+      },
+      "source": "auth/registration.html",
+      "hash": "56ad71c4",
+      "level": "atom",
+      "component_name": "FieldLabel",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "atm-fieldlabel-01"
+    },
+    {
+      "cdd_id": "atm-textinput-08",
+      "tag": "input",
+      "classes": [
+        "field-input"
+      ],
+      "text": "",
+      "attrs": {
+        "type": "password",
+        "placeholder": "Repeat password"
+      },
+      "source": "auth/registration.html",
+      "hash": "52aaa8de",
+      "level": "atom",
+      "component_name": "TextInput",
+      "rn_component": "TextInput",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "atm-textinput-01"
+    },
+    {
+      "cdd_id": "mol-checkboxfield-01",
+      "tag": "div",
+      "classes": [
+        "checkbox-row"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "auth/registration.html",
+      "hash": "eaa308bb",
+      "level": "molecule",
+      "component_name": "CheckboxField",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-checkbox-02",
+      "tag": "div",
+      "classes": [
+        "checkbox",
+        "checked"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "auth/registration.html",
+      "hash": "ccc9c200",
+      "level": "molecule",
+      "component_name": "Checkbox",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-checkbox-01"
+    },
+    {
+      "cdd_id": "atm-checkboxlabel-01",
+      "tag": "span",
+      "classes": [
+        "checkbox-text"
+      ],
+      "text": "I agree to the and . I confirm I am at least 16 years old.",
+      "attrs": {},
+      "source": "auth/registration.html",
+      "hash": "7cc7213f",
+      "level": "atom",
+      "component_name": "CheckboxLabel",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "atm-link-04",
+      "tag": "a",
+      "classes": [],
+      "text": "Terms of Service",
+      "attrs": {
+        "href": "#"
+      },
+      "source": "auth/registration.html",
+      "hash": "1bae125f",
+      "level": "atom",
+      "component_name": "Link",
+      "rn_component": "TouchableOpacity",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "atm-link-01"
+    },
+    {
+      "cdd_id": "atm-link-05",
+      "tag": "a",
+      "classes": [],
+      "text": "Privacy Policy",
+      "attrs": {
+        "href": "#"
+      },
+      "source": "auth/registration.html",
+      "hash": "88ab817c",
+      "level": "atom",
+      "component_name": "Link",
+      "rn_component": "TouchableOpacity",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "atm-link-01"
+    },
+    {
+      "cdd_id": "org-ctagroup-02",
+      "tag": "div",
+      "classes": [
+        "cta-group"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "auth/registration.html",
+      "hash": "b127f819",
+      "level": "organism",
+      "component_name": "CTAGroup",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "org-ctagroup-01"
+    },
+    {
+      "cdd_id": "atm-primarybutton-03",
+      "tag": "a",
+      "classes": [
+        "btn-primary"
+      ],
+      "text": "Create Account",
+      "attrs": {
+        "href": "../overview/overview.html"
+      },
+      "source": "auth/registration.html",
+      "hash": "a31a0490",
+      "level": "atom",
+      "component_name": "PrimaryButton",
+      "rn_component": "TouchableOpacity",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "atm-primarybutton-01"
+    },
+    {
+      "cdd_id": "mol-divider-02",
+      "tag": "div",
+      "classes": [
+        "divider"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "auth/registration.html",
+      "hash": "0c6a5f7d",
+      "level": "molecule",
+      "component_name": "Divider",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-divider-01"
+    },
+    {
+      "cdd_id": "mol-dividerline-03",
+      "tag": "div",
+      "classes": [
+        "divider-line"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "auth/registration.html",
+      "hash": "34c0e0d4",
+      "level": "molecule",
+      "component_name": "DividerLine",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-dividerline-01"
+    },
+    {
+      "cdd_id": "atm-dividertext-02",
+      "tag": "span",
+      "classes": [
+        "divider-text"
+      ],
+      "text": "or continue with",
+      "attrs": {},
+      "source": "auth/registration.html",
+      "hash": "e36cabf7",
+      "level": "atom",
+      "component_name": "DividerText",
+      "rn_component": "Text",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "atm-dividertext-01"
+    },
+    {
+      "cdd_id": "mol-dividerline-04",
+      "tag": "div",
+      "classes": [
+        "divider-line"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "auth/registration.html",
+      "hash": "34c0e0d4",
+      "level": "molecule",
+      "component_name": "DividerLine",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-dividerline-01"
+    },
+    {
+      "cdd_id": "atm-socialbutton-03",
+      "tag": "a",
+      "classes": [
+        "btn-social"
+      ],
+      "text": "Continue with Google",
+      "attrs": {
+        "href": "#"
+      },
+      "source": "auth/registration.html",
+      "hash": "c61cb081",
+      "level": "atom",
+      "component_name": "SocialButton",
+      "rn_component": "TouchableOpacity",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "atm-socialbutton-01"
+    },
+    {
+      "cdd_id": "atm-icon-06",
+      "tag": "svg",
+      "classes": [],
+      "text": "",
+      "attrs": {
+        "width": "18",
+        "height": "18",
+        "viewbox": "0 0 18 18",
+        "fill": "none"
+      },
+      "source": "auth/registration.html",
+      "hash": "35cfc7c2",
+      "level": "atom",
+      "component_name": "Icon",
+      "rn_component": "Svg",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "atm-icon-01"
+    },
+    {
+      "cdd_id": "atm-socialbutton-04",
+      "tag": "a",
+      "classes": [
+        "btn-social"
+      ],
+      "text": "Continue with GitHub",
+      "attrs": {
+        "href": "#"
+      },
+      "source": "auth/registration.html",
+      "hash": "f602ec60",
+      "level": "atom",
+      "component_name": "SocialButton",
+      "rn_component": "TouchableOpacity",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "atm-socialbutton-01"
+    },
+    {
+      "cdd_id": "atm-icon-07",
+      "tag": "svg",
+      "classes": [],
+      "text": "",
+      "attrs": {
+        "width": "18",
+        "height": "18",
+        "viewbox": "0 0 18 18",
+        "fill": "none"
+      },
+      "source": "auth/registration.html",
+      "hash": "35cfc7c2",
+      "level": "atom",
+      "component_name": "Icon",
+      "rn_component": "Svg",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "atm-icon-01"
+    },
+    {
+      "cdd_id": "atm-authhint-02",
+      "tag": "p",
+      "classes": [
+        "login-hint"
+      ],
+      "text": "Already have an account?",
+      "attrs": {},
+      "source": "auth/registration.html",
+      "hash": "7312e5b0",
+      "level": "atom",
+      "component_name": "AuthHint",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "atm-link-06",
+      "tag": "a",
+      "classes": [],
+      "text": "Sign in",
+      "attrs": {
+        "href": "login.html"
+      },
+      "source": "auth/registration.html",
+      "hash": "03961add",
+      "level": "atom",
+      "component_name": "Link",
+      "rn_component": "TouchableOpacity",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "atm-link-01"
+    },
+    {
+      "cdd_id": "org-topbar-01",
+      "tag": "div",
+      "classes": [
+        "topbar"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "4e117893",
+      "level": "organism",
+      "component_name": "TopBar",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-userrow-01",
+      "tag": "div",
+      "classes": [
+        "user-row"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "daaeb2d7",
+      "level": "molecule",
+      "component_name": "UserRow",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-avatar-01",
+      "tag": "div",
+      "classes": [
+        "avatar"
+      ],
+      "text": "M",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "71c10024",
+      "level": "molecule",
+      "component_name": "Avatar",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-greeting-01",
+      "tag": "div",
+      "classes": [
+        "greeting"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "a9df1de2",
+      "level": "molecule",
+      "component_name": "Greeting",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-greetingsubtitle-01",
+      "tag": "div",
+      "classes": [
+        "greeting-sub"
+      ],
+      "text": "Good morning,",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "ebdd18c1",
+      "level": "molecule",
+      "component_name": "GreetingSubtitle",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-greetingname-01",
+      "tag": "div",
+      "classes": [
+        "greeting-name"
+      ],
+      "text": "Max Mustermann",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "82fd41a7",
+      "level": "molecule",
+      "component_name": "GreetingName",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-view-04",
+      "tag": "div",
+      "classes": [
+        "topbar-actions"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "05fee41e",
+      "level": "molecule",
+      "component_name": "View",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "atm-iconbutton-01",
+      "tag": "a",
+      "classes": [
+        "icon-btn"
+      ],
+      "text": "🔔",
+      "attrs": {
+        "href": "#"
+      },
+      "source": "overview/overview.html",
+      "hash": "288e3452",
+      "level": "atom",
+      "component_name": "IconButton",
+      "rn_component": "TouchableOpacity",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "atm-badge-01",
+      "tag": "span",
+      "classes": [
+        "badge"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "9ac79799",
+      "level": "atom",
+      "component_name": "Badge",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "atm-iconbutton-02",
+      "tag": "a",
+      "classes": [
+        "icon-btn"
+      ],
+      "text": "⚙",
+      "attrs": {
+        "href": "#"
+      },
+      "source": "overview/overview.html",
+      "hash": "edb1a71c",
+      "level": "atom",
+      "component_name": "IconButton",
+      "rn_component": "TouchableOpacity",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "atm-iconbutton-01"
+    },
+    {
+      "cdd_id": "org-statsrow-01",
+      "tag": "div",
+      "classes": [
+        "stats-row"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "05e3deea",
+      "level": "organism",
+      "component_name": "StatsRow",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-statcard-01",
+      "tag": "div",
+      "classes": [
+        "stat-card"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "318ebebd",
+      "level": "molecule",
+      "component_name": "StatCard",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-view-05",
+      "tag": "div",
+      "classes": [
+        "icon"
+      ],
+      "text": "🔥",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "4c0633e2",
+      "level": "molecule",
+      "component_name": "View",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-view-06",
+      "tag": "div",
+      "classes": [
+        "value"
+      ],
+      "text": "12",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "278f0196",
+      "level": "molecule",
+      "component_name": "View",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "atm-text-13",
+      "tag": "span",
+      "classes": [
+        "unit"
+      ],
+      "text": "days",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "81e22c27",
+      "level": "atom",
+      "component_name": "Text",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-view-07",
+      "tag": "div",
+      "classes": [
+        "label"
+      ],
+      "text": "Current Streak",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "2c7bf8a1",
+      "level": "molecule",
+      "component_name": "View",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-statcard-02",
+      "tag": "div",
+      "classes": [
+        "stat-card"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "318ebebd",
+      "level": "molecule",
+      "component_name": "StatCard",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-statcard-01"
+    },
+    {
+      "cdd_id": "mol-view-08",
+      "tag": "div",
+      "classes": [
+        "icon"
+      ],
+      "text": "🏋",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "86f67516",
+      "level": "molecule",
+      "component_name": "View",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "mol-view-05"
+    },
+    {
+      "cdd_id": "mol-view-09",
+      "tag": "div",
+      "classes": [
+        "value"
+      ],
+      "text": "48",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "3f2562ea",
+      "level": "molecule",
+      "component_name": "View",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "mol-view-06"
+    },
+    {
+      "cdd_id": "atm-text-14",
+      "tag": "span",
+      "classes": [
+        "unit"
+      ],
+      "text": "sessions",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "eb769058",
+      "level": "atom",
+      "component_name": "Text",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "atm-text-13"
+    },
+    {
+      "cdd_id": "mol-view-10",
+      "tag": "div",
+      "classes": [
+        "label"
+      ],
+      "text": "This Month",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "980b4762",
+      "level": "molecule",
+      "component_name": "View",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "mol-view-07"
+    },
+    {
+      "cdd_id": "mol-statcard-03",
+      "tag": "div",
+      "classes": [
+        "stat-card"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "318ebebd",
+      "level": "molecule",
+      "component_name": "StatCard",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-statcard-01"
+    },
+    {
+      "cdd_id": "mol-view-11",
+      "tag": "div",
+      "classes": [
+        "icon"
+      ],
+      "text": "⚡",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "a6c50a6f",
+      "level": "molecule",
+      "component_name": "View",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "mol-view-05"
+    },
+    {
+      "cdd_id": "mol-view-12",
+      "tag": "div",
+      "classes": [
+        "value"
+      ],
+      "text": "2.4",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "2cdc16e5",
+      "level": "molecule",
+      "component_name": "View",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "mol-view-06"
+    },
+    {
+      "cdd_id": "atm-text-15",
+      "tag": "span",
+      "classes": [
+        "unit"
+      ],
+      "text": "t",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "33aa11ca",
+      "level": "atom",
+      "component_name": "Text",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "atm-text-13"
+    },
+    {
+      "cdd_id": "mol-view-13",
+      "tag": "div",
+      "classes": [
+        "label"
+      ],
+      "text": "Volume Lifted",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "690f109b",
+      "level": "molecule",
+      "component_name": "View",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "mol-view-07"
+    },
+    {
+      "cdd_id": "org-streakbanner-01",
+      "tag": "div",
+      "classes": [
+        "streak-banner"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "5f4fddfc",
+      "level": "organism",
+      "component_name": "StreakBanner",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-view-14",
+      "tag": "div",
+      "classes": [
+        "streak-left"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "5fff0599",
+      "level": "molecule",
+      "component_name": "View",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-view-15",
+      "tag": "div",
+      "classes": [
+        "streak-label"
+      ],
+      "text": "🔥 Weekly Streak",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "23f3052f",
+      "level": "molecule",
+      "component_name": "View",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-streakvalue-01",
+      "tag": "div",
+      "classes": [
+        "streak-value"
+      ],
+      "text": "12",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "f82b4af2",
+      "level": "molecule",
+      "component_name": "StreakValue",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-view-16",
+      "tag": "div",
+      "classes": [
+        "streak-sub"
+      ],
+      "text": "days in a row — keep it up!",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "8e398907",
+      "level": "molecule",
+      "component_name": "View",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-streakdots-01",
+      "tag": "div",
+      "classes": [
+        "streak-dots"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "f2f3e774",
+      "level": "molecule",
+      "component_name": "StreakDots",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-streakdot-01",
+      "tag": "div",
+      "classes": [
+        "streak-dot",
+        "done"
+      ],
+      "text": "M",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "c5415ecb",
+      "level": "molecule",
+      "component_name": "StreakDot",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-streakdot-02",
+      "tag": "div",
+      "classes": [
+        "streak-dot",
+        "done"
+      ],
+      "text": "T",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "a27d023d",
+      "level": "molecule",
+      "component_name": "StreakDot",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "mol-streakdot-01"
+    },
+    {
+      "cdd_id": "mol-streakdot-03",
+      "tag": "div",
+      "classes": [
+        "streak-dot",
+        "done"
+      ],
+      "text": "W",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "394c8b3a",
+      "level": "molecule",
+      "component_name": "StreakDot",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "mol-streakdot-01"
+    },
+    {
+      "cdd_id": "mol-streakdot-04",
+      "tag": "div",
+      "classes": [
+        "streak-dot",
+        "today"
+      ],
+      "text": "T",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "9a6cadb6",
+      "level": "molecule",
+      "component_name": "StreakDot",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-streakdot-05",
+      "tag": "div",
+      "classes": [
+        "streak-dot"
+      ],
+      "text": "F",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "00289298",
+      "level": "molecule",
+      "component_name": "StreakDot",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-streakdot-06",
+      "tag": "div",
+      "classes": [
+        "streak-dot"
+      ],
+      "text": "S",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "8acf8610",
+      "level": "molecule",
+      "component_name": "StreakDot",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "mol-streakdot-05"
+    },
+    {
+      "cdd_id": "mol-streakdot-07",
+      "tag": "div",
+      "classes": [
+        "streak-dot"
+      ],
+      "text": "S",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "8acf8610",
+      "level": "molecule",
+      "component_name": "StreakDot",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "mol-streakdot-05"
+    },
+    {
+      "cdd_id": "mol-sectionheader-01",
+      "tag": "div",
+      "classes": [
+        "section-header"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "e1dfc2e3",
+      "level": "molecule",
+      "component_name": "SectionHeader",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "atm-sectiontitle-01",
+      "tag": "span",
+      "classes": [
+        "section-title"
+      ],
+      "text": "Today's Workout",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "0f0205ad",
+      "level": "atom",
+      "component_name": "SectionTitle",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "atm-sectionlink-01",
+      "tag": "a",
+      "classes": [
+        "section-link"
+      ],
+      "text": "View plan",
+      "attrs": {
+        "href": "#"
+      },
+      "source": "overview/overview.html",
+      "hash": "a0f007da",
+      "level": "atom",
+      "component_name": "SectionLink",
+      "rn_component": "TouchableOpacity",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "org-todayworkoutcard-01",
+      "tag": "div",
+      "classes": [
+        "today-card"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "951a390c",
+      "level": "organism",
+      "component_name": "TodayWorkoutCard",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-workoutcardheader-01",
+      "tag": "div",
+      "classes": [
+        "today-card-header"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "a255982a",
+      "level": "molecule",
+      "component_name": "WorkoutCardHeader",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-view-17",
+      "tag": "div",
+      "classes": [],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "c3208327",
+      "level": "molecule",
+      "component_name": "View",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "atm-todaytag-01",
+      "tag": "span",
+      "classes": [
+        "today-tag"
+      ],
+      "text": "Upper Body",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "b502ea0c",
+      "level": "atom",
+      "component_name": "TodayTag",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-workoutcardtitle-01",
+      "tag": "div",
+      "classes": [
+        "today-card-title"
+      ],
+      "text": "Push Day A",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "257448da",
+      "level": "molecule",
+      "component_name": "WorkoutCardTitle",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-workoutcardmeta-01",
+      "tag": "div",
+      "classes": [
+        "today-card-meta"
+      ],
+      "text": "5 exercises • ~55 min • Intermediate",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "bb19b275",
+      "level": "molecule",
+      "component_name": "WorkoutCardMeta",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-workoutcardbody-01",
+      "tag": "div",
+      "classes": [
+        "today-card-body"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "58d7d571",
+      "level": "molecule",
+      "component_name": "WorkoutCardBody",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-exerciserow-01",
+      "tag": "div",
+      "classes": [
+        "exercise-row"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "e7906011",
+      "level": "molecule",
+      "component_name": "ExerciseRow",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-exercisenumber-01",
+      "tag": "div",
+      "classes": [
+        "exercise-num",
+        "done"
+      ],
+      "text": "✓",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "44427a62",
+      "level": "molecule",
+      "component_name": "ExerciseNumber",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-view-18",
+      "tag": "div",
+      "classes": [
+        "exercise-info"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "25fb8886",
+      "level": "molecule",
+      "component_name": "View",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-exercisename-01",
+      "tag": "div",
+      "classes": [
+        "exercise-name"
+      ],
+      "text": "Bench Press",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "11b1b897",
+      "level": "molecule",
+      "component_name": "ExerciseName",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-exercisedetail-01",
+      "tag": "div",
+      "classes": [
+        "exercise-detail"
+      ],
+      "text": "Last: 80 kg × 8 • PR: 92.5 kg",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "647a26b7",
+      "level": "molecule",
+      "component_name": "ExerciseDetail",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-exercisesets-01",
+      "tag": "div",
+      "classes": [
+        "exercise-sets"
+      ],
+      "text": "4 × 8",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "a7229348",
+      "level": "molecule",
+      "component_name": "ExerciseSets",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-exerciserow-02",
+      "tag": "div",
+      "classes": [
+        "exercise-row"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "e7906011",
+      "level": "molecule",
+      "component_name": "ExerciseRow",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-exerciserow-01"
+    },
+    {
+      "cdd_id": "mol-exercisenumber-02",
+      "tag": "div",
+      "classes": [
+        "exercise-num",
+        "done"
+      ],
+      "text": "✓",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "44427a62",
+      "level": "molecule",
+      "component_name": "ExerciseNumber",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-exercisenumber-01"
+    },
+    {
+      "cdd_id": "mol-view-19",
+      "tag": "div",
+      "classes": [
+        "exercise-info"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "25fb8886",
+      "level": "molecule",
+      "component_name": "View",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-view-18"
+    },
+    {
+      "cdd_id": "mol-exercisename-02",
+      "tag": "div",
+      "classes": [
+        "exercise-name"
+      ],
+      "text": "Overhead Press",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "8fc3d0db",
+      "level": "molecule",
+      "component_name": "ExerciseName",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "mol-exercisename-01"
+    },
+    {
+      "cdd_id": "mol-exercisedetail-02",
+      "tag": "div",
+      "classes": [
+        "exercise-detail"
+      ],
+      "text": "Last: 55 kg × 6",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "2cb4d52a",
+      "level": "molecule",
+      "component_name": "ExerciseDetail",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "mol-exercisedetail-01"
+    },
+    {
+      "cdd_id": "mol-exercisesets-02",
+      "tag": "div",
+      "classes": [
+        "exercise-sets"
+      ],
+      "text": "3 × 6",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "be282ba1",
+      "level": "molecule",
+      "component_name": "ExerciseSets",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "mol-exercisesets-01"
+    },
+    {
+      "cdd_id": "mol-exerciserow-03",
+      "tag": "div",
+      "classes": [
+        "exercise-row"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "e7906011",
+      "level": "molecule",
+      "component_name": "ExerciseRow",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-exerciserow-01"
+    },
+    {
+      "cdd_id": "mol-exercisenumber-03",
+      "tag": "div",
+      "classes": [
+        "exercise-num"
+      ],
+      "text": "3",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "7b63350e",
+      "level": "molecule",
+      "component_name": "ExerciseNumber",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-view-20",
+      "tag": "div",
+      "classes": [
+        "exercise-info"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "25fb8886",
+      "level": "molecule",
+      "component_name": "View",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-view-18"
+    },
+    {
+      "cdd_id": "mol-exercisename-03",
+      "tag": "div",
+      "classes": [
+        "exercise-name"
+      ],
+      "text": "Incline Dumbbell Press",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "eb4df1a7",
+      "level": "molecule",
+      "component_name": "ExerciseName",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "mol-exercisename-01"
+    },
+    {
+      "cdd_id": "mol-exercisedetail-03",
+      "tag": "div",
+      "classes": [
+        "exercise-detail"
+      ],
+      "text": "Last: 24 kg × 10",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "3f8ce8df",
+      "level": "molecule",
+      "component_name": "ExerciseDetail",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "mol-exercisedetail-01"
+    },
+    {
+      "cdd_id": "mol-exercisesets-03",
+      "tag": "div",
+      "classes": [
+        "exercise-sets"
+      ],
+      "text": "3 × 10",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "cf556309",
+      "level": "molecule",
+      "component_name": "ExerciseSets",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "mol-exercisesets-01"
+    },
+    {
+      "cdd_id": "mol-exerciserow-04",
+      "tag": "div",
+      "classes": [
+        "exercise-row"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "e7906011",
+      "level": "molecule",
+      "component_name": "ExerciseRow",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-exerciserow-01"
+    },
+    {
+      "cdd_id": "mol-exercisenumber-04",
+      "tag": "div",
+      "classes": [
+        "exercise-num"
+      ],
+      "text": "4",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "6e793c33",
+      "level": "molecule",
+      "component_name": "ExerciseNumber",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "mol-exercisenumber-03"
+    },
+    {
+      "cdd_id": "mol-view-21",
+      "tag": "div",
+      "classes": [
+        "exercise-info"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "25fb8886",
+      "level": "molecule",
+      "component_name": "View",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-view-18"
+    },
+    {
+      "cdd_id": "mol-exercisename-04",
+      "tag": "div",
+      "classes": [
+        "exercise-name"
+      ],
+      "text": "Tricep Rope Pushdown",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "5e9e5f17",
+      "level": "molecule",
+      "component_name": "ExerciseName",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "mol-exercisename-01"
+    },
+    {
+      "cdd_id": "mol-exercisedetail-04",
+      "tag": "div",
+      "classes": [
+        "exercise-detail"
+      ],
+      "text": "Last: 22.5 kg × 12",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "fd304bff",
+      "level": "molecule",
+      "component_name": "ExerciseDetail",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "mol-exercisedetail-01"
+    },
+    {
+      "cdd_id": "mol-exercisesets-04",
+      "tag": "div",
+      "classes": [
+        "exercise-sets"
+      ],
+      "text": "3 × 12",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "e6ea8cde",
+      "level": "molecule",
+      "component_name": "ExerciseSets",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "mol-exercisesets-01"
+    },
+    {
+      "cdd_id": "mol-exerciserow-05",
+      "tag": "div",
+      "classes": [
+        "exercise-row"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "e7906011",
+      "level": "molecule",
+      "component_name": "ExerciseRow",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-exerciserow-01"
+    },
+    {
+      "cdd_id": "mol-exercisenumber-05",
+      "tag": "div",
+      "classes": [
+        "exercise-num"
+      ],
+      "text": "5",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "8d66d66a",
+      "level": "molecule",
+      "component_name": "ExerciseNumber",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "mol-exercisenumber-03"
+    },
+    {
+      "cdd_id": "mol-view-22",
+      "tag": "div",
+      "classes": [
+        "exercise-info"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "25fb8886",
+      "level": "molecule",
+      "component_name": "View",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-view-18"
+    },
+    {
+      "cdd_id": "mol-exercisename-05",
+      "tag": "div",
+      "classes": [
+        "exercise-name"
+      ],
+      "text": "Lateral Raises",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "35e8cd7c",
+      "level": "molecule",
+      "component_name": "ExerciseName",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "mol-exercisename-01"
+    },
+    {
+      "cdd_id": "mol-exercisedetail-05",
+      "tag": "div",
+      "classes": [
+        "exercise-detail"
+      ],
+      "text": "Last: 10 kg × 15",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "c4b574b8",
+      "level": "molecule",
+      "component_name": "ExerciseDetail",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "mol-exercisedetail-01"
+    },
+    {
+      "cdd_id": "mol-exercisesets-05",
+      "tag": "div",
+      "classes": [
+        "exercise-sets"
+      ],
+      "text": "4 × 15",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "96e26cbf",
+      "level": "molecule",
+      "component_name": "ExerciseSets",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "mol-exercisesets-01"
+    },
+    {
+      "cdd_id": "mol-workoutcardfooter-01",
+      "tag": "div",
+      "classes": [
+        "today-card-footer"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "edc1a771",
+      "level": "molecule",
+      "component_name": "WorkoutCardFooter",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "atm-primarybutton-04",
+      "tag": "a",
+      "classes": [
+        "btn-primary"
+      ],
+      "text": "Continue Workout",
+      "attrs": {
+        "href": "#"
+      },
+      "source": "overview/overview.html",
+      "hash": "0dc84ed7",
+      "level": "atom",
+      "component_name": "PrimaryButton",
+      "rn_component": "TouchableOpacity",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "atm-primarybutton-01"
+    },
+    {
+      "cdd_id": "mol-sectionheader-02",
+      "tag": "div",
+      "classes": [
+        "section-header"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "e1dfc2e3",
+      "level": "molecule",
+      "component_name": "SectionHeader",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-sectionheader-01"
+    },
+    {
+      "cdd_id": "atm-sectiontitle-02",
+      "tag": "span",
+      "classes": [
+        "section-title"
+      ],
+      "text": "Weekly Volume",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "ec4964aa",
+      "level": "atom",
+      "component_name": "SectionTitle",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "atm-sectiontitle-01"
+    },
+    {
+      "cdd_id": "mol-charttoggle-01",
+      "tag": "div",
+      "classes": [
+        "chart-toggle"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "4f78fc75",
+      "level": "molecule",
+      "component_name": "ChartToggle",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "atm-togglebutton-01",
+      "tag": "button",
+      "classes": [
+        "toggle-btn",
+        "active"
+      ],
+      "text": "W",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "f9a17133",
+      "level": "atom",
+      "component_name": "ToggleButton",
+      "rn_component": "TouchableOpacity",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "atm-togglebutton-02",
+      "tag": "button",
+      "classes": [
+        "toggle-btn"
+      ],
+      "text": "M",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "f04cd69e",
+      "level": "atom",
+      "component_name": "ToggleButton",
+      "rn_component": "TouchableOpacity",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "atm-togglebutton-03",
+      "tag": "button",
+      "classes": [
+        "toggle-btn"
+      ],
+      "text": "Y",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "b65ca448",
+      "level": "atom",
+      "component_name": "ToggleButton",
+      "rn_component": "TouchableOpacity",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "atm-togglebutton-02"
+    },
+    {
+      "cdd_id": "org-volumechart-01",
+      "tag": "div",
+      "classes": [
+        "chart-card"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "c5557f9b",
+      "level": "organism",
+      "component_name": "VolumeChart",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-chartbars-01",
+      "tag": "div",
+      "classes": [
+        "chart-bars"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "c36005ca",
+      "level": "molecule",
+      "component_name": "ChartBars",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-chartcolumn-01",
+      "tag": "div",
+      "classes": [
+        "chart-col"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "bf8ed971",
+      "level": "molecule",
+      "component_name": "ChartColumn",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-view-23",
+      "tag": "div",
+      "classes": [
+        "bar-wrap"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "df897df6",
+      "level": "molecule",
+      "component_name": "View",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-bar-01",
+      "tag": "div",
+      "classes": [
+        "bar",
+        "primary"
+      ],
+      "text": "",
+      "attrs": {
+        "style": "height:65%"
+      },
+      "source": "overview/overview.html",
+      "hash": "62837345",
+      "level": "molecule",
+      "component_name": "Bar",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "atm-barlabel-01",
+      "tag": "span",
+      "classes": [
+        "bar-label"
+      ],
+      "text": "Mo",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "f7402c9b",
+      "level": "atom",
+      "component_name": "BarLabel",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-chartcolumn-02",
+      "tag": "div",
+      "classes": [
+        "chart-col"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "bf8ed971",
+      "level": "molecule",
+      "component_name": "ChartColumn",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-chartcolumn-01"
+    },
+    {
+      "cdd_id": "mol-view-24",
+      "tag": "div",
+      "classes": [
+        "bar-wrap"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "df897df6",
+      "level": "molecule",
+      "component_name": "View",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-view-23"
+    },
+    {
+      "cdd_id": "mol-bar-02",
+      "tag": "div",
+      "classes": [
+        "bar",
+        "primary"
+      ],
+      "text": "",
+      "attrs": {
+        "style": "height:80%"
+      },
+      "source": "overview/overview.html",
+      "hash": "62837345",
+      "level": "molecule",
+      "component_name": "Bar",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-bar-01"
+    },
+    {
+      "cdd_id": "atm-barlabel-02",
+      "tag": "span",
+      "classes": [
+        "bar-label"
+      ],
+      "text": "Tu",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "0a6b41eb",
+      "level": "atom",
+      "component_name": "BarLabel",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "atm-barlabel-01"
+    },
+    {
+      "cdd_id": "mol-chartcolumn-03",
+      "tag": "div",
+      "classes": [
+        "chart-col"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "bf8ed971",
+      "level": "molecule",
+      "component_name": "ChartColumn",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-chartcolumn-01"
+    },
+    {
+      "cdd_id": "mol-view-25",
+      "tag": "div",
+      "classes": [
+        "bar-wrap"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "df897df6",
+      "level": "molecule",
+      "component_name": "View",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-view-23"
+    },
+    {
+      "cdd_id": "mol-bar-03",
+      "tag": "div",
+      "classes": [
+        "bar",
+        "primary"
+      ],
+      "text": "",
+      "attrs": {
+        "style": "height:50%"
+      },
+      "source": "overview/overview.html",
+      "hash": "62837345",
+      "level": "molecule",
+      "component_name": "Bar",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-bar-01"
+    },
+    {
+      "cdd_id": "atm-barlabel-03",
+      "tag": "span",
+      "classes": [
+        "bar-label"
+      ],
+      "text": "We",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "3cfbf64e",
+      "level": "atom",
+      "component_name": "BarLabel",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "atm-barlabel-01"
+    },
+    {
+      "cdd_id": "mol-chartcolumn-04",
+      "tag": "div",
+      "classes": [
+        "chart-col"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "bf8ed971",
+      "level": "molecule",
+      "component_name": "ChartColumn",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-chartcolumn-01"
+    },
+    {
+      "cdd_id": "mol-view-26",
+      "tag": "div",
+      "classes": [
+        "bar-wrap"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "df897df6",
+      "level": "molecule",
+      "component_name": "View",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-view-23"
+    },
+    {
+      "cdd_id": "mol-bar-04",
+      "tag": "div",
+      "classes": [
+        "bar",
+        "active"
+      ],
+      "text": "",
+      "attrs": {
+        "style": "height:90%"
+      },
+      "source": "overview/overview.html",
+      "hash": "d76fa68a",
+      "level": "molecule",
+      "component_name": "Bar",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "atm-barlabel-04",
+      "tag": "span",
+      "classes": [
+        "bar-label"
+      ],
+      "text": "Th",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "f6eea047",
+      "level": "atom",
+      "component_name": "BarLabel",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "atm-barlabel-01"
+    },
+    {
+      "cdd_id": "mol-chartcolumn-05",
+      "tag": "div",
+      "classes": [
+        "chart-col"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "bf8ed971",
+      "level": "molecule",
+      "component_name": "ChartColumn",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-chartcolumn-01"
+    },
+    {
+      "cdd_id": "mol-view-27",
+      "tag": "div",
+      "classes": [
+        "bar-wrap"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "df897df6",
+      "level": "molecule",
+      "component_name": "View",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-view-23"
+    },
+    {
+      "cdd_id": "mol-bar-05",
+      "tag": "div",
+      "classes": [
+        "bar"
+      ],
+      "text": "",
+      "attrs": {
+        "style": "height:30%"
+      },
+      "source": "overview/overview.html",
+      "hash": "f79d096f",
+      "level": "molecule",
+      "component_name": "Bar",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "atm-barlabel-05",
+      "tag": "span",
+      "classes": [
+        "bar-label"
+      ],
+      "text": "Fr",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "e1358126",
+      "level": "atom",
+      "component_name": "BarLabel",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "atm-barlabel-01"
+    },
+    {
+      "cdd_id": "mol-chartcolumn-06",
+      "tag": "div",
+      "classes": [
+        "chart-col"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "bf8ed971",
+      "level": "molecule",
+      "component_name": "ChartColumn",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-chartcolumn-01"
+    },
+    {
+      "cdd_id": "mol-view-28",
+      "tag": "div",
+      "classes": [
+        "bar-wrap"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "df897df6",
+      "level": "molecule",
+      "component_name": "View",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-view-23"
+    },
+    {
+      "cdd_id": "mol-bar-06",
+      "tag": "div",
+      "classes": [
+        "bar"
+      ],
+      "text": "",
+      "attrs": {
+        "style": "height:10%"
+      },
+      "source": "overview/overview.html",
+      "hash": "f79d096f",
+      "level": "molecule",
+      "component_name": "Bar",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-bar-05"
+    },
+    {
+      "cdd_id": "atm-barlabel-06",
+      "tag": "span",
+      "classes": [
+        "bar-label"
+      ],
+      "text": "Sa",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "24df93f2",
+      "level": "atom",
+      "component_name": "BarLabel",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "atm-barlabel-01"
+    },
+    {
+      "cdd_id": "mol-chartcolumn-07",
+      "tag": "div",
+      "classes": [
+        "chart-col"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "bf8ed971",
+      "level": "molecule",
+      "component_name": "ChartColumn",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-chartcolumn-01"
+    },
+    {
+      "cdd_id": "mol-view-29",
+      "tag": "div",
+      "classes": [
+        "bar-wrap"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "df897df6",
+      "level": "molecule",
+      "component_name": "View",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-view-23"
+    },
+    {
+      "cdd_id": "mol-bar-07",
+      "tag": "div",
+      "classes": [
+        "bar"
+      ],
+      "text": "",
+      "attrs": {
+        "style": "height:5%"
+      },
+      "source": "overview/overview.html",
+      "hash": "f79d096f",
+      "level": "molecule",
+      "component_name": "Bar",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-bar-05"
+    },
+    {
+      "cdd_id": "atm-barlabel-07",
+      "tag": "span",
+      "classes": [
+        "bar-label"
+      ],
+      "text": "Su",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "22707d9b",
+      "level": "atom",
+      "component_name": "BarLabel",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "atm-barlabel-01"
+    },
+    {
+      "cdd_id": "mol-sectionheader-03",
+      "tag": "div",
+      "classes": [
+        "section-header"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "e1dfc2e3",
+      "level": "molecule",
+      "component_name": "SectionHeader",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-sectionheader-01"
+    },
+    {
+      "cdd_id": "atm-sectiontitle-03",
+      "tag": "span",
+      "classes": [
+        "section-title"
+      ],
+      "text": "Recent Workouts",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "e42b8aeb",
+      "level": "atom",
+      "component_name": "SectionTitle",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "atm-sectiontitle-01"
+    },
+    {
+      "cdd_id": "atm-sectionlink-02",
+      "tag": "a",
+      "classes": [
+        "section-link"
+      ],
+      "text": "See all",
+      "attrs": {
+        "href": "#"
+      },
+      "source": "overview/overview.html",
+      "hash": "6fee08a7",
+      "level": "atom",
+      "component_name": "SectionLink",
+      "rn_component": "TouchableOpacity",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "atm-sectionlink-01"
+    },
+    {
+      "cdd_id": "atm-workouthistorycard-01",
+      "tag": "a",
+      "classes": [
+        "workout-card"
+      ],
+      "text": "",
+      "attrs": {
+        "href": "#"
+      },
+      "source": "overview/overview.html",
+      "hash": "5ada3922",
+      "level": "atom",
+      "component_name": "WorkoutHistoryCard",
+      "rn_component": "TouchableOpacity",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-workouticon-01",
+      "tag": "div",
+      "classes": [
+        "workout-icon"
+      ],
+      "text": "💪",
+      "attrs": {
+        "style": "background:#1a2800"
+      },
+      "source": "overview/overview.html",
+      "hash": "d3d497f5",
+      "level": "molecule",
+      "component_name": "WorkoutIcon",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-view-30",
+      "tag": "div",
+      "classes": [
+        "workout-info"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "790a848c",
+      "level": "molecule",
+      "component_name": "View",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-workoutname-01",
+      "tag": "div",
+      "classes": [
+        "workout-name"
+      ],
+      "text": "Pull Day B",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "243df6bc",
+      "level": "molecule",
+      "component_name": "WorkoutName",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-workoutmeta-01",
+      "tag": "div",
+      "classes": [
+        "workout-meta"
+      ],
+      "text": "Yesterday • 61 min",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "e65b0821",
+      "level": "molecule",
+      "component_name": "WorkoutMeta",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-workouttags-01",
+      "tag": "div",
+      "classes": [
+        "workout-tags"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "56bfa577",
+      "level": "molecule",
+      "component_name": "WorkoutTags",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "atm-tag-01",
+      "tag": "span",
+      "classes": [
+        "tag",
+        "primary"
+      ],
+      "text": "Back",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "8dd8a31f",
+      "level": "atom",
+      "component_name": "Tag",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "atm-tag-02",
+      "tag": "span",
+      "classes": [
+        "tag"
+      ],
+      "text": "Biceps",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "01fb8861",
+      "level": "atom",
+      "component_name": "Tag",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "atm-tag-03",
+      "tag": "span",
+      "classes": [
+        "tag"
+      ],
+      "text": "Rear Delt",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "56d6a031",
+      "level": "atom",
+      "component_name": "Tag",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "atm-tag-02"
+    },
+    {
+      "cdd_id": "mol-volumedisplay-01",
+      "tag": "div",
+      "classes": [
+        "workout-vol"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "1d7c2b74",
+      "level": "molecule",
+      "component_name": "VolumeDisplay",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "mol-view-31",
+      "tag": "div",
+      "classes": [
+        "value"
+      ],
+      "text": "4.2t",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "6c735452",
+      "level": "molecule",
+      "component_name": "View",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "mol-view-06"
+    },
+    {
+      "cdd_id": "mol-view-32",
+      "tag": "div",
+      "classes": [
+        "unit"
+      ],
+      "text": "volume",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "ca76850b",
+      "level": "molecule",
+      "component_name": "View",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "atm-workouthistorycard-02",
+      "tag": "a",
+      "classes": [
+        "workout-card"
+      ],
+      "text": "",
+      "attrs": {
+        "href": "#"
+      },
+      "source": "overview/overview.html",
+      "hash": "5ada3922",
+      "level": "atom",
+      "component_name": "WorkoutHistoryCard",
+      "rn_component": "TouchableOpacity",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "atm-workouthistorycard-01"
+    },
+    {
+      "cdd_id": "mol-workouticon-02",
+      "tag": "div",
+      "classes": [
+        "workout-icon"
+      ],
+      "text": "🏃",
+      "attrs": {
+        "style": "background:#001a2a"
+      },
+      "source": "overview/overview.html",
+      "hash": "551434b4",
+      "level": "molecule",
+      "component_name": "WorkoutIcon",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "mol-workouticon-01"
+    },
+    {
+      "cdd_id": "mol-view-33",
+      "tag": "div",
+      "classes": [
+        "workout-info"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "790a848c",
+      "level": "molecule",
+      "component_name": "View",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-view-30"
+    },
+    {
+      "cdd_id": "mol-workoutname-02",
+      "tag": "div",
+      "classes": [
+        "workout-name"
+      ],
+      "text": "Leg Day",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "f5c18791",
+      "level": "molecule",
+      "component_name": "WorkoutName",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "mol-workoutname-01"
+    },
+    {
+      "cdd_id": "mol-workoutmeta-02",
+      "tag": "div",
+      "classes": [
+        "workout-meta"
+      ],
+      "text": "2 days ago • 72 min",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "194e6842",
+      "level": "molecule",
+      "component_name": "WorkoutMeta",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "mol-workoutmeta-01"
+    },
+    {
+      "cdd_id": "mol-workouttags-02",
+      "tag": "div",
+      "classes": [
+        "workout-tags"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "56bfa577",
+      "level": "molecule",
+      "component_name": "WorkoutTags",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-workouttags-01"
+    },
+    {
+      "cdd_id": "atm-tag-04",
+      "tag": "span",
+      "classes": [
+        "tag",
+        "primary"
+      ],
+      "text": "Quads",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "8cc04849",
+      "level": "atom",
+      "component_name": "Tag",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "atm-tag-01"
+    },
+    {
+      "cdd_id": "atm-tag-05",
+      "tag": "span",
+      "classes": [
+        "tag"
+      ],
+      "text": "Hamstrings",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "52826a64",
+      "level": "atom",
+      "component_name": "Tag",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "atm-tag-02"
+    },
+    {
+      "cdd_id": "atm-tag-06",
+      "tag": "span",
+      "classes": [
+        "tag"
+      ],
+      "text": "Calves",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "bbc4bc5b",
+      "level": "atom",
+      "component_name": "Tag",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "atm-tag-02"
+    },
+    {
+      "cdd_id": "mol-volumedisplay-02",
+      "tag": "div",
+      "classes": [
+        "workout-vol"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "1d7c2b74",
+      "level": "molecule",
+      "component_name": "VolumeDisplay",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-volumedisplay-01"
+    },
+    {
+      "cdd_id": "mol-view-34",
+      "tag": "div",
+      "classes": [
+        "value"
+      ],
+      "text": "6.8t",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "5d0a292c",
+      "level": "molecule",
+      "component_name": "View",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "mol-view-06"
+    },
+    {
+      "cdd_id": "mol-view-35",
+      "tag": "div",
+      "classes": [
+        "unit"
+      ],
+      "text": "volume",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "ca76850b",
+      "level": "molecule",
+      "component_name": "View",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-view-32"
+    },
+    {
+      "cdd_id": "atm-workouthistorycard-03",
+      "tag": "a",
+      "classes": [
+        "workout-card"
+      ],
+      "text": "",
+      "attrs": {
+        "href": "#"
+      },
+      "source": "overview/overview.html",
+      "hash": "5ada3922",
+      "level": "atom",
+      "component_name": "WorkoutHistoryCard",
+      "rn_component": "TouchableOpacity",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "atm-workouthistorycard-01"
+    },
+    {
+      "cdd_id": "mol-workouticon-03",
+      "tag": "div",
+      "classes": [
+        "workout-icon"
+      ],
+      "text": "⚡",
+      "attrs": {
+        "style": "background:#1a1a00"
+      },
+      "source": "overview/overview.html",
+      "hash": "5e2c68af",
+      "level": "molecule",
+      "component_name": "WorkoutIcon",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "mol-workouticon-01"
+    },
+    {
+      "cdd_id": "mol-view-36",
+      "tag": "div",
+      "classes": [
+        "workout-info"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "790a848c",
+      "level": "molecule",
+      "component_name": "View",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-view-30"
+    },
+    {
+      "cdd_id": "mol-workoutname-03",
+      "tag": "div",
+      "classes": [
+        "workout-name"
+      ],
+      "text": "Push Day A",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "0c92f0e8",
+      "level": "molecule",
+      "component_name": "WorkoutName",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "mol-workoutname-01"
+    },
+    {
+      "cdd_id": "mol-workoutmeta-03",
+      "tag": "div",
+      "classes": [
+        "workout-meta"
+      ],
+      "text": "3 days ago • 58 min",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "98379801",
+      "level": "molecule",
+      "component_name": "WorkoutMeta",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "mol-workoutmeta-01"
+    },
+    {
+      "cdd_id": "mol-workouttags-03",
+      "tag": "div",
+      "classes": [
+        "workout-tags"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "56bfa577",
+      "level": "molecule",
+      "component_name": "WorkoutTags",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-workouttags-01"
+    },
+    {
+      "cdd_id": "atm-tag-07",
+      "tag": "span",
+      "classes": [
+        "tag",
+        "primary"
+      ],
+      "text": "Chest",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "c901b37c",
+      "level": "atom",
+      "component_name": "Tag",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "atm-tag-01"
+    },
+    {
+      "cdd_id": "atm-tag-08",
+      "tag": "span",
+      "classes": [
+        "tag"
+      ],
+      "text": "Shoulders",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "a45d3846",
+      "level": "atom",
+      "component_name": "Tag",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "atm-tag-02"
+    },
+    {
+      "cdd_id": "atm-tag-09",
+      "tag": "span",
+      "classes": [
+        "tag"
+      ],
+      "text": "Triceps",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "6efac055",
+      "level": "atom",
+      "component_name": "Tag",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "atm-tag-02"
+    },
+    {
+      "cdd_id": "mol-volumedisplay-03",
+      "tag": "div",
+      "classes": [
+        "workout-vol"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "1d7c2b74",
+      "level": "molecule",
+      "component_name": "VolumeDisplay",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-volumedisplay-01"
+    },
+    {
+      "cdd_id": "mol-view-37",
+      "tag": "div",
+      "classes": [
+        "value"
+      ],
+      "text": "3.9t",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "77422e66",
+      "level": "molecule",
+      "component_name": "View",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "mol-view-06"
+    },
+    {
+      "cdd_id": "mol-view-38",
+      "tag": "div",
+      "classes": [
+        "unit"
+      ],
+      "text": "volume",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "ca76850b",
+      "level": "molecule",
+      "component_name": "View",
+      "rn_component": "View",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "mol-view-32"
+    },
+    {
+      "cdd_id": "org-bottomnavbar-01",
+      "tag": "nav",
+      "classes": [
+        "bottom-nav"
+      ],
+      "text": "",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "fcd4aa4c",
+      "level": "organism",
+      "component_name": "BottomNavBar",
+      "rn_component": "View",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "atm-navitem-01",
+      "tag": "a",
+      "classes": [
+        "nav-item",
+        "active"
+      ],
+      "text": "",
+      "attrs": {
+        "href": "#"
+      },
+      "source": "overview/overview.html",
+      "hash": "f189fb6f",
+      "level": "atom",
+      "component_name": "NavItem",
+      "rn_component": "TouchableOpacity",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "atm-navicon-01",
+      "tag": "span",
+      "classes": [
+        "nav-icon"
+      ],
+      "text": "🏠",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "1977879c",
+      "level": "atom",
+      "component_name": "NavIcon",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "atm-navlabel-01",
+      "tag": "span",
+      "classes": [
+        "nav-label"
+      ],
+      "text": "Home",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "985298a0",
+      "level": "atom",
+      "component_name": "NavLabel",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "atm-navitem-02",
+      "tag": "a",
+      "classes": [
+        "nav-item"
+      ],
+      "text": "",
+      "attrs": {
+        "href": "#"
+      },
+      "source": "overview/overview.html",
+      "hash": "d97740e4",
+      "level": "atom",
+      "component_name": "NavItem",
+      "rn_component": "TouchableOpacity",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    },
+    {
+      "cdd_id": "atm-navicon-02",
+      "tag": "span",
+      "classes": [
+        "nav-icon"
+      ],
+      "text": "📈",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "4996b8d9",
+      "level": "atom",
+      "component_name": "NavIcon",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "atm-navicon-01"
+    },
+    {
+      "cdd_id": "atm-navlabel-02",
+      "tag": "span",
+      "classes": [
+        "nav-label"
+      ],
+      "text": "Progress",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "87af1b0e",
+      "level": "atom",
+      "component_name": "NavLabel",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "atm-navlabel-01"
+    },
+    {
+      "cdd_id": "atm-navitem-03",
+      "tag": "a",
+      "classes": [
+        "nav-item"
+      ],
+      "text": "",
+      "attrs": {
+        "href": "#"
+      },
+      "source": "overview/overview.html",
+      "hash": "d97740e4",
+      "level": "atom",
+      "component_name": "NavItem",
+      "rn_component": "TouchableOpacity",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "atm-navitem-02"
+    },
+    {
+      "cdd_id": "atm-navicon-03",
+      "tag": "span",
+      "classes": [
+        "nav-icon"
+      ],
+      "text": "📋",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "9a94d699",
+      "level": "atom",
+      "component_name": "NavIcon",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "atm-navicon-01"
+    },
+    {
+      "cdd_id": "atm-navlabel-03",
+      "tag": "span",
+      "classes": [
+        "nav-label"
+      ],
+      "text": "Plans",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "87b00bdf",
+      "level": "atom",
+      "component_name": "NavLabel",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "atm-navlabel-01"
+    },
+    {
+      "cdd_id": "atm-navitem-04",
+      "tag": "a",
+      "classes": [
+        "nav-item"
+      ],
+      "text": "",
+      "attrs": {
+        "href": "#"
+      },
+      "source": "overview/overview.html",
+      "hash": "d97740e4",
+      "level": "atom",
+      "component_name": "NavItem",
+      "rn_component": "TouchableOpacity",
+      "is_duplicate": true,
+      "is_parameterized": false,
+      "canonical_ref": "atm-navitem-02"
+    },
+    {
+      "cdd_id": "atm-navicon-04",
+      "tag": "span",
+      "classes": [
+        "nav-icon"
+      ],
+      "text": "👤",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "2203d53c",
+      "level": "atom",
+      "component_name": "NavIcon",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "atm-navicon-01"
+    },
+    {
+      "cdd_id": "atm-navlabel-04",
+      "tag": "span",
+      "classes": [
+        "nav-label"
+      ],
+      "text": "Profile",
+      "attrs": {},
+      "source": "overview/overview.html",
+      "hash": "e7ac78f1",
+      "level": "atom",
+      "component_name": "NavLabel",
+      "rn_component": "Text",
+      "is_duplicate": false,
+      "is_parameterized": true,
+      "canonical_ref": "atm-navlabel-01"
+    },
+    {
+      "cdd_id": "atm-floatingactionbutton-01",
+      "tag": "a",
+      "classes": [
+        "fab"
+      ],
+      "text": "+",
+      "attrs": {
+        "href": "#"
+      },
+      "source": "overview/overview.html",
+      "hash": "f0275baa",
+      "level": "atom",
+      "component_name": "FloatingActionButton",
+      "rn_component": "TouchableOpacity",
+      "is_duplicate": false,
+      "is_parameterized": false,
+      "canonical_ref": null
+    }
+  ]
+}

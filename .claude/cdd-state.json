@@ -1,0 +1,88 @@
+{
+  "$meta": {
+    "feature": "workout-app",
+    "createdAt": "2026-05-13T00:00:00.000Z",
+    "themeSource": "packages/shared-components/src/theme.json"
+  },
+  "atoms": [
+    {
+      "id": "atom-001",
+      "name": "DifficultyBadge",
+      "file": "packages/shared-components/src/atoms/DifficultyBadge.tsx",
+      "status": "pending",
+      "variants": ["Beginner", "Intermediate", "Advanced"],
+      "tokens": ["colors.difficulty.beginner", "colors.difficulty.intermediate", "colors.difficulty.advanced", "spacing.sm", "radius.pill"]
+    },
+    {
+      "id": "atom-002",
+      "name": "DurationLabel",
+      "file": "packages/shared-components/src/atoms/DurationLabel.tsx",
+      "status": "pending",
+      "variants": ["default"],
+      "tokens": ["colors.text.secondary", "typography.bodySM"]
+    },
+    {
+      "id": "atom-003",
+      "name": "NavButton",
+      "file": "packages/shared-components/src/atoms/NavButton.tsx",
+      "status": "pending",
+      "variants": ["default", "active"],
+      "tokens": ["colors.surface.default", "colors.text.primary", "colors.text.secondary", "spacing.md", "radius.pill"]
+    },
+    {
+      "id": "atom-004",
+      "name": "StatusPill",
+      "file": "packages/shared-components/src/atoms/StatusPill.tsx",
+      "status": "pending",
+      "variants": ["idle", "loading", "healthy", "unhealthy"],
+      "tokens": ["colors.surface.variant", "colors.text.secondary", "spacing.sm", "radius.pill"]
+    }
+  ],
+  "molecules": [
+    {
+      "id": "mol-001",
+      "name": "WorkoutCard",
+      "file": "packages/shared-components/src/WorkoutCard.tsx",
+      "status": "completed",
+      "dependsOn": ["atom-001", "atom-002"],
+      "blockedUntil": [],
+      "note": "Existiert bereits — Worker Skill wird Styles auf kineticTheme-Tokens migrieren"
+    },
+    {
+      "id": "mol-002",
+      "name": "HealthCard",
+      "file": "packages/shared-components/src/molecules/HealthCard.tsx",
+      "status": "pending",
+      "dependsOn": ["atom-004"],
+      "blockedUntil": ["atom-004"]
+    }
+  ],
+  "organisms": [
+    {
+      "id": "org-001",
+      "name": "WorkoutDashboard",
+      "file": "apps/workout-app/src/screens/WorkoutDashboard.tsx",
+      "status": "pending",
+      "dependsOn": ["mol-001", "atom-003"],
+      "blockedUntil": ["mol-001", "atom-003"]
+    },
+    {
+      "id": "org-002",
+      "name": "HealthScreen",
+      "file": "apps/workout-app/src/screens/HealthScreen.tsx",
+      "status": "pending",
+      "dependsOn": ["mol-002", "atom-003", "atom-004"],
+      "blockedUntil": ["mol-002", "atom-003", "atom-004"]
+    }
+  ],
+  "templates": [
+    {
+      "id": "tpl-001",
+      "name": "AppShell",
+      "file": "apps/workout-app/App.tsx",
+      "status": "pending",
+      "dependsOn": ["org-001", "org-002"],
+      "blockedUntil": ["org-001", "org-002"]
+    }
+  ]
+}

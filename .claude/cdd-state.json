@@ -6,89 +6,25 @@
     "themeSource": "packages/shared-components/src/theme.json"
   },
   "atoms": [
-    {
-      "id": "atom-001",
-      "name": "DifficultyBadge",
-      "file": "packages/shared-components/src/atoms/DifficultyBadge.tsx",
-      "story": "packages/shared-components/stories/DifficultyBadge.stories.tsx",
-      "status": "completed",
-      "variants": ["Beginner", "Intermediate", "Advanced"],
-      "tokens": ["colors.difficulty.beginner", "colors.difficulty.intermediate", "colors.difficulty.advanced", "spacing.sm", "radius.pill"]
-    },
-    {
-      "id": "atom-002",
-      "name": "DurationLabel",
-      "file": "packages/shared-components/src/atoms/DurationLabel.tsx",
-      "story": "packages/shared-components/stories/DurationLabel.stories.tsx",
-      "status": "completed",
-      "variants": ["default", "withPrefix"],
-      "tokens": ["colors.text.secondary", "typography.bodySM"]
-    },
-    {
-      "id": "atom-003",
-      "name": "NavButton",
-      "file": "packages/shared-components/src/atoms/NavButton.tsx",
-      "story": "packages/shared-components/stories/NavButton.stories.tsx",
-      "status": "completed",
-      "variants": ["default", "active"],
-      "tokens": ["colors.surface.default", "colors.text.primary", "colors.text.secondary", "colors.primary", "colors.onPrimary", "spacing.md", "radius.pill"]
-    },
-    {
-      "id": "atom-004",
-      "name": "StatusPill",
-      "file": "packages/shared-components/src/atoms/StatusPill.tsx",
-      "story": "packages/shared-components/stories/StatusPill.stories.tsx",
-      "status": "completed",
-      "variants": ["idle", "loading", "healthy", "unhealthy"],
-      "tokens": ["colors.surface.variant", "colors.text.secondary", "colors.secondary", "colors.error", "spacing.sm", "radius.pill"]
-    }
+    { "id": "atom-001", "name": "DifficultyBadge", "file": "packages/shared-components/src/atoms/DifficultyBadge.tsx", "story": "packages/shared-components/stories/DifficultyBadge.stories.tsx", "status": "completed", "variants": ["Beginner","Intermediate","Advanced"], "tokens": ["colors.difficulty.*","spacing.sm","radius.pill"] },
+    { "id": "atom-002", "name": "DurationLabel",   "file": "packages/shared-components/src/atoms/DurationLabel.tsx",   "story": "packages/shared-components/stories/DurationLabel.stories.tsx",   "status": "completed", "variants": ["default","withPrefix"], "tokens": ["colors.text.secondary","typography.bodySM"] },
+    { "id": "atom-003", "name": "NavButton",        "file": "packages/shared-components/src/atoms/NavButton.tsx",        "story": "packages/shared-components/stories/NavButton.stories.tsx",        "status": "completed", "variants": ["default","active"], "tokens": ["colors.surface.default","colors.primary","colors.onPrimary","spacing.md","radius.pill"] },
+    { "id": "atom-004", "name": "StatusPill",       "file": "packages/shared-components/src/atoms/StatusPill.tsx",       "story": "packages/shared-components/stories/StatusPill.stories.tsx",       "status": "completed", "variants": ["idle","loading","healthy","unhealthy"], "tokens": ["colors.surface.variant","colors.secondary","colors.error","spacing.sm","radius.pill"] }
   ],
   "molecules": [
-    {
-      "id": "mol-001",
-      "name": "WorkoutCard",
-      "file": "packages/shared-components/src/WorkoutCard.tsx",
-      "story": "packages/shared-components/stories/WorkoutCard.stories.tsx",
-      "status": "completed",
-      "dependsOn": ["atom-001", "atom-002"],
-      "blockedUntil": []
-    },
-    {
-      "id": "mol-002",
-      "name": "HealthCard",
-      "file": "packages/shared-components/src/molecules/HealthCard.tsx",
-      "story": "packages/shared-components/stories/HealthCard.stories.tsx",
-      "status": "completed",
-      "dependsOn": ["atom-004"],
-      "blockedUntil": []
-    }
+    { "id": "mol-001", "name": "WorkoutCard", "file": "packages/shared-components/src/WorkoutCard.tsx",       "story": "packages/shared-components/stories/WorkoutCard.stories.tsx", "status": "completed", "dependsOn": ["atom-001","atom-002"], "blockedUntil": [] },
+    { "id": "mol-002", "name": "HealthCard",  "file": "packages/shared-components/src/molecules/HealthCard.tsx","story": "packages/shared-components/stories/HealthCard.stories.tsx",  "status": "completed", "dependsOn": ["atom-004"], "blockedUntil": [] },
+    { "id": "mol-003", "name": "Avatar",      "file": "packages/shared-components/src/molecules/Avatar.tsx",    "story": "packages/shared-components/stories/Avatar.stories.tsx",     "status": "completed", "dependsOn": [], "blockedUntil": [] },
+    { "id": "mol-004", "name": "StatCard",    "file": "packages/shared-components/src/molecules/StatCard.tsx",  "story": "packages/shared-components/stories/StatCard.stories.tsx",   "status": "completed", "dependsOn": [], "blockedUntil": [] }
   ],
   "organisms": [
-    {
-      "id": "org-001",
-      "name": "WorkoutDashboard",
-      "file": "apps/workout-app/src/screens/WorkoutDashboard.tsx",
-      "status": "pending",
-      "dependsOn": ["mol-001", "atom-003"],
-      "blockedUntil": []
-    },
-    {
-      "id": "org-002",
-      "name": "HealthScreen",
-      "file": "apps/workout-app/src/screens/HealthScreen.tsx",
-      "status": "pending",
-      "dependsOn": ["mol-002", "atom-003", "atom-004"],
-      "blockedUntil": []
-    }
+    { "id": "org-001", "name": "TopBar",           "file": "packages/shared-components/src/organisms/TopBar.tsx",           "story": "packages/shared-components/stories/TopBar.stories.tsx",           "status": "completed", "dependsOn": ["mol-003"], "blockedUntil": [] },
+    { "id": "org-002", "name": "StatsRow",          "file": "packages/shared-components/src/organisms/StatsRow.tsx",          "story": "packages/shared-components/stories/StatsRow.stories.tsx",          "status": "completed", "dependsOn": ["mol-004"], "blockedUntil": [] },
+    { "id": "org-003", "name": "StreakBanner",       "file": "packages/shared-components/src/organisms/StreakBanner.tsx",       "story": "packages/shared-components/stories/StreakBanner.stories.tsx",       "status": "completed", "dependsOn": [], "blockedUntil": [] },
+    { "id": "org-004", "name": "WorkoutDashboard",  "file": "packages/shared-components/src/organisms/WorkoutDashboard.tsx",  "story": "packages/shared-components/stories/WorkoutDashboard.stories.tsx", "status": "completed", "dependsOn": ["org-001","org-002","org-003","mol-001","atom-003"], "blockedUntil": [] },
+    { "id": "org-005", "name": "HealthScreen",      "file": "packages/shared-components/src/organisms/HealthScreen.tsx",      "story": "packages/shared-components/stories/HealthScreen.stories.tsx",     "status": "completed", "dependsOn": ["mol-002","atom-003"], "blockedUntil": [] }
   ],
   "templates": [
-    {
-      "id": "tpl-001",
-      "name": "AppShell",
-      "file": "apps/workout-app/App.tsx",
-      "status": "pending",
-      "dependsOn": ["org-001", "org-002"],
-      "blockedUntil": ["org-001", "org-002"]
-    }
+    { "id": "tpl-001", "name": "AppShell", "file": "apps/workout-app/App.tsx", "status": "completed", "dependsOn": ["org-004","org-005"], "blockedUntil": [], "note": "Verwendet WorkoutDashboard + HealthScreen Organisms" }
   ]
 }

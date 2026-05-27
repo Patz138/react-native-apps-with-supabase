@@ -20,3 +20,25 @@ export type { WorkoutCardProps } from './WorkoutCard';
 
 export { HealthCard } from './molecules/HealthCard';
 export type { HealthCardProps } from './molecules/HealthCard';
+
+export { Avatar } from './molecules/Avatar';
+export type { AvatarProps } from './molecules/Avatar';
+
+export { StatCard } from './molecules/StatCard';
+export type { StatCardProps } from './molecules/StatCard';
+
+// ── Organisms ──────────────────────────────────────────────────────
+export { TopBar } from './organisms/TopBar';
+export type { TopBarProps } from './organisms/TopBar';
+
+export { StatsRow } from './organisms/StatsRow';
+export type { StatsRowProps } from './organisms/StatsRow';
+
+export { StreakBanner } from './organisms/StreakBanner';
+export type { StreakBannerProps } from './organisms/StreakBanner';
+
+export { WorkoutDashboard } from './organisms/WorkoutDashboard';
+export type { WorkoutDashboardProps, WorkoutItem } from './organisms/WorkoutDashboard';
+
+export { HealthScreen } from './organisms/HealthScreen';
+export type { HealthScreenProps } from './organisms/HealthScreen';

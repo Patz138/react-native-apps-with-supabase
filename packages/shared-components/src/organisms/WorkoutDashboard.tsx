@@ -1,0 +1,134 @@
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
+
+import type { WorkoutDifficulty } from '@workout/shared-types';
+import { kineticTheme } from '../kineticTheme';
+import { NavButton } from '../atoms/NavButton';
+import { WorkoutCard } from '../WorkoutCard';
+import { TopBar } from './TopBar';
+import { StatsRow } from './StatsRow';
+import { StreakBanner } from './StreakBanner';
+
+const { colors, spacing } = kineticTheme;
+
+export interface WorkoutItem {
+  id: string;
+  title: string;
+  durationInMinutes: number;
+  difficulty: WorkoutDifficulty;
+}
+
+export interface WorkoutDashboardProps {
+  userName?: string;
+  initials?: string;
+  greeting?: string;
+  streak?: number;
+  sessions?: number;
+  volumeTons?: number;
+  workouts?: WorkoutItem[];
+  /** Aktueller Tab — für NavButton-Highlighting */
+  activeTab?: string;
+  onTabChange?: (tab: string) => void;
+  onWorkoutPress?: (id: string) => void;
+}
+
+const SAMPLE_WORKOUTS: WorkoutItem[] = [
+  { id: '1', title: 'Lower Body Strength',       durationInMinutes: 45, difficulty: 'Intermediate' },
+  { id: '2', title: 'Core Stability Circuit',     durationInMinutes: 20, difficulty: 'Beginner'     },
+  { id: '3', title: 'Upper Body Hypertrophy',     durationInMinutes: 60, difficulty: 'Advanced'     },
+];
+
+export function WorkoutDashboard({
+  userName    = 'Athlete',
+  initials    = 'AT',
+  greeting,
+  streak      = 12,
+  sessions    = 48,
+  volumeTons  = 2.4,
+  workouts    = SAMPLE_WORKOUTS,
+  activeTab   = 'workouts',
+  onTabChange,
+  onWorkoutPress,
+}: WorkoutDashboardProps) {
+  return (
+    <ScrollView
+      style={styles.scroll}
+      contentContainerStyle={styles.content}
+      showsVerticalScrollIndicator={false}
+    >
+      {/* ── 1. Top Bar ────────────────────────────────── */}
+      <TopBar userName={userName} initials={initials} greeting={greeting} />
+
+      {/* ── 2. Stats Row ──────────────────────────────── */}
+      <StatsRow streak={streak} sessions={sessions} volumeTons={volumeTons} />
+
+      {/* ── 3. Streak Banner ──────────────────────────── */}
+      <StreakBanner streakCount={streak} />
+
+      {/* ── 4. Upcoming Workouts ──────────────────────── */}
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>Upcoming Workouts</Text>
+        <View style={styles.cardList}>
+          {workouts.map((w) => (
+            <WorkoutCard
+              key={w.id}
+              title={w.title}
+              durationInMinutes={w.durationInMinutes}
+              difficulty={w.difficulty}
+              onPress={() => onWorkoutPress?.(w.id)}
+            />
+          ))}
+        </View>
+      </View>
+
+      {/* ── 5. Bottom Nav ─────────────────────────────── */}
+      {onTabChange && (
+        <View style={styles.tabRow}>
+          {NAV_TABS.map(({ key, label }) => (
+            <NavButton
+              key={key}
+              label={label}
+              active={key === activeTab}
+              onPress={() => onTabChange(key)}
+            />
+          ))}
+        </View>
+      )}
+    </ScrollView>
+  );
+}
+
+const NAV_TABS = [
+  { key: 'workouts', label: 'Workouts' },
+  { key: 'health',   label: 'Health'   },
+  { key: 'register', label: 'Profile'  },
+];
+
+const styles = StyleSheet.create({
+  scroll: {
+    flex: 1,
+    backgroundColor: colors.background,
+  },
+  content: {
+    padding: spacing.containerMargin,
+    gap: spacing.stackGap,
+    paddingBottom: 48,
+  },
+  section: {
+    gap: spacing.md,
+  },
+  sectionTitle: {
+    fontSize: 18,
+    fontWeight: '700' as const,
+    color: colors.onBackground,
+    letterSpacing: -0.2,
+  },
+  cardList: {
+    gap: spacing.md,
+  },
+  tabRow: {
+    flexDirection: 'row',
+    gap: spacing.sm,
+    justifyContent: 'center',
+    paddingTop: spacing.sm,
+  },
+});

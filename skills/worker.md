@@ -63,6 +63,50 @@ RN-spezifische Konvertierungen:
 
 ---
 
+## Token-Mapping: theme.json Pfade → kineticTheme TypeScript
+
+Der Plan referenziert Tokens via theme.json-Pfade (für Validierung). Im EXECUTE-Code wird immer `kineticTheme` aus `./kineticTheme` importiert:
+
+| theme.json Pfad             | kineticTheme TypeScript-Eigenschaft                        |
+|-----------------------------|------------------------------------------------------------|
+| `colors.bg`                 | `colors.background`                                        |
+| `colors.surface.low`        | `colors.surfaceContainerLow`                               |
+| `colors.surface.default`    | `colors.surfaceContainer`                                  |
+| `colors.surface.high`       | `colors.surfaceContainerHigh`                              |
+| `colors.surface.variant`    | `colors.surfaceVariant`                                    |
+| `colors.surface.bright`     | `colors.surfaceBright`                                     |
+| `colors.outline.default`    | `colors.outline`                                           |
+| `colors.outline.variant`    | `colors.outlineVariant`                                    |
+| `colors.text.primary`       | `colors.onBackground` / `colors.onSurface`                 |
+| `colors.text.secondary`     | `colors.onSurfaceVariant`                                  |
+| `colors.primary`            | `colors.primary`                                           |
+| `colors.primaryDim`         | `colors.primaryDim`                                        |
+| `colors.onPrimary`          | `colors.onPrimary`                                         |
+| `colors.secondary`          | `colors.secondary`                                         |
+| `colors.tertiary`           | `colors.tertiary`                                          |
+| `colors.error`              | `colors.error`                                             |
+| `colors.difficulty.*`       | `colors.difficulty.beginner/intermediate/advanced.{bg,text,dot}` |
+| `spacing.*`                 | `spacing.*` (identische Namen)                             |
+| `radius.*`                  | `radius.*` (identische Namen)                              |
+| `typography.*`              | `typography.*` (identische Namen)                          |
+
+**Import-Konventionen nach Komponenten-Level:**
+```ts
+// Atom (liegt in src/atoms/)
+import { kineticTheme } from '../kineticTheme';
+
+// Molecule (liegt in src/molecules/)
+import { kineticTheme } from '../../kineticTheme';
+import { SomeAtom } from '../atoms/SomeAtom';
+
+// Datei-Zielordner:
+// Atoms    → packages/shared-components/src/atoms/<Name>.tsx
+// Molecules → packages/shared-components/src/molecules/<Name>.tsx
+// Organisms → apps/workout-app/src/screens/<Name>.tsx
+```
+
+---
+
 ## Phase 2 — VALIDATE
 
 Plan gegen zwei Sources of Truth prüfen:

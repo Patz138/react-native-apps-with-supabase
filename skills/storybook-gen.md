@@ -59,8 +59,20 @@ Prop-Typen auf Variant/Size/Type-Unions scannen — jede Kombination wird ein St
 
 ## Phase 2 — Stories-Datei generieren
 
-**Ausgabeort:** Gleicher Ordner wie die Komponente, gleiches Name + `.stories.tsx`
-z.B.: `packages/shared-components/stories/WorkoutCard.stories.tsx`
+**Ausgabeort:** IMMER flach im `stories/`-Ordner — keine Unterordner:
+```
+packages/shared-components/stories/<ComponentName>.stories.tsx
+```
+
+**Framework:** `@storybook/react` (webpack5 + react-native-web Alias) — **NICHT** `@storybook/react-native`.
+Import: `import type { Meta, StoryObj } from '@storybook/react';`
+
+**Import-Pfad zur Komponente** (relativ von stories/ aus):
+```ts
+import { DifficultyBadge } from '../src/atoms/DifficultyBadge';   // Atom
+import { HealthCard }       from '../src/molecules/HealthCard';     // Molecule
+import { WorkoutCard }      from '../src/WorkoutCard';              // Legacy-Root
+```
 
 **CSF3-Struktur:**
 

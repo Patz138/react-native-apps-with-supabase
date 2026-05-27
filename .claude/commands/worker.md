@@ -1,19 +1,62 @@
 ---
 name: worker
-description: UI Conversion Worker. Konvertiert HTML/Specs in React oder React Native Komponenten nach Plan-Validate-Execute. Schreibt keinen Code vor erfolgreicher Validierung gegen theme.json und cdd-state.json.
+description: UI Conversion Worker. Konvertiert HTML/Specs in React Native Komponenten nach Plan-Validate-Execute. Schreibt keinen Code vor erfolgreicher Validierung gegen theme.json und cdd-state.json.
 ---
 
-Vollständige Skill-Definition: `skills/worker.md`
+# Worker Skill — Ausführung
 
-Führe den Worker Skill aus wie in `skills/worker.md` definiert:
+Lese zunächst die vollständige Skill-Definition: `skills/worker.md`
+
+Dann führe den Worker-Workflow für die folgende Anfrage aus:
 
 ```
-/worker <ComponentName> [--target react|rn] [--source <pfad>]
+$ARGUMENTS
 ```
 
-Reihenfolge strikt einhalten:
-1. PLAN  — Props, Tokens, RN-Konvertierungen schriftlich festhalten
-2. VALIDATE — Tokens gegen theme.json prüfen, CDD Gate prüfen, RN-Invalid-Props flaggen
-3. EXECUTE — Nur bei bestandener Validierung die Datei schreiben
+## Kurzreferenz (vollständige Regeln in skills/worker.md)
 
-Nach Execute: cdd-state.json aktualisieren + `/storybook-gen` vorschlagen.
+**Reihenfolge strikt einhalten:**
+
+### 1. PLAN
+Schreibe einen Komponenten-Plan:
+- Datei-Zielpfad (Atome → `src/atoms/<Name>.tsx`, Molecules → `src/molecules/<Name>.tsx`)
+- Props Interface vollständig aufführen
+- Alle verwendeten Tokens aus `theme.json` auflisten
+- RN-Konvertierungen dokumentieren (keine CSS-Units, kein cursor, etc.)
+
+### 2. VALIDATE
+- Jeden Token aus dem Plan in `packages/shared-components/src/theme.json` prüfen
+- CDD Gate in `.claude/cdd-state.json` prüfen (alle blockedUntil-Abhängigkeiten completed?)
+- Bei fehlendem Token oder blockiertem Gate: **STOP**, Fehler melden
+
+### 3. EXECUTE (nur bei bestandener Validierung)
+Schreibe die Komponente. Import-Konventionen:
+```ts
+import { kineticTheme } from '../kineticTheme';          // Atom
+import { kineticTheme } from '../../kineticTheme';       // Molecule (aus src/molecules/)
+import { SomeAtom } from '../atoms/SomeAtom';            // Atom in Molecule
+```
+
+**Token-Mapping: theme.json Pfad → kineticTheme TypeScript**
+| theme.json                | kineticTheme                        |
+|---------------------------|-------------------------------------|
+| colors.bg                 | colors.background                   |
+| colors.surface.low        | colors.surfaceContainerLow          |
+| colors.surface.default    | colors.surfaceContainer             |
+| colors.surface.high       | colors.surfaceContainerHigh         |
+| colors.surface.variant    | colors.surfaceVariant               |
+| colors.surface.bright     | colors.surfaceBright                |
+| colors.outline.default    | colors.outline                      |
+| colors.outline.variant    | colors.outlineVariant               |
+| colors.text.primary       | colors.onBackground / colors.onSurface |
+| colors.text.secondary     | colors.onSurfaceVariant             |
+| colors.primary            | colors.primary                      |
+| colors.difficulty.*       | colors.difficulty.beginner/intermediate/advanced.{bg,text,dot} |
+| spacing.*                 | spacing.* (gleiche Namen)           |
+| radius.*                  | radius.* (gleiche Namen)            |
+| typography.*              | typography.* (gleiche Namen)        |
+
+### 4. POST-EXECUTE
+- `.claude/cdd-state.json` aktualisieren: Status → `completed`
+- Berichten, welche Molecules/Organisms jetzt freigeschaltet sind
+- `/storybook-gen <ComponentName>` vorschlagen

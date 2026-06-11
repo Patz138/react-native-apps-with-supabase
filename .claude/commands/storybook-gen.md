@@ -5,7 +5,7 @@ description: Storybook Story Generator. Analysiert Komponenten-Metadaten und gen
 
 # Storybook Gen Skill — Ausführung
 
-Lese zunächst die vollständige Skill-Definition: `skills/storybook-gen.md`
+Lese zunächst die vollständige Skill-Definition: `skills/storybook-gen/SKILL.md`
 
 Dann generiere die Story für:
 
@@ -37,15 +37,15 @@ const meta: Meta<typeof ComponentName> = {
     backgrounds: {
       default: 'kinetic-dark',
       values: [
-        { name: 'kinetic-dark',    value: '#141408' },
-        { name: 'kinetic-surface', value: '#1d1c10' },
+        { name: 'kinetic-dark',    value: '#0D0D0D' },
+        { name: 'kinetic-surface', value: '#1A1A1A' },
         { name: 'light',           value: '#ffffff' },
       ],
     },
   },
   decorators: [
     (Story) => (
-      <View style={{ backgroundColor: '#141408', padding: 24, minWidth: 280 }}>
+      <View style={{ backgroundColor: '#0D0D0D', padding: 24, minWidth: 280 }}>
         <Story />
       </View>
     ),

@@ -1,9 +1,12 @@
 ---
 name: worker
-type: skill
-version: 1.0.0
-description: UI Conversion Worker. Konvertiert rohes HTML oder Design-Specs in produktionsreife React- oder React-Native-Komponenten nach dem Plan-Validate-Execute-Muster. Schreibt keinen Code, bevor der Plan gegen theme.json und cdd-state.json validiert ist.
+description: UI Conversion Worker. Konvertiert rohes HTML oder Design-Specs in produktionsreife React- oder React-Native-Komponenten nach dem Plan-Validate-Execute-Muster. Schreibt keinen Code, bevor der Plan gegen theme.json und cdd-state.json (inkl. Composition-Gate) validiert ist.
+version: 1.1.0
 trigger: Pro Komponente — nach /manager init.
+assets:
+  theme_template: assets/theme.json
+state_file: .claude/cdd-state.json
+canonical_theme: packages/shared-components/src/theme.json
 ---
 
 # Worker Skill — UI Conversion (Plan → Validate → Execute)
@@ -34,6 +37,9 @@ KOMPONENTEN-PLAN: WorkoutCard (React Native)
 Datei:    packages/shared-components/src/atoms/WorkoutCard.tsx
 Story:    packages/shared-components/stories/WorkoutCard.stories.tsx
 
+Atomares Level: Molecule
+Abhängigkeiten (aus cdd-state.json dependsOn): atom-001 (Button), atom-002 (Badge)
+
 Props Interface:
   title:              string
   durationInMinutes:  number
@@ -61,6 +67,8 @@ RN-spezifische Konvertierungen:
   box-shadow          → elevation + shadowColor + shadowOffset
 ```
 
+**Bei Molecules/Organisms:** Die in `dependsOn` gelisteten Atoms/Molecules MÜSSEN im Plan als Imports auftauchen und im Render-Baum tatsächlich verwendet werden — kein Plan ohne Komposition der deklarierten Abhängigkeiten.
+
 ---
 
 ## Token-Mapping: theme.json Pfade → kineticTheme TypeScript
@@ -86,6 +94,7 @@ Der Plan referenziert Tokens via theme.json-Pfade (für Validierung). Im EXECUTE
 | `colors.tertiary`           | `colors.tertiary`                                          |
 | `colors.error`              | `colors.error`                                             |
 | `colors.difficulty.*`       | `colors.difficulty.beginner/intermediate/advanced.{bg,text,dot}` |
+| `gradients.*`               | `gradients.*` (identische Namen)                           |
 | `spacing.*`                 | `spacing.*` (identische Namen)                             |
 | `radius.*`                  | `radius.*` (identische Namen)                              |
 | `typography.*`              | `typography.*` (identische Namen)                          |
@@ -99,20 +108,25 @@ import { kineticTheme } from '../kineticTheme';
 import { kineticTheme } from '../../kineticTheme';
 import { SomeAtom } from '../atoms/SomeAtom';
 
+// Organism (liegt in src/organisms/)
+import { kineticTheme } from '../../kineticTheme';
+import { SomeAtom } from '../atoms/SomeAtom';
+import { SomeMolecule } from '../molecules/SomeMolecule';
+
 // Datei-Zielordner:
-// Atoms    → packages/shared-components/src/atoms/<Name>.tsx
+// Atoms     → packages/shared-components/src/atoms/<Name>.tsx
 // Molecules → packages/shared-components/src/molecules/<Name>.tsx
-// Organisms → apps/workout-app/src/screens/<Name>.tsx
+// Organisms → packages/shared-components/src/organisms/<Name>.tsx
 ```
 
 ---
 
 ## Phase 2 — VALIDATE
 
-Plan gegen zwei Sources of Truth prüfen:
+Plan gegen drei Sources of Truth prüfen:
 
 **Check 1 — Token-Existenz:**
-Jeden Token aus dem Plan in `packages/shared-components/src/theme.json` verifizieren.
+Jeden Token aus dem Plan in `packages/shared-components/src/theme.json` (bzw. `assets/theme.json`) verifizieren.
 
 ```
 ✅ colors.surface.low    → gefunden: #1d1c10
@@ -131,7 +145,16 @@ Alle Abhängigkeiten in `blockedUntil` müssen `completed` sein.
 ⛔ CDD Gate: FilterTabs blockiert — Tag (atom-003) noch nicht completed
 ```
 
-**Check 3 — React Native spezifisch:**
+**Check 3 — Composition-Gate:**
+`dependsOn` darf nicht leer sein (außer `gateException` dokumentiert) — siehe `manager` Phase 1.5.
+Jede in `dependsOn` gelistete Komponente muss im Plan tatsächlich importiert und gerendert werden.
+
+```
+✅ Composition-Gate: WorkoutCard nutzt Button (atom-001) und Badge (atom-002) wie deklariert
+❌ Composition-Gate: Plan deklariert atom-002, importiert es aber nicht
+```
+
+**Check 4 — React Native spezifisch:**
 Bei `--target rn` die Quell-HTML/CSS auf ungültige RN-Properties scannen und alle im Plan flaggen:
 - `cursor`, `user-select` → weglassen
 - `box-shadow` → in `elevation`/`shadow*` konvertieren
@@ -155,6 +178,7 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import type { WorkoutDifficulty } from '@workout/shared-types';
 import { formatWorkoutDuration } from '@workout/shared-utils';
 import { kineticTheme } from '../kineticTheme';
+import { Badge } from '../atoms/Badge';
 
 const { colors, spacing, radius } = kineticTheme;
 
@@ -170,26 +194,12 @@ export function WorkoutCard({ title, durationInMinutes, difficulty, onPress }: W
     <Pressable onPress={onPress} style={styles.card}>
       <View style={styles.header}>
         <Text style={styles.title}>{title}</Text>
-        <View style={[styles.badge, diffBadgeStyle[difficulty]]}>
-          <Text style={[styles.badgeText, diffTextStyle[difficulty]]}>{difficulty}</Text>
-        </View>
+        <Badge variant={difficulty === 'Advanced' ? 'solid' : 'outline'}>{difficulty}</Badge>
       </View>
       <Text style={styles.meta}>{formatWorkoutDuration(durationInMinutes)}</Text>
     </Pressable>
   );
 }
-
-const diffBadgeStyle: Record<WorkoutDifficulty, object> = {
-  Beginner:     { backgroundColor: '#162816' },
-  Intermediate: { backgroundColor: '#2a2200' },
-  Advanced:     { backgroundColor: '#2a0a0a' },
-};
-
-const diffTextStyle: Record<WorkoutDifficulty, object> = {
-  Beginner:     { color: '#86efac' },
-  Intermediate: { color: '#fde68a' },
-  Advanced:     { color: '#fca5a5' },
-};
 
 const styles = StyleSheet.create({
   card: {
@@ -211,16 +221,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '700',
     color: colors.onBackground,
-  },
-  badge: {
-    borderRadius: radius.pill,
-    paddingHorizontal: spacing.sm,
-    paddingVertical: 5,
-  },
-  badgeText: {
-    fontSize: 11,
-    fontWeight: '700',
-    letterSpacing: 0.3,
   },
   meta: {
     fontSize: 13,
@@ -263,8 +263,8 @@ Nach dem Schreiben der Datei:
 ## Progressive Disclosure
 
 Dieser Skill liest nur:
-- `theme.json` (Token-Validierung)
-- `cdd-state.json` (Gate-Check)
+- `theme.json` / `assets/theme.json` (Token-Validierung)
+- `cdd-state.json` (Gate-Check + Composition-Gate)
 - Die einzelne Ziel-HTML/Komponentendatei via `--source`
 
 Er scannt **nicht** die gesamte Codebase. Context bleibt fokussiert.

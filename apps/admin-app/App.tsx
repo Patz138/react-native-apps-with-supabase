@@ -1,9 +1,19 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Pressable, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
 
-import { WorkoutCard, kineticTheme } from '@workout/shared-components';
+import {
+  Gradient,
+  HealthCard,
+  NavButton,
+  ProgressBar,
+  StatsRow,
+  StreakBanner,
+  TopBar,
+  WorkoutCard,
+  kineticTheme,
+} from '@workout/shared-components';
 
-const { colors, spacing, radius } = kineticTheme;
+const { colors, gradients, spacing, radius, shadows } = kineticTheme;
 
 const adminPreview = [
   {
@@ -90,70 +100,108 @@ export default function App() {
   }
 
   const isHealthPage = pathname === '/health';
+  const healthProgress = healthStatus === 'healthy'
+    ? 1
+    : healthStatus === 'loading'
+      ? 0.58
+      : healthStatus === 'unhealthy'
+        ? 0.2
+        : 0.1;
 
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.content}>
+        <TopBar
+          greeting="Kinetic control center"
+          userName="Workout Admin"
+          initials="WA"
+        />
 
-        {/* ── NAVIGATION ── */}
-        <View style={styles.navigationRow}>
-          <Pressable
-            onPress={() => setPathname('/')}
-            style={[styles.navButton, !isHealthPage && styles.navButtonActive]}
-          >
-            <Text style={[styles.navButtonText, !isHealthPage && styles.navButtonTextActive]}>
-              Dashboard
-            </Text>
-          </Pressable>
-          <Pressable
-            onPress={() => setPathname('/health')}
-            style={[styles.navButton, isHealthPage && styles.navButtonActive]}
-          >
-            <Text style={[styles.navButtonText, isHealthPage && styles.navButtonTextActive]}>
-              Health
-            </Text>
-          </Pressable>
-        </View>
+        <Gradient colors={gradients.hero} style={styles.hero}>
+          <Text style={styles.heroEyebrow}>Browser workspace</Text>
+          <Text style={styles.heroTitle}>
+            {isHealthPage ? 'Keep the platform healthy.' : 'Curate the next workout wave.'}
+          </Text>
+          <Text style={styles.heroText}>
+            Electric lime accents, layered surfaces, and the same component language as the app.
+          </Text>
+          <View style={styles.heroActions}>
+            <NavButton label="Dashboard" active={!isHealthPage} onPress={() => setPathname('/')} />
+            <NavButton label="Health" active={isHealthPage} onPress={() => setPathname('/health')} />
+          </View>
+        </Gradient>
 
-        {/* ── DASHBOARD ── */}
         {!isHealthPage ? (
           <>
-            <Text style={styles.heading}>Admin App</Text>
-            <Text style={styles.subheading}>
-              Web-Frontend fuer Planung, Kuration und Verwaltung von Workout-Inhalten.
-            </Text>
-            <View style={styles.grid}>
-              {adminPreview.map((workout) => (
-                <WorkoutCard
-                  key={workout.id}
-                  title={workout.title}
-                  durationInMinutes={workout.durationInMinutes}
-                  difficulty={workout.difficulty}
-                />
-              ))}
+            <StatsRow streak={12} sessions={48} volumeTons={2.4} />
+            <StreakBanner streakCount={12} />
+
+            <View style={styles.panel}>
+              <View style={styles.sectionHead}>
+                <View>
+                  <Text style={styles.sectionTitle}>Featured plans</Text>
+                  <Text style={styles.sectionMeta}>Kinetic cards powered by shared components.</Text>
+                </View>
+                <Text style={styles.sectionChip}>Live</Text>
+              </View>
+
+              <View style={styles.grid}>
+                {adminPreview.map((workout) => (
+                  <WorkoutCard
+                    key={workout.id}
+                    title={workout.title}
+                    durationInMinutes={workout.durationInMinutes}
+                    difficulty={workout.difficulty}
+                  />
+                ))}
+              </View>
+            </View>
+
+            <View style={styles.panel}>
+              <View style={styles.sectionHead}>
+                <View>
+                  <Text style={styles.sectionTitle}>System pulse</Text>
+                  <Text style={styles.sectionMeta}>Readiness for the next publish.</Text>
+                </View>
+                <Text style={styles.sectionChip}>{Math.round(healthProgress * 100)}%</Text>
+              </View>
+              <ProgressBar progress={healthProgress} height={8} />
+              <Text style={styles.healthMessage}>{healthMessage}</Text>
             </View>
           </>
         ) : (
-
-          /* ── HEALTH ── */
-          <View style={styles.healthCard}>
-            <Text style={styles.heading}>Health Check</Text>
-            <Text style={styles.subheading}>
-              Prueft die Erreichbarkeit der Supabase Edge Function vom Admin-Client.
-            </Text>
-            <Text style={styles.label}>Endpoint</Text>
-            <Text style={styles.endpointText}>{healthEndpoint ?? 'Nicht konfiguriert'}</Text>
-            <View style={styles.statusRow}>
-              <Text style={styles.label}>Status</Text>
-              <Text style={[styles.statusPill, statusStyle[healthStatus]]}>
-                {healthStatus.toUpperCase()}
-              </Text>
+          <>
+            <View style={styles.healthStack}>
+              <HealthCard
+                title="Connection"
+                value={healthStatus.toUpperCase()}
+                status={healthStatus}
+                description={healthMessage}
+              />
+              <HealthCard
+                title="Endpoint"
+                value={healthEndpoint ? 'Configured' : 'Missing'}
+                status={healthEndpoint ? 'healthy' : 'unhealthy'}
+                description={healthEndpoint ?? 'EXPO_PUBLIC_SUPABASE_URL is not set.'}
+              />
             </View>
-            <Text style={styles.healthMessage}>{healthMessage}</Text>
-            <Pressable onPress={runHealthCheck} style={styles.healthButton}>
-              <Text style={styles.healthButtonText}>Health-Check ausfuehren</Text>
-            </Pressable>
-          </View>
+
+            <View style={styles.panel}>
+              <View style={styles.sectionHead}>
+                <View>
+                  <Text style={styles.sectionTitle}>Supabase check</Text>
+                  <Text style={styles.sectionMeta}>Run the edge-function probe from the browser.</Text>
+                </View>
+                <Text style={styles.sectionChip}>Health</Text>
+              </View>
+              <Text style={styles.endpointText}>{healthEndpoint ?? 'Nicht konfiguriert'}</Text>
+              <Pressable onPress={runHealthCheck} style={({ pressed }) => [styles.healthButtonShadow, pressed && styles.pressed]}>
+                <Gradient colors={gradients.primary} style={styles.healthButton}>
+                  <Text style={styles.healthButtonText}>Health-Check ausfuehren</Text>
+                </Gradient>
+              </Pressable>
+            </View>
+          </>
         )}
 
       </ScrollView>
@@ -174,100 +222,125 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background,
   },
   content: {
-    padding: spacing.containerMargin,
-    gap: spacing.stackGap,
+    padding: spacing.screenPadding,
+    gap: spacing.xl,
+    paddingBottom: spacing.huge,
   },
-  navigationRow: {
-    flexDirection: 'row',
-    gap: spacing.sm,
-  },
-  navButton: {
-    borderRadius: radius.pill,
-    borderWidth: 1,
-    borderColor: colors.outlineVariant,
-    paddingHorizontal: spacing.md,
-    paddingVertical: spacing.xs,
-    backgroundColor: colors.surfaceContainerLow,
-  },
-  navButtonActive: {
-    backgroundColor: colors.primary,
-    borderColor: colors.primary,
-  },
-  navButtonText: {
-    color: colors.onSurfaceVariant,
-    fontWeight: '600',
-    fontSize: 14,
-  },
-  navButtonTextActive: {
-    color: colors.onPrimary,
-  },
-  heading: {
-    fontSize: 34,
-    fontWeight: '700',
-    color: colors.onBackground,
-    letterSpacing: -0.64,
-  },
-  subheading: {
-    fontSize: 16,
-    lineHeight: 24,
-    color: colors.onSurfaceVariant,
-    maxWidth: 720,
-  },
-  grid: {
+  hero: {
+    borderRadius: radius.xl,
+    padding: spacing.xl,
     gap: spacing.md,
-    maxWidth: 720,
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.08)',
+    ...shadows.md,
   },
-  healthCard: {
-    maxWidth: 720,
+  heroEyebrow: {
+    color: 'rgba(255,255,255,0.72)',
+    fontSize: 11,
+    fontWeight: '700' as const,
+    letterSpacing: 0.8,
+    textTransform: 'uppercase',
+  },
+  heroTitle: {
+    color: colors.onBackground,
+    fontSize: 30,
+    lineHeight: 36,
+    fontWeight: '800' as const,
+    letterSpacing: -0.6,
+    maxWidth: 620,
+  },
+  heroText: {
+    color: colors.onSurfaceVariant,
+    fontSize: 15,
+    lineHeight: 22,
+    maxWidth: 660,
+  },
+  heroActions: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: spacing.sm,
+    marginTop: spacing.xs,
+  },
+  panel: {
     gap: spacing.md,
     backgroundColor: colors.surfaceContainerLow,
     borderRadius: radius.xl,
-    padding: spacing.xl,
+    padding: spacing.lg,
     borderWidth: 1,
     borderColor: colors.outlineVariant,
+    ...shadows.sm,
   },
-  label: {
-    fontSize: 10,
-    textTransform: 'uppercase',
-    letterSpacing: 0.5,
-    color: colors.onSurfaceVariant,
-    fontWeight: '700',
-  },
-  endpointText: {
-    fontSize: 13,
-    color: colors.onBackground,
-    fontFamily: 'monospace',
-  },
-  statusRow: {
+  sectionHead: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
+    alignItems: 'flex-start',
+    gap: spacing.md,
   },
-  statusPill: {
+  sectionTitle: {
+    color: colors.onBackground,
+    fontSize: 18,
+    lineHeight: 24,
+    fontWeight: '800' as const,
+    letterSpacing: -0.2,
+  },
+  sectionMeta: {
+    color: colors.onSurfaceVariant,
+    fontSize: 13,
+    lineHeight: 18,
+    marginTop: 2,
+  },
+  sectionChip: {
+    alignSelf: 'flex-start',
+    backgroundColor: colors.surfaceContainerHigh,
+    color: colors.onBackground,
     borderRadius: radius.pill,
     paddingHorizontal: spacing.sm,
     paddingVertical: 5,
     fontSize: 11,
-    color: colors.onSurfaceVariant,
-    backgroundColor: colors.surfaceVariant,
-    fontWeight: '700',
-    overflow: 'hidden',
+    fontWeight: '700' as const,
+    letterSpacing: 0.3,
   },
-  healthMessage: {
-    fontSize: 14,
+  grid: {
+    gap: spacing.md,
+  },
+  healthStack: {
+    gap: spacing.md,
+  },
+  endpointText: {
     color: colors.onBackground,
-    lineHeight: 20,
-  },
-  healthButton: {
-    backgroundColor: colors.primary,
+    fontSize: 12,
+    lineHeight: 18,
+    fontFamily: 'monospace',
+    backgroundColor: colors.surfaceContainer,
     borderRadius: radius.md,
     paddingHorizontal: spacing.md,
     paddingVertical: spacing.sm,
+    borderWidth: 1,
+    borderColor: colors.outlineVariant,
+  },
+  healthButtonShadow: {
     alignSelf: 'flex-start',
+    borderRadius: radius.md,
+    overflow: 'hidden',
+    ...shadows.primaryGlow,
+  },
+  pressed: {
+    opacity: 0.92,
+    transform: [{ scale: 0.985 }],
+  },
+  healthButton: {
+    paddingHorizontal: spacing.lg,
+    paddingVertical: spacing.sm,
+    borderRadius: radius.md,
   },
   healthButtonText: {
     color: colors.onPrimary,
-    fontWeight: '700',
     fontSize: 14,
+    fontWeight: '800' as const,
+  },
+  healthMessage: {
+    fontSize: 14,
+    lineHeight: 20,
+    color: colors.onSurfaceVariant,
   },
 });

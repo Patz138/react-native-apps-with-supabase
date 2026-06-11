@@ -1,101 +1,130 @@
+// ============================================================
+//  KINETIC THEME — dark / electric-lime fitness design system
+//  Source of Truth: extrahiert aus docs/ui/prototypes/workout-tracker-annotated
+//  (siehe theme.json, generiert vom /discovery Skill)
+// ============================================================
+
 export const kineticColors = {
-  background: '#eef6f0',
-  surfaceContainerLow: '#f6faf7',
-  surfaceContainer: '#ffffff',
-  surfaceContainerHigh: '#ffffff',
-  surfaceVariant: '#e2efe7',
-  surfaceBright: '#ffffff',
-  outline: '#5b6b61',
-  outlineVariant: '#d4e2d9',
-  onBackground: '#0f1f15',
-  onSurface: '#0f1f15',
-  onSurfaceVariant: '#4a5a50',
-  primary: '#16a34a',
-  primaryDim: '#15803d',
-  primaryBright: '#22c55e',
-  primaryContainer: '#dcfce7',
-  onPrimary: '#ffffff',
-  secondary: '#0ea5e9',
-  tertiary: '#0891b2',
-  accent: '#84cc16',
-  gold: '#f59e0b',
-  error: '#dc2626',
+  background: '#0D0D0D',
+  surfaceContainerLow: '#141414',
+  surfaceContainer: '#1A1A1A',
+  surfaceContainerHigh: '#222222',
+  surfaceVariant: '#1e1e1e',
+  surfaceBright: '#2a2a2a',
+  outline: '#3a3a3a',
+  outlineVariant: '#2a2a2a',
+  onBackground: '#FFFFFF',
+  onSurface: '#FFFFFF',
+  onSurfaceVariant: '#888888',
+  primary: '#E8FF47',
+  primaryDim: '#c8df2a',
+  primaryContainer: '#1e2500',
+  onPrimary: '#000000',
+  secondary: '#4FA3FF',
+  tertiary: '#4ADE80',
+  accent: '#FF8C42',
+  error: '#FF5C5C',
   difficulty: {
-    beginner:     { bg: '#dcfce7', text: '#15803d', dot: '#22c55e' },
-    intermediate: { bg: '#fef3c7', text: '#b45309', dot: '#f59e0b' },
-    advanced:     { bg: '#fee2e2', text: '#b91c1c', dot: '#ef4444' },
+    beginner:     { bg: '#16280f', text: '#4ade80', dot: '#4ade80' },
+    intermediate: { bg: '#2a2400', text: '#facc15', dot: '#facc15' },
+    advanced:     { bg: '#2a1212', text: '#ff5c5c', dot: '#ff5c5c' },
   },
 } as const;
 
 /**
- * Gradient-Farbstops (jeweils [from, to]) für den dependency-freien
+ * Gradient-Farbstops (jeweils [from, to]) für das dependency-freie
  * Gradient-Atom. Diagonal von oben-links nach unten-rechts gedacht.
  */
 export const kineticGradients = {
-  primary: ['#22c55e', '#15803d'],
-  hero:    ['#16a34a', '#0d9488'],
-  banner:  ['#1ec96e', '#0e9f6e'],
-  fresh:   ['#84cc16', '#16a34a'],
-  ocean:   ['#0ea5e9', '#0891b2'],
-  sunset:  ['#f59e0b', '#f97316'],
-  surface: ['#ffffff', '#eef6f0'],
+  primary: ['#E8FF47', '#c8df2a'],
+  avatar:  ['#E8FF47', '#c8df2a'],
+  banner:  ['#1c2a00', '#2a3d00'],
+  hero:    ['#111111', '#1a1a1a', '#262626'],
+  fresh:   ['#4ade80', '#16a34a'],
+  streak:  ['#1c2a00', '#2a3d00'],
+  ocean:   ['#4FA3FF', '#0891b2'],
+  sunset:  ['#FF8C42', '#f97316'],
+  surface: ['#1A1A1A', '#0D0D0D'],
 } as const;
 
 export const kineticSpacing = {
   xs: 8,
   sm: 12,
   md: 16,
-  lg: 24,
-  xl: 32,
+  lg: 20,
+  xl: 24,
+  xxl: 32,
+  huge: 48,
+  screenPadding: 24,
   containerMargin: 24,
-  inlineGap: 16,
-  stackGap: 24,
-  cardPadding: 16
+  stackGap: 20,
+  cardPadding: 16,
 } as const;
 
 export const kineticRadius = {
-  sm: 12,
+  sm: 8,
   md: 16,
   lg: 24,
   xl: 32,
-  pill: 9999
+  pill: 9999,
 } as const;
 
 export const kineticTypography = {
   displayXL: {
-    fontSize: 32,
-    lineHeight: 38,
-    fontWeight: '700' as const,
-    letterSpacing: -0.64
+    fontSize: 38,
+    lineHeight: 42,
+    fontWeight: '900' as const,
+    letterSpacing: -1,
   },
   headlineLG: {
-    fontSize: 24,
-    lineHeight: 30,
-    fontWeight: '700' as const,
-    letterSpacing: -0.24
+    fontSize: 28,
+    lineHeight: 34,
+    fontWeight: '800' as const,
+    letterSpacing: -0.5,
+  },
+  titleLG: {
+    fontSize: 22,
+    lineHeight: 28,
+    fontWeight: '800' as const,
+    letterSpacing: -0.5,
   },
   titleMD: {
+    fontSize: 20,
+    lineHeight: 26,
+    fontWeight: '800' as const,
+  },
+  titleSM: {
     fontSize: 18,
-    lineHeight: 22,
-    fontWeight: '700' as const
+    lineHeight: 24,
+    fontWeight: '700' as const,
   },
   bodyBase: {
-    fontSize: 16,
-    lineHeight: 24,
-    fontWeight: '400' as const
+    fontSize: 15,
+    lineHeight: 22,
+    fontWeight: '400' as const,
   },
   bodySM: {
-    fontSize: 14,
-    lineHeight: 20,
-    fontWeight: '500' as const
+    fontSize: 13,
+    lineHeight: 18,
+    fontWeight: '500' as const,
+  },
+  label: {
+    fontSize: 12,
+    lineHeight: 16,
+    fontWeight: '600' as const,
   },
   labelCaps: {
-    fontSize: 10,
-    lineHeight: 10,
+    fontSize: 11,
+    lineHeight: 14,
     fontWeight: '700' as const,
     letterSpacing: 0.5,
-    textTransform: 'uppercase' as const
-  }
+    textTransform: 'uppercase' as const,
+  },
+  navLabel: {
+    fontSize: 10,
+    lineHeight: 12,
+    fontWeight: '600' as const,
+  },
 } as const;
 
 /**
@@ -104,32 +133,32 @@ export const kineticTypography = {
  */
 export const kineticShadows = {
   sm: {
-    shadowColor: '#0f1f15',
+    shadowColor: '#000000',
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.06,
-    shadowRadius: 6,
+    shadowOpacity: 0.4,
+    shadowRadius: 8,
     elevation: 2,
   },
   md: {
-    shadowColor: '#0f1f15',
-    shadowOffset: { width: 0, height: 6 },
-    shadowOpacity: 0.08,
-    shadowRadius: 16,
-    elevation: 5,
+    shadowColor: '#000000',
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.5,
+    shadowRadius: 20,
+    elevation: 6,
   },
   lg: {
-    shadowColor: '#0f1f15',
+    shadowColor: '#000000',
     shadowOffset: { width: 0, height: 12 },
-    shadowOpacity: 0.12,
+    shadowOpacity: 0.55,
     shadowRadius: 28,
     elevation: 10,
   },
-  /** Farbiger Glow für Primary-Flächen (Hero-Karten, CTA-Buttons) */
+  /** Elektrischer Lime-Glow für primäre Flächen (FAB, CTA-Buttons) */
   primaryGlow: {
-    shadowColor: '#16a34a',
-    shadowOffset: { width: 0, height: 10 },
-    shadowOpacity: 0.32,
-    shadowRadius: 22,
+    shadowColor: '#E8FF47',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.35,
+    shadowRadius: 20,
     elevation: 8,
   },
 } as const;

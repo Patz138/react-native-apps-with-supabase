@@ -1,9 +1,12 @@
 ---
 name: storybook-gen
-type: skill
-version: 1.0.0
 description: Storybook Story Generator. Analysiert Komponenten-Metadaten (Props Interface, Varianten, Types) und generiert automatisch eine vollständige CSF3 .stories.tsx-Datei mit Title, Meta-Object, Story-Objects und Decorators. Kein manuelles Code-Anfassen nötig.
+version: 1.0.0
 trigger: Nach /worker — für jede fertige Komponente.
+assets:
+  theme_template: assets/theme.json
+state_file: .claude/cdd-state.json
+canonical_theme: packages/shared-components/src/theme.json
 ---
 
 # Storybook Generation Skill — Automatische CSF Story-Erstellung
@@ -92,8 +95,8 @@ const meta: Meta<typeof WorkoutCard> = {
     backgrounds: {
       default: 'kinetic-dark',
       values: [
-        { name: 'kinetic-dark',  value: '#141408' },
-        { name: 'kinetic-surface', value: '#1d1c10' },
+        { name: 'kinetic-dark',  value: '#0D0D0D' },
+        { name: 'kinetic-surface', value: '#1A1A1A' },
         { name: 'light',         value: '#ffffff' },
       ],
     },
@@ -101,7 +104,7 @@ const meta: Meta<typeof WorkoutCard> = {
   // ── DECORATORS — verhindern Crash ohne Kontext ─────────
   decorators: [
     (Story) => (
-      <View style={{ backgroundColor: '#141408', padding: 24, minWidth: 320, maxWidth: 400 }}>
+      <View style={{ backgroundColor: '#0D0D0D', padding: 24, minWidth: 320, maxWidth: 400 }}>
         <Story />
       </View>
     ),
@@ -193,6 +196,7 @@ Decorators hinzufügen, wenn die Komponente Kontext zum Rendern ohne Crash brauc
 2. `@storybook/react` oder `@storybook/react-native` ist in `package.json`
 3. Atomares Level (Atoms/Molecules/etc.) in `cdd-state.json` für korrekten `title`-Pfad
 4. Alle argType-Optionen stimmen exakt mit den Union-Werten im Props Interface überein
+5. Hintergrundfarben in `parameters.backgrounds` stimmen mit `assets/theme.json` (`colors.bg`, `colors.surface.default`) überein
 
 Validierung fehlgeschlagen → Fehler auflisten, NICHT schreiben.
 
@@ -213,5 +217,6 @@ Dieser Skill liest nur:
 - Die einzelne Ziel-Komponentendatei (für Metadaten)
 - `package.json` (um Storybook zu verifizieren)
 - `.claude/cdd-state.json` (für atomares Level / title-Pfad)
+- `assets/theme.json` (für Background-Farben in Decorators)
 
 Er liest **nicht** die gesamte Codebase. Context bleibt minimal.

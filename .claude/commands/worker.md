@@ -5,7 +5,7 @@ description: UI Conversion Worker. Konvertiert HTML/Specs in React Native Kompon
 
 # Worker Skill — Ausführung
 
-Lese zunächst die vollständige Skill-Definition: `skills/worker.md`
+Lese zunächst die vollständige Skill-Definition: `skills/worker/SKILL.md`
 
 Dann führe den Worker-Workflow für die folgende Anfrage aus:
 
@@ -27,6 +27,7 @@ Schreibe einen Komponenten-Plan:
 ### 2. VALIDATE
 - Jeden Token aus dem Plan in `packages/shared-components/src/theme.json` prüfen
 - CDD Gate in `.claude/cdd-state.json` prüfen (alle blockedUntil-Abhängigkeiten completed?)
+- Composition-Gate prüfen: `dependsOn` darf nicht leer sein (außer `gateException` dokumentiert) und alle gelisteten Atoms/Molecules müssen im Plan importiert + verwendet werden
 - Bei fehlendem Token oder blockiertem Gate: **STOP**, Fehler melden
 
 ### 3. EXECUTE (nur bei bestandener Validierung)
